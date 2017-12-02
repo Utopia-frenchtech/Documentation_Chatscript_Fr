@@ -1,0 +1,294 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<title></title>
+	<meta name="generator" content="LibreOffice 5.3.1.2 (Linux)"/>
+	<meta name="created" content="2017-10-20T15:15:01.711538193"/>
+	<meta name="changed" content="2017-12-02T10:30:55.424890908"/>
+	<style type="text/css">
+		@page { margin: 2cm }
+		p { margin-bottom: 0.25cm; line-height: 120% }
+		h1 { margin-bottom: 0.21cm }
+		h1.western { font-family: "Liberation Sans", sans-serif; font-size: 18pt }
+		h1.cjk { font-family: "Noto Sans CJK SC Regular"; font-size: 18pt }
+		h1.ctl { font-family: "FreeSans"; font-size: 18pt }
+		pre.cjk { font-family: "DejaVu Sans Mono", monospace }
+		h2.cjk { font-family: "Noto Sans CJK SC Regular" }
+		h2.ctl { font-family: "FreeSans" }
+		code.cjk { font-family: "DejaVu Sans Mono", monospace }
+		a:link { so-language: zxx }
+	</style>
+</head>
+<body lang="fr-FR" dir="ltr">
+<h1 class="western"><font size="6" style="font-size: 22pt">Manuel
+ChatScript pour plusieurs Bots</font></h1>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%"> © Bruce Wilcox,
+mailto:gowilcox@gmail.com www.brilligunderstanding.com <br/>
+Revision
+6/25/2017 cs7.51</p>
+<p style="margin-bottom: 0.42cm; font-variant: normal; letter-spacing: normal; font-style: normal; font-weight: normal; line-height: 138%; orphans: 2; widows: 2; text-decoration: none">
+<font color="#24292e"><font face="Droid Sans Fallback, sans-serif"><font size="2" style="font-size: 10pt"><span style="background: transparent">Traduction
+Mathieu Rigard 02/12/2017 pour Utopia&nbsp;:
+<a href="mailto:m.rigard@utopia-french.tech">m.rigard@utopia-french.tech</a>
+<a href="https://utopia-french.tech/">https://utopia-french.tech</a></span></font></font></font></p>
+<p style="margin-bottom: 0.42cm; font-variant: normal; letter-spacing: normal; font-style: normal; font-weight: normal; line-height: 138%; orphans: 2; widows: 2; text-decoration: none">
+<font color="#800000"><font face="Droid Sans Fallback, sans-serif"><font size="3" style="font-size: 12pt"><span style="background: transparent">A
+faire&nbsp;: corrections (en particuliers zones surlignées), ancrer
+les liens.</span></font></font></font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p>Le système peut faire cohabiter plusieurs bots sur le même
+moteur. On peut restreindre des Topics pour qu’ils ne soient
+accessibles qu’à certains bots. On peut également restreindre
+l’accès aux Faits et aux Fonctions, lorsque leurs variantes existe
+pour chaque bot.</p>
+<h1 class="western"><a name="restriction-by-rule"></a><font size="5" style="font-size: 18pt">Restreindre
+par les Règles</font></h1>
+<p>Le plus simple est de restreindre les Règles afin qu’elles ne
+soient accessibles qu’à certains bots en utilisant quelque chose
+comme&nbsp;:</p>
+<pre class="western"><code class="western">?: ($bot=harry ...)</code>
+
+<code class="western">?: (!$bot=harry ...).</code>
+
+<code class="western">t: ($bot=harry) My name is harry.</code></pre><p>
+On peut aussi préciser à quel bot vous allez accéder lors de votre
+login en ajoutant <code class="western">:</code><code class="western">nomdubot</code>
+à votre nom de login, ex&nbsp;: <code class="western">bruce:harry</code>.
+Le système de démo ne possède qu’un seul bot, Harry. S’il en
+avait deux, Harry et Georgia, on pourrait obtenir Georgia en se
+loggant comme ceci  <code class="western">votrenom:</code><code class="western">georgia</code>.
+ Et on pourrait alors savoir à qui nous avons affaire en demandant 
+<code class="western">Quel est ton nom</code>.</p>
+<p>Lorsqu’on ne spécifie pas le nom d’un bot nous avons le bot
+par défaut. Comme le système fait-il pour savoir duquel il s’agit&nbsp;?
+Il cherche un Fait dans la base de donnée dont le sujet est le nom
+du bot par défaut et dont le verbe est defaultbot. S’il n’en
+trouve aucun, le bot par défaut est appelé anonymous, et il y a de
+grande chances que rien ne fonctionne du tout. Définir le bot par
+défaut est ce que fait la table lorsqu’on compile
+<code class="western">simplecontrol.top</code>. Il contient :</p>
+<pre class="western"><code class="western">table: defaultbot (^name)</code>
+<code class="western">^createfact(^name defaultbot defaultbot)</code>
+<code class="western">DATA:</code>
+<code class="western">harry</code></pre><p>
+Typiquement, lorsque vous lancez un build level 1 sur vos Topic (ex&nbsp;:
+<code class="western">:build ben</code> ou <code class="western">:build
+1</code> ou autre), vous  appliquez une surcouche invoquant une
+fonction d’initialisation (<code class="western">bot definition
+script</code>) pour votre ou vos bots sinon votre bot ne pourra pas
+fonctionner.</p>
+<p>Cette fonction est appelée dès qu’un nouvel utilisateur tente
+de parler au bot, ce qu’il dit implique un Topic d’où commencer
+et quel code appliquer à l’entrée de l’utilisateur. Nous avons
+besoin de l’une de ces fonctions pour chaque bot, même si cette
+fonction n’est qu’une simple copie (ou différente d’ailleurs).
+Dans le cas de Harry, la fonction est 
+</p>
+<pre class="western"><code class="western">^outputmacro: harry()</code>
+<code class="western">    </code><code class="western">^addTopic(~introductions)</code>
+<code class="western">    </code><code class="western">$cs_control_pre = ~control</code>
+<code class="western">    </code><code class="western">$cs_control_main = ~control</code>
+<code class="western">    </code><code class="western">$cs_control_post = ~control</code></pre><p>
+On peut changer le bot par défaut soit en invoquant différents
+fichiers de build nommant le bot par défaut, soit en éditant notre
+table.</p>
+<h2 class="western"><a name="multiple-bots"></a>PLUSIEURS BOTS</h2>
+<p>Pour rendre disponibles plusieurs bots nous pouvons commencer par
+créer plusieurs dossiers en copiant celui de Harry et en en faisant
+des bots spécifiques avec chacun leur <code class="western">filesxxx.txt</code>.
+Cela permet de les construire chacun en temps que bots
+«&nbsp;stand-alone&nbsp;», c’est à dire existants séparément,
+mais si l’on veux les faire cohabiter on doit n’avoir qu’un
+seul fichier <code class="western">filesxxx.txt</code> dans lequel
+seront nommés les dossiers distincts de chaque bot- ils doivent être
+builder ensembles.</p>
+<p>Si vous ne faite seulement que créer plusieurs <code class="western">bot
+definition scripts</code>, alors les bots partagerons également tous
+les définitions d’outputmacro, tous les Topics, et tous les Faits
+créés au ment du build. De toutes façons, les Faits créés durant
+la conversation avec un utilisateur seront tous uniques. Le résultat
+d’une conversation entre un bot spécifique et un utilisateur
+aboutit dans un fichier Topic spécifique, ainsi, ce qu’un bot
+apprend, l’autre ne l’apprend pas.</p>
+<p>Si vous essayez de créer deux bots ayant chacun leur dossier
+séparé, et que vous clonez des copies depuis un dossier originel
+des fichiers .top <code class="western">~control</code> et
+<code class="western">~introductions</code> et de <code class="western">~childhood</code>
+vous aurez un message d’erreur au moment de la compilation. Vous ne
+pouvez en fait qu’avoir une copie de <code class="western">~control</code>
+que vos bots utilisent ensemble. De même, ils devront avoir des noms
+de Topic différents pour <code class="western">~introductions</code>
+et <code class="western">~childhood</code> OU ALORS vous pouvez
+mettre des restrictions pour les bots à quelques endroits. Voir plus
+loin.</p>
+<p>On peut invoquer le nom de plusieurs bots en séparant leurs noms
+par des virgules non suivies d’espace. Ex&nbsp;: <code class="western">Topic:
+~myTopic bot=harry,roman [m</code><code class="western">onMotClé</code><code class="western">]</code></p>
+<h2 class="western"><a name="restriction-by-topic"></a>Restriction
+par Topic</h2>
+<p>Un Topic peut être restreint à un bot spécifique. Cela se fait
+lors de la définition du Topic en nommant un ou plusieurs bots (noms
+séparés par des virgules non suivies d’espace) autorisés à
+utiliser ce Topic.</p>
+<pre class="western" style="margin-bottom: 0.5cm"><code class="western">Topic: ~m</code><code class="western">on</code><code class="western">Topic bot=Harry,Georgia REPEAT (</code><code class="western">motClé</code><code class="western">)</code></pre><p>
+<span style="background: #ffff00">Maintenant que nous avons découvert
+la possibilité de créer plusieurs copies d’un même Topic, nous
+allons voir que différent bots peuvent accéder à différentes
+copies. C’est ainsi que l’on fait une famille de Topics portant
+le même nom. Les règles a appliquer sont&nbsp;:</span></p>
+<ul>
+	<li/>
+<p style="margin-bottom: 0cm">Les Topics partagent les mêmes
+	mots-clés</p>
+	<li/>
+<p><code class="western">:verify</code> peut uniquement
+	vérifier la première copie d'un sujet auquel il a accès</p>
+</ul>
+<p>On peut créer plusieurs copies d’un Topic ayant le même nom,
+qui varieront suivant les restrictions de bot qui y seront attachées
+et suivant leur contenu. L’ensemble des mots-clés attribués à un
+Topic Topic est alors la somme des mots-clés présent dans
+l’ensemble des copies possédant le même nom de Topic. Vous ne
+devez pas attribuer à un Topic un nom se terminant par un point ou
+un nombre (cela est utilisé en interne par le système pour
+représenter plusieurs Topic ayant le même nom). 
+</p>
+<p>Lorsque le système tente d’accéder à un Topic, il vérifie
+les restrictions liés aux bots. Si un Topic échoue, il essaiera la
+version dupliquée suivante et ainsi de suite jusqu’à ce qu’il
+trouve une copie que le bot est autorisé à utiliser.</p>
+<p>Cela signifie que si le Topic 1 est restreint à Ben et que le
+Topic 2 n’a aucune restriction, Ben va utiliser Topic 1 et tous les
+autres bots le Topic2. Si l’ordre des déclarations était
+interverti, alors tous les bots utiliseront le Topic 2 y compris Ben
+(puisque maintenant il précède le Topic 1 dans la déclaration).</p>
+<p>On peut également utiliser les commandes <code class="western">:disable</code>
+et <code class="western">:enable</code> pour éteindre un ou des
+Topic à l’attention d’une personnalité.</p>
+<p>Heureusement vous n’êtes pas obligé d’utiliser une
+restriction pour un bot sur chacun des Topics. On peut les mettre
+dans un fichier et tous les Topics qui seront compilés ainsi
+hériteront de la restriction ( mais cela sera supplanté par une
+valeurs spécifiques qui pourraient toujours être insérée dans un
+Topic).</p>
+<pre class="western"><code class="western">Topic: ~Topic1 ()</code>
+<code class="western">...</code>
+<code class="western">bot: Ben</code>
+<code class="western">Topic: ~Topic2 ()   </code><code class="western"># </code><code class="western">This Topic is restricted to Ben</code>
+<code class="western">...</code></pre><p>
+Heureusement vous n’êtes pas obligé de faire ça pour tous les
+fichiers. Vous pouvez aussi le mettre dans le fichier de build
+filesxxx.txt. <span style="background: #ffff00">Mais vous aurez
+besoin de compiler chaque</span><span style="background: #ffff00">
+«&nbsp;bot definitions&nbsp;» </span><span style="background: #ffff00">ne
+possédant pas de restriction de</span><span style="background: #ffff00">
+bot </span><span style="background: #ffff00">applicable</span><span style="background: #ffff00">.
+</span><span style="background: #ffff00">Ex&nbsp;:</span></p>
+<pre class="western"><code class="western">RAWDATA/BOTDEFINTIONS</code>
+<code class="western">bot: Harry</code>
+<code class="western">RAWDATA/HARRY/</code>
+<code class="western">bot: Georgia    </code>
+<code class="western">RAWDATA/HARRY/  </code>
+<code class="western">bot: 0</code>
+<code class="western">RAWDATA/QUIBBLE/</code></pre><p>
+<a name="tw-target-text"></a>Note&nbsp;: Comment avons-nous pu
+réutiliser tous les Topics de Harry sans les changer&nbsp;? <span lang="fr-FR">C'était
+inutile. Mais vous auriez pu cloner le dossier HARRY pour </span><span lang="fr-FR">faire</span>
+Georgia et ensuite faire des modifications puis compiler le tout. Les
+Topics dupliqués peuvent coexister. Le <code class="western">bot: 0</code>
+ efface les restrictions de bots.</p>
+<p><a name="tw-target-text2"></a><span lang="fr-FR">Si vous avez des
+restrictions de bot dans un fichier, ils </span><span lang="fr-FR">l’emportent</span><span lang="fr-FR">
+temporairement </span><span lang="fr-FR">sur </span><span lang="fr-FR">le
+fichier de construction </span><span lang="fr-FR">un (:build 1)</span>,
+<span lang="fr-FR">qui reprend son effet lorsque le fichier ou le
+</span><span lang="fr-FR">Topic</span><span lang="fr-FR"> se termine.</span></p>
+<h1 class="western"><a name="shared-facts"></a>Les Faits partagés
+(Shared Facts)</h1>
+<p><code class="western">Share</code> – Normalement, si vous avez
+plusieurs bots, ils dialoguent tous indépendamment avec
+l’utilisateur. Ce qu’un bot apprend ou dit n’est pas accessible
+par les autres bots. Il est possible de créer un groupe de bots qui
+entendent tous ce qui a été dit et partagent les informations.
+Partager pour un Topic signifie que tous les bots peuvent avoir un
+accès normal en lecture et modification à l’état d’un Topic.
+Ainsi si l’un des bots utilise un gambit, un autre ne pourra pas le
+réutiliser après pour lui-même.</p>
+<pre class="western" style="margin-bottom: 0.5cm"><code class="western">Topic: ~m</code><code class="western">onTopic</code><code class="western"> SHARE REPEAT ()</code></pre><p>
+Tous les Faits créés seront visible pour les autres bots. Et si
+vous créez une variable utilisateur permanente dont le nom commence
+par <code class="western">$share_</code>, alors tous les bots
+pourront la voir et la modifier. Alors <code class="western">$share_</code><code class="western">mavar</code>
+deviendra une variable commune. Lorsque le partage est effectif,
+l’état attaché à l’utilisateur (ce qu’il dit, ce que le bot
+dit, à quelle volley il en est, où sont les marqueurs de répliques)
+est partagé communément à l’ensemble des bots- ils progressent
+dans<span style="background: transparent"> </span>une conversation
+conjointe.</p>
+<h2 class="western"><a name="tw-target-text5"></a><span lang="fr-FR">Les
+</span><span lang="fr-FR">Bots entièrement indépendants -
+Restriction </span><span lang="fr-FR">sur les</span><span lang="fr-FR">
+</span><span lang="fr-FR">F</span><span lang="fr-FR">aits et </span><span lang="fr-FR">l</span><span lang="fr-FR">es
+</span><span lang="fr-FR">F</span><span lang="fr-FR">onctions</span></h2>
+<p>Normalement, tous les Faits générés lors de la compilation sont
+disponibles pour tous les Bots. Mais vous pouvez créer des Faits
+limités à des Bots spécifiques. Vous pouvez avoir jusqu'à 64 Bots
+différents contrôlant différents Faits. Cela s’effectue en
+réglant $cs_botid à une certaine valeur avant de créer des Faits.
+Et vous mettez `$cs_botid = un_chiffre dans votre<code class="western">
+bot definition script. </code><code class="western"><font face="Liberation Serif, serif">Les
+chiffres déclarés forment une sorte de masque qui autorise la
+propriété et l'accès aux Faits. Par exemple dans le script de
+définition de bot pour Harry, vous pourriez faire</font></code><code class="western">
+</code>$cs_botid = 1` et pour Georgia&nbsp;: `$cs_botid = 2`. Chaque
+valeur représente un bit et devrait donc être une puissance de 2.</p>
+<p><span style="background: #ffff00">Lorsque vous voulez créer des
+Faits dans des tables, quelque part au début des Faits d'un bot à
+créer, vous pouvez mettre le</span><span style="background: #ffff00">
+</span><code class="western"><span style="background: #ffff00">$cs_botid</span></code><span style="background: #ffff00">
+</span><span style="background: #ffff00">depuis la table</span><span style="background: #ffff00">.</span>
+Le plus pratique est d'utiliser la commande <code class="western">bot:</code>
+ pour le faire dans un fichier ou pour le build.</p>
+<pre class="western" style="margin-bottom: 0.5cm"><code class="western">bot: 1 Harry</code></pre><p>
+Lorsque vous utilisez la commande bot:  dans une ligne de votre
+fichier de build <code class="western">filesxxx.txt</code>, il
+s’applique toujours jusqu'à ce qu’une autre commande bot: soit
+passée. Si c'est une commande passée dans un fichier local, alors
+cela affecte ledit fichier mais ensuite la compilation ne réverbère
+pas jusqu’à ce qu’une nouvelle valeur bot: soit trouvée (soit
+globalement ou dans un fichier).</p>
+<p><span style="background: #ffff00">Ceci définit à la fois le
+botid et le nom du bot, contrôle les restrictions que les Faits
+obtiennent (botid) et les restrictions que les Topics obtiennent (nom
+du bot). Le botid ne fait pas que contrôler des Faits. Il contrôle
+également la propriété des définitions outputmacro. Vous pouvez
+définir différentes copies de fonctions avec le même nom,
+différents arguments, différents codes, en faisant en sorte que le
+botid soit différent.</span></p>
+<p><span style="background: #ffff00">Vous pouvez passer à un
+propriétaire de bot sans nommer le(s) bot(s), auquel cas les Topic
+créés seront utilisables par n'importe quel bot mais les Faits et
+les Fonctions seront limités au propriétaire du bot.</span></p>
+<pre class="western" style="margin-bottom: 0.5cm"><code class="western">bot: 2</code></pre><p>
+Vous désactivez les règles de propriété avec</p>
+<pre class="western" style="margin-bottom: 0.5cm"><code class="western">bot: 0</code></pre><p>
+<span style="background: #ffff00">Dans le fichier de build, vous
+devez compiler toutes les macros de définition de bot et la macro de
+bot par défaut sous la propriété bot: 0 . Tous les autres Bots
+peuvent être construits indépendamment en utilisant des
+identifiants de bot qui sont des puissances de deux et des noms de
+bot uniques-</span>. ``` bot: 0 private/Mine/CONTROL/botmacro.top
+private/Mine1/CONTROL/botmacro.top private/Mine2/CONTROL/botmacro.top
+bot: 1 John private/John/ bot: 2 Harry private/Harry/ bot: 4 Martha
+private/Martha/</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+</body>
+</html>

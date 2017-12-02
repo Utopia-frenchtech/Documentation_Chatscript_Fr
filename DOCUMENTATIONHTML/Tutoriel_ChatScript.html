@@ -1,0 +1,309 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<title></title>
+	<meta name="generator" content="LibreOffice 5.3.1.2 (Linux)"/>
+	<meta name="created" content="2017-12-02T10:13:52.367822910"/>
+	<meta name="changed" content="2017-12-02T10:23:14.025569232"/>
+	<style type="text/css">
+		@page { margin: 2cm }
+		p { margin-bottom: 0.25cm; line-height: 120% }
+		h1 { margin-bottom: 0.21cm }
+		h1.western { font-family: "Liberation Serif", serif }
+		h1.cjk { font-family: "Noto Sans CJK SC Regular"; font-size: 24pt }
+		h1.ctl { font-family: "FreeSans"; font-size: 24pt }
+		h2.cjk { font-family: "Noto Sans CJK SC Regular" }
+		h2.ctl { font-family: "FreeSans" }
+		a:link { so-language: zxx }
+	</style>
+</head>
+<body lang="fr-FR" dir="ltr">
+<p style="margin-bottom: 0cm; font-variant: normal; font-style: normal; line-height: 138%; text-decoration: none">
+<font color="#000000"><font face="Droid Sans Fallback, sans-serif"><font size="5" style="font-size: 18pt"><b><span style="background: transparent">ChatScript
+: &nbsp;le tutoriel</span></b></font></font></font></p>
+<p style="margin-bottom: 0cm; font-variant: normal; font-style: normal; font-weight: normal; line-height: 138%; text-decoration: none">
+<font color="#000000"><font face="Droid Sans Fallback, sans-serif"><font size="2" style="font-size: 10pt"><span style="background: transparent">Copyright
+2011 By Erel Segal Revised 2016 by Wilcox</span></font></font></font></p>
+<p style="margin-bottom: 0.42cm; font-variant: normal; letter-spacing: normal; font-style: normal; font-weight: normal; line-height: 138%; orphans: 2; widows: 2; text-decoration: none">
+<font color="#24292e"><font face="Droid Sans Fallback, sans-serif"><font size="2" style="font-size: 10pt"><span style="background: transparent">Traduction
+Mathieu Rigard 02/12/2017 pour Utopia&nbsp;:
+<a href="mailto:m.rigard@utopia-french.tech">m.rigard@utopia-french.tech</a></span></font></font></font></p>
+<p style="margin-bottom: 0.42cm; font-variant: normal; letter-spacing: normal; font-style: normal; font-weight: normal; line-height: 138%; orphans: 2; widows: 2; text-decoration: none">
+<font color="#800000"><font face="Droid Sans Fallback, sans-serif"><font size="2" style="font-size: 10pt"><span style="background: transparent">A
+faire&nbsp;: correction et suite de la traduction (20&nbsp;%
+effectués seulement), ancrer les liens.</span></font></font></font></p>
+<p><br/>
+<br/>
+
+</p>
+<p style="margin-bottom: 0.42cm; font-variant: normal; font-style: normal; font-weight: normal; line-height: 138%; text-decoration: none">
+<font color="#24292e"><font face="Droid Sans Fallback, sans-serif"><font size="3" style="font-size: 12pt"><span style="background: transparent">Ce
+tutoriel est conçu pour vous montrer comment utiliser ChatScript
+pour créer un Bot simple et fonctionnel - un Bot capable d’aider
+un humain à planifier un voyage.</span></font></font></font></p>
+<p style="margin-bottom: 0.42cm; font-variant: normal; font-style: normal; font-weight: normal; line-height: 138%; text-decoration: none">
+<font color="#24292e"><font face="Droid Sans Fallback, sans-serif"><font size="3" style="font-size: 12pt"><span style="background: transparent">Pour
+commencer téléchargez ChatScript, lisez le manuel de base à la
+partie présentation et assurez-vous que vous pouvez échanger avec
+le Bot par défaut au sujet de son enfance.</span></font></font></font></p>
+<p style="margin-bottom: 0.42cm; line-height: 138%"><font face="Droid Sans Fallback, sans-serif"><span style="font-variant: normal"><font color="#24292e"><span style="text-decoration: none"><font size="3" style="font-size: 12pt"><span style="font-style: normal"><span style="font-weight: normal"><span style="background: transparent">Maintenant,
+afin de créer un tout nouveau script de chat : Créer un dossier et
+nommez-le TEST au sein du dossier RAWDATA. Créez un fichier vide et
+nommez-le &nbsp;</span></span></span></font></span></font></span><span style="font-variant: normal"><font color="#24292e"><span style="text-decoration: none"><font size="2" style="font-size: 10pt"><span style="font-style: normal"><span style="font-weight: normal"><span style="background: transparent">tutoriel.top</span></span></span></font></span></font></span><span style="font-variant: normal"><font color="#24292e"><span style="text-decoration: none"><font size="3" style="font-size: 12pt"><span style="font-style: normal"><span style="font-weight: normal"><span style="background: transparent">,
+au sein de votre dossier TEST.</span></span></span></font></span></font></span></font></p>
+<p style="margin-bottom: 0.42cm; line-height: 138%"><font face="Droid Sans Fallback, sans-serif"><span style="font-variant: normal"><font color="#24292e"><span style="text-decoration: none"><font size="3" style="font-size: 12pt"><span style="font-style: normal"><span style="font-weight: normal"><span style="background: transparent">Copiez
+le fichier </span></span></span></font></span></font></span><span style="font-variant: normal"><font color="#24292e"><span style="text-decoration: none"><font size="2" style="font-size: 10pt"><span style="font-style: normal"><span style="font-weight: normal"><span style="background: transparent">RAWDATA/filesHarry.txt</span></span></span></font></span></font></span><span style="font-variant: normal"><font color="#24292e"><span style="text-decoration: none"><span style="background: transparent">
+</span></span></font></span><span style="font-variant: normal"><font color="#24292e"><span style="text-decoration: none"><font size="3" style="font-size: 12pt"><span style="font-style: normal"><span style="font-weight: normal"><span style="background: transparent">présent
+dans le .zip de ChatScript et renommez le </span></span></span></font></span></font></span><span style="font-variant: normal"><font color="#24292e"><span style="text-decoration: none"><font size="2" style="font-size: 10pt"><span style="font-style: normal"><span style="font-weight: normal"><span style="background: transparent">RAWDATA/filesmine.txt</span></span></span></font></span></font></span><span style="font-variant: normal"><font color="#24292e"><span style="text-decoration: none"><font size="3" style="font-size: 12pt"><span style="font-style: normal"><span style="font-weight: normal"><span style="background: transparent">.</span></span></span></font></span></font></span></font></p>
+<p style="margin-bottom: 0.42cm; line-height: 138%"><font face="Droid Sans Fallback, sans-serif"><span style="font-variant: normal"><font color="#24292e"><span style="text-decoration: none"><font size="3" style="font-size: 12pt"><span style="font-style: normal"><span style="font-weight: normal"><span style="background: transparent">Ouvrez
+</span></span></span></font></span></font></span><span style="font-variant: normal"><font color="#24292e"><span style="text-decoration: none"><font size="2" style="font-size: 10pt"><span style="font-style: normal"><span style="font-weight: normal"><span style="background: transparent">filesmine.txt</span></span></span></font></span></font></span><span style="font-variant: normal"><font color="#24292e"><span style="text-decoration: none"><font size="3" style="font-size: 12pt"><span style="font-style: normal"><span style="font-weight: normal"><span style="background: transparent">,
+et inscrivez-y le chemin vers votre nouveau projet TEST après le
+chemin destiné à HARRY. Votre </span></span></span></font></span></font></span><span style="font-variant: normal"><font color="#24292e"><span style="text-decoration: none"><font size="2" style="font-size: 10pt"><span style="font-style: normal"><span style="font-weight: normal"><span style="background: transparent">filesmine.txt</span></span></span></font></span></font></span><span style="font-variant: normal"><font color="#24292e"><span style="text-decoration: none"><span style="background: transparent">
+</span></span></font></span><span style="font-variant: normal"><font color="#24292e"><span style="text-decoration: none"><font size="3" style="font-size: 12pt"><span style="font-style: normal"><span style="font-weight: normal"><span style="background: transparent">dois
+ressembler à ceci :</span></span></span></font></span></font></span></font></p>
+<p style="margin-bottom: 0.42cm; line-height: 174%"><font face="Droid Sans Fallback, sans-serif"><span style="font-variant: normal"><font color="#24292e"><span style="text-decoration: none"><font size="2" style="font-size: 10pt"><span style="font-style: normal"><span style="font-weight: normal"><span style="background: #f6f8fa">RAWDATA/HARRY/simplecontrol.top
+# default bot control<br/>
+RAWDATA/TEST/tutorial.top # tutorial bot
+data</span></span></span></font></span></font></span></font></p>
+<p style="margin-bottom: 0.42cm; line-height: 138%"><font face="Droid Sans Fallback, sans-serif"><span style="font-variant: normal"><font color="#24292e"><span style="text-decoration: none"><font size="3" style="font-size: 12pt"><span style="font-style: normal"><span style="font-weight: normal"><span style="background: transparent">A
+partir de maintenant nous allons travailler dans votre fichier
+</span></span></span></font></span></font></span><span style="font-variant: normal"><font color="#24292e"><span style="text-decoration: none"><font size="2" style="font-size: 10pt"><span style="font-style: normal"><span style="font-weight: normal"><span style="background: transparent">tutorial.top</span></span></span></font></span></font></span><span style="font-variant: normal"><font color="#24292e"><span style="text-decoration: none"><font size="3" style="font-size: 12pt"><span style="font-style: normal"><span style="font-weight: normal"><span style="background: transparent">.</span></span></span></font></span></font></span></font></p>
+<p style="margin-bottom: 0.42cm; font-variant: normal; font-style: normal; font-weight: normal; line-height: 138%; text-decoration: none">
+<font color="#24292e"><font face="Droid Sans Fallback, sans-serif"><font size="3" style="font-size: 12pt"><span style="background: transparent"><b>NOTE</b>:
+Ce tutoriel ne couvre qu’une infime partie des possibilités de
+ChatScript - seulement celles qui nous permettront de construire
+notre Bot agent-de-voyage. Vous trouverez d’autres fonctionnalitées
+dans le reste de la documentation.</span></font></font></font></p>
+<h1 class="western" style="margin-top: 0.64cm; margin-bottom: 0.42cm; border-top: none; border-bottom: 1px solid #eaecef; border-left: none; border-right: none; padding-top: 0cm; padding-bottom: 0.24cm; padding-left: 0cm; padding-right: 0cm; font-variant: normal; font-style: normal; line-height: 150%; text-decoration: none">
+<font color="#24292e"><font face="Droid Sans Fallback, sans-serif"><font size="6" style="font-size: 23pt"><b><span style="background: transparent">Sommaire</span></b></font></font></font></h1>
+<ul>
+	<li/>
+<p style="margin-bottom: 0cm; font-variant: normal; font-style: normal; font-weight: normal; line-height: 138%; background: transparent; text-decoration: none">
+	<font color="#24292e"><font face="Droid Sans Fallback, sans-serif"><font size="3" style="font-size: 12pt"><span style="background: transparent">Dialoguer
+	(topic: , t:)</span></font></font></font></p>
+	<li/>
+<p style="margin-bottom: 0cm; font-variant: normal; font-style: normal; font-weight: normal; line-height: 138%; background: transparent; text-decoration: none">
+	<font color="#24292e"><font face="Droid Sans Fallback, sans-serif"><font size="3" style="font-size: 12pt"><span style="background: transparent">En
+	dire plus (^keep, sélection aléatoire [], ^repeat)</span></font></font></font></p>
+	<li/>
+<p style="margin-bottom: 0cm; font-variant: normal; font-style: normal; font-weight: normal; line-height: 138%; background: transparent; text-decoration: none">
+	<font color="#24292e"><font face="Droid Sans Fallback, sans-serif"><font size="3" style="font-size: 12pt"><span style="background: transparent">Ecouter
+	(u: , ^reuse)</span></font></font></font></p>
+	<li/>
+<p style="margin-bottom: 0cm; font-variant: normal; font-style: normal; font-weight: normal; line-height: 138%; background: transparent; text-decoration: none">
+	<font color="#24292e"><font face="Droid Sans Fallback, sans-serif"><font size="3" style="font-size: 12pt"><span style="background: transparent">Mémoire
+	à court terme (*_)</span></font></font></font></p>
+	<li/>
+<p style="margin-bottom: 0cm; font-variant: normal; font-style: normal; font-weight: normal; line-height: 138%; background: transparent; text-decoration: none">
+	<font color="#24292e"><font face="Droid Sans Fallback, sans-serif"><font size="3" style="font-size: 12pt"><span style="background: transparent">Mémoire
+	à long terme ($)</span></font></font></font></p>
+	<li/>
+<p style="margin-bottom: 0cm; font-variant: normal; font-style: normal; font-weight: normal; line-height: 138%; background: transparent; text-decoration: none">
+	<font color="#24292e"><font face="Droid Sans Fallback, sans-serif"><font size="3" style="font-size: 12pt"><span style="background: transparent">Gestion
+	du dialogue (conditions)</span></font></font></font></p>
+	<li/>
+<p style="margin-bottom: 0cm; font-variant: normal; font-style: normal; font-weight: normal; line-height: 138%; background: transparent; text-decoration: none">
+	<font color="#24292e"><font face="Droid Sans Fallback, sans-serif"><font size="3" style="font-size: 12pt"><span style="background: transparent">Confirmations
+	implicites (^respond)</span></font></font></font></p>
+	<li/>
+<p style="margin-bottom: 0cm; font-variant: normal; font-style: normal; font-weight: normal; line-height: 138%; background: transparent; text-decoration: none">
+	<font color="#24292e"><font face="Droid Sans Fallback, sans-serif"><font size="3" style="font-size: 12pt"><span style="background: transparent">Confirmations
+	explicites (répliques a: , b: , c: …)</span></font></font></font></p>
+	<li/>
+<p style="margin-bottom: 0.42cm; font-variant: normal; font-style: normal; font-weight: normal; line-height: 138%; background: transparent; text-decoration: none">
+	<font color="#24292e"><font face="Droid Sans Fallback, sans-serif"><font size="3" style="font-size: 12pt"><span style="background: transparent">Connaissances
+	(^createfact, table:)</span></font></font></font></p>
+</ul>
+<h2 class="western" style="margin-top: 0.64cm; margin-bottom: 0.42cm; border-top: none; border-bottom: 1px solid #eaecef; border-left: none; border-right: none; padding-top: 0cm; padding-bottom: 0.18cm; padding-left: 0cm; padding-right: 0cm; line-height: 150%">
+<font face="Droid Sans Fallback, sans-serif"><span style="font-variant: normal"><font color="#24292e"><span style="text-decoration: none"><font size="5" style="font-size: 17pt"><span style="font-style: normal"><b><span style="background: transparent">Dialoguer
+(topic:</span></b></span></font></span></font></span><span style="font-variant: normal"><font color="#24292e"><span style="text-decoration: none"><span style="background: transparent">
+</span></span></font></span><span style="font-variant: normal"><font color="#24292e"><span style="text-decoration: none"><font size="5" style="font-size: 17pt"><span style="font-style: normal"><b><span style="background: transparent">,
+t:)</span></b></span></font></span></font></span></font></h2>
+<p style="margin-bottom: 0.42cm; font-variant: normal; font-style: normal; font-weight: normal; line-height: 138%; text-decoration: none">
+<font color="#24292e"><font face="Droid Sans Fallback, sans-serif"><font size="3" style="font-size: 12pt"><span style="background: transparent">Le
+script de Chat le plus simple possible doit posséder au moins un
+topic (sujet) et une phrase à prononcer, par exemple :</span></font></font></font></p>
+<p style="margin-bottom: 0.42cm; line-height: 138%"><font face="Droid Sans Fallback, sans-serif"><span style="font-variant: normal"><font color="#24292e"><span style="text-decoration: none"><font size="2" style="font-size: 10pt"><span style="font-style: normal"><span style="font-weight: normal"><span style="background: #f6f8fa">topic:
+~introductions []<br/>
+<br/>
+t: Salut, je t’écoutes !</span></span></span></font></span></font></span></font></p>
+<p style="margin-bottom: 0.42cm; font-variant: normal; font-style: normal; font-weight: normal; line-height: 138%; text-decoration: none">
+<font color="#24292e"><font face="Droid Sans Fallback, sans-serif"><font size="3" style="font-size: 12pt"><span style="background: transparent">Où
+:</span></font></font></font></p>
+<ul>
+	<li/>
+<p style="margin-top: 0.42cm; margin-bottom: 0cm; font-variant: normal; font-style: normal; font-weight: normal; line-height: 138%; background: transparent; text-decoration: none">
+	<font color="#24292e"><font face="Droid Sans Fallback, sans-serif"><font size="3" style="font-size: 12pt"><span style="background: transparent">Le
+	nom (ou mot-clé) attribué à topic: définit le sujet de la
+	conversation. Nous appellerons notre topic </span><font size="2" style="font-size: 10pt"><span style="background: transparent">~introductions</span></font><span style="background: transparent">
+	(le nom d’un topic commence toujours par </span><font size="2" style="font-size: 10pt"><span style="background: transparent">~</span></font><span style="background: transparent">).</span></font></font></font></p>
+	<li/>
+<p style="margin-bottom: 0cm; font-variant: normal; font-style: normal; font-weight: normal; line-height: 138%; background: transparent; text-decoration: none">
+	<font color="#24292e"><font face="Droid Sans Fallback, sans-serif"><font size="3" style="font-size: 12pt"><span style="background: transparent">Le
+	mot clé attribué à &nbsp;</span><font size="2" style="font-size: 10pt"><span style="background: transparent">t:</span></font><span style="background: transparent">
+	présente une phrase à dire dans un topic (nous l'appellerons un
+	&quot;gambit&quot;, c’est de que dit le Bot sans attendre qu’on
+	l’interpelle).</span></font></font></font></p>
+	<li/>
+<p style="margin-bottom: 0.85cm; font-variant: normal; font-style: normal; font-weight: normal; line-height: 138%; background: transparent; text-decoration: none">
+	<font color="#24292e"><font face="Droid Sans Fallback, sans-serif"><font size="3" style="font-size: 12pt"><span style="background: transparent">Insérez
+	ce texte dans </span><font size="2" style="font-size: 10pt"><span style="background: transparent">tutorial.top</span></font><span style="background: transparent">.
+	Ensuite, dans l’invite de commande du serveur local (en mode
+	client, donc) tapez </span><font size="2" style="font-size: 10pt"><span style="background: transparent">:build
+	mine</span></font><span style="background: transparent">. Vous
+	devriez voir quelque-chose comme :</span></font></font></font></p>
+</ul>
+<p><br/>
+<br/>
+
+</p>
+<p style="margin-bottom: 0.42cm; line-height: 174%"><font face="Droid Sans Fallback, sans-serif"><span style="font-variant: normal"><font color="#24292e"><span style="text-decoration: none"><font size="2" style="font-size: 10pt"><span style="font-style: normal"><span style="font-weight: normal"><span style="background: #f6f8fa">&gt;:build
+mine<br/>
+<br/>
+----Reading file simplecontrol.top<br/>
+Reading
+outputmacro: ^harry<br/>
+Reading outputmacro: ^georgia<br/>
+Reading
+table tbl:defaultbot<br/>
+Reading topic ~control<br/>
+Reading topic
+~alternate_control<br/>
+<br/>
+----Reading file tutorial.top<br/>
+Reading
+topic ~introductions<br/>
+No errors or warnings in build<br/>
+Read
+302,955 Dictionary entries<br/>
+Read 304,588 Dictionary facts<br/>
+Read
+110,851 Build0 facts<br/>
+Read 1 Build1 facts<br/>
+Concept sets:
+1421<br/>
+Free space: 123,252,280 bytes FreeFacts: 4,584,560<br/>
+<br/>
+Hello,
+talk to me!<br/>
+&gt;</span></span></span></font></span></font></span></font></p>
+<p style="margin-bottom: 0.42cm; font-variant: normal; font-style: normal; font-weight: normal; line-height: 138%; text-decoration: none">
+<font color="#24292e"><font face="Droid Sans Fallback, sans-serif"><font size="3" style="font-size: 12pt"><span style="background: transparent">Le
+chat avec ce Bot devrait donner un dialogue du type :</span></font></font></font></p>
+<p style="margin-bottom: 0.42cm; line-height: 174%"><font face="Droid Sans Fallback, sans-serif"><span style="font-variant: normal"><font color="#24292e"><span style="text-decoration: none"><font size="2" style="font-size: 10pt"><span style="font-style: normal"><span style="font-weight: normal"><span style="background: #f6f8fa"><br/>
+</span></span></span></font></span></font></span><span style="font-variant: normal"><font color="#24292e"><span style="text-decoration: none"><span style="background: #f6f8fa">&nbsp;</span></span></font></span><span style="font-variant: normal"><font color="#24292e"><span style="text-decoration: none"><font size="2" style="font-size: 10pt"><span style="font-style: normal"><span style="font-weight: normal"><span style="background: #f6f8fa">t:
+Salut, je t’écoutes !<br/>
+</span></span></span></font></span></font></span><span style="font-variant: normal"><font color="#24292e"><span style="text-decoration: none"><span style="background: #f6f8fa">&nbsp;</span></span></font></span><span style="font-variant: normal"><font color="#24292e"><span style="text-decoration: none"><font size="2" style="font-size: 10pt"><span style="font-style: normal"><span style="font-weight: normal"><span style="background: #f6f8fa"><br/>
+</span></span></span></font></span></font></span><span style="font-variant: normal"><font color="#24292e"><span style="text-decoration: none"><span style="background: #f6f8fa">&nbsp;</span></span></font></span><span style="font-variant: normal"><font color="#24292e"><span style="text-decoration: none"><font size="2" style="font-size: 10pt"><span style="font-style: normal"><span style="font-weight: normal"><span style="background: #f6f8fa">&gt;hi<br/>
+</span></span></span></font></span></font></span><span style="font-variant: normal"><font color="#24292e"><span style="text-decoration: none"><span style="background: #f6f8fa">&nbsp;</span></span></font></span><span style="font-variant: normal"><font color="#24292e"><span style="text-decoration: none"><font size="2" style="font-size: 10pt"><span style="font-style: normal"><span style="font-weight: normal"><span style="background: #f6f8fa">I
+don't know what to say.<br/>
+</span></span></span></font></span></font></span><span style="font-variant: normal"><font color="#24292e"><span style="text-decoration: none"><span style="background: #f6f8fa">&nbsp;</span></span></font></span><span style="font-variant: normal"><font color="#24292e"><span style="text-decoration: none"><font size="2" style="font-size: 10pt"><span style="font-style: normal"><span style="font-weight: normal"><span style="background: #f6f8fa"><br/>
+</span></span></span></font></span></font></span><span style="font-variant: normal"><font color="#24292e"><span style="text-decoration: none"><span style="background: #f6f8fa">&nbsp;</span></span></font></span><span style="font-variant: normal"><font color="#24292e"><span style="text-decoration: none"><font size="2" style="font-size: 10pt"><span style="font-style: normal"><span style="font-weight: normal"><span style="background: #f6f8fa">&gt;why?<br/>
+</span></span></span></font></span></font></span><span style="font-variant: normal"><font color="#24292e"><span style="text-decoration: none"><span style="background: #f6f8fa">&nbsp;</span></span></font></span><span style="font-variant: normal"><font color="#24292e"><span style="text-decoration: none"><font size="2" style="font-size: 10pt"><span style="font-style: normal"><span style="font-weight: normal"><span style="background: #f6f8fa">I
+don't know what to say.<br/>
+</span></span></span></font></span></font></span></font><br/>
+<br/>
+
+</p>
+<p style="margin-bottom: 0.42cm; font-variant: normal; font-style: normal; font-weight: normal; line-height: 138%; text-decoration: none">
+<font color="#24292e"><font face="Droid Sans Fallback, sans-serif"><font size="3" style="font-size: 12pt"><span style="background: transparent">Le
+bot dit seulement ce qu'on lui a dit de dire, puis il est coincé,
+car il n'a rien d'autre à dire.</span></font></font></font></p>
+<p style="margin-bottom: 0.42cm; font-variant: normal; font-style: normal; font-weight: normal; line-height: 138%; text-decoration: none">
+<font color="#24292e"><font face="Droid Sans Fallback, sans-serif"><font size="3" style="font-size: 12pt"><span style="background: transparent">Si
+vous êtes fatigué de parler avec lui, vous pouvez quitter le client
+en utilisant la commande :quit.</span></font></font></font></p>
+<p><br/>
+<br/>
+
+</p>
+<h2 class="western" style="margin-top: 0.64cm; margin-bottom: 0.42cm; border-top: none; border-bottom: 1px solid #eaecef; border-left: none; border-right: none; padding-top: 0cm; padding-bottom: 0.18cm; padding-left: 0cm; padding-right: 0cm; line-height: 150%">
+<font face="Droid Sans Fallback, sans-serif"><font size="4" style="font-size: 14pt"><span style="font-variant: normal"><font color="#24292e"><span style="text-decoration: none"><span style="font-style: normal"><b><span style="background: transparent">En
+dire plus (^keep, sélection aléatoire [], ^repeat)</span></b></span></span></font></span></font></font></h2>
+<p style="margin-bottom: 0.42cm; font-variant: normal; font-style: normal; font-weight: normal; line-height: 138%; text-decoration: none">
+<font color="#24292e"><font face="Droid Sans Fallback, sans-serif"><font size="3" style="font-size: 12pt"><span style="background: transparent">Rendons
+notre Bot plus intéressant :</span></font></font></font></p>
+<p style="margin-bottom: 0.42cm; line-height: 174%"><font face="Droid Sans Fallback, sans-serif"><span style="font-variant: normal"><font color="#24292e"><span style="text-decoration: none"><font size="2" style="font-size: 10pt"><span style="font-style: normal"><span style="font-weight: normal"><span style="background: #f6f8fa">topic:
+~introductions []<br/>
+<br/>
+t: ^keep() [Salut] [Hé] [Tiens],
+[alors] [vas-y] [dis-moi quelque-chose] je t’écoute !</span></span></span></font></span></font></span></font></p>
+<p style="margin-bottom: 0.42cm; font-variant: normal; font-style: normal; font-weight: normal; line-height: 138%; text-decoration: none">
+<font color="#24292e"><font face="Droid Sans Fallback, sans-serif"><font size="3" style="font-size: 12pt"><span style="background: transparent">Ici
+:</span></font></font></font></p>
+<ul>
+	<li/>
+<p style="margin-top: 0.42cm; margin-bottom: 0cm; font-variant: normal; font-style: normal; font-weight: normal; line-height: 138%; background: transparent; text-decoration: none">
+	<font color="#24292e"><font face="Droid Sans Fallback, sans-serif"><font size="3" style="font-size: 12pt"><span style="background: transparent">Nous
+	avons utilisé la fonction </span><font size="2" style="font-size: 10pt"><span style="background: transparent">^keep</span></font><span style="background: transparent">,
+	qui demande au Bot de ne pas effacer une règle après qu’elle ait
+	été utilisée (normalement, une règle n’est utilisée qu’une
+	fois puis elle est mise au rebut).</span></font></font></font></p>
+	<li/>
+<p style="margin-bottom: 0.85cm; font-variant: normal; font-style: normal; font-weight: normal; line-height: 138%; background: transparent; text-decoration: none">
+	<font color="#24292e"><font face="Droid Sans Fallback, sans-serif"><font size="3" style="font-size: 12pt"><span style="background: transparent">Nous
+	avons également ajouté quelques options entre crochets, parmis
+	lesquelles le Bot peut choisir au hasard. Dans n'importe quelle
+	séquence continue de phrases entre crochets, le robot peut choisir
+	une au hasard. Lorsqu’il a une série phrase entre crochets, le
+	Bot en sélectionnera toujours une au hasard.</span></font></font></font></p>
+</ul>
+<p style="margin-bottom: 0.42cm; font-variant: normal; font-style: normal; font-weight: normal; line-height: 138%; text-decoration: none">
+<font color="#24292e"><font face="Droid Sans Fallback, sans-serif"><font size="3" style="font-size: 12pt"><span style="background: transparent">Une
+fois que nous avons produit le :build de notre chatbot, le dialogue
+pourra devenir le suivant :</span></font></font></font></p>
+<p style="margin-bottom: 0.42cm; line-height: 174%"><font face="Droid Sans Fallback, sans-serif"><span style="font-variant: normal"><font color="#24292e"><span style="text-decoration: none"><font size="2" style="font-size: 10pt"><span style="font-style: normal"><span style="font-weight: normal"><span style="background: #f6f8fa"><br/>
+</span></span></span></font></span></font></span><span style="font-variant: normal"><font color="#24292e"><span style="text-decoration: none"><span style="background: #f6f8fa">&nbsp;</span></span></font></span><span style="font-variant: normal"><font color="#24292e"><span style="text-decoration: none"><font size="2" style="font-size: 10pt"><span style="font-style: normal"><span style="font-weight: normal"><span style="background: #f6f8fa">Salut,
+dis-moi quelque-chose je t’écoute !<br/>
+<br/>
+</span></span></span></font></span></font></span><span style="font-variant: normal"><font color="#24292e"><span style="text-decoration: none"><span style="background: #f6f8fa">&nbsp;</span></span></font></span><span style="font-variant: normal"><font color="#24292e"><span style="text-decoration: none"><font size="2" style="font-size: 10pt"><span style="font-style: normal"><span style="font-weight: normal"><span style="background: #f6f8fa">&gt;Bonjour<br/>
+</span></span></span></font></span></font></span><span style="font-variant: normal"><font color="#24292e"><span style="text-decoration: none"><span style="background: #f6f8fa">&nbsp;</span></span></font></span><span style="font-variant: normal"><font color="#24292e"><span style="text-decoration: none"><font size="2" style="font-size: 10pt"><span style="font-style: normal"><span style="font-weight: normal"><span style="background: #f6f8fa">Hé
+, vas-y je t’écoute !<br/>
+<br/>
+</span></span></span></font></span></font></span><span style="font-variant: normal"><font color="#24292e"><span style="text-decoration: none"><span style="background: #f6f8fa">&nbsp;</span></span></font></span><span style="font-variant: normal"><font color="#24292e"><span style="text-decoration: none"><font size="2" style="font-size: 10pt"><span style="font-style: normal"><span style="font-weight: normal"><span style="background: #f6f8fa">&gt;Quoi
+?<br/>
+</span></span></span></font></span></font></span><span style="font-variant: normal"><font color="#24292e"><span style="text-decoration: none"><span style="background: #f6f8fa">&nbsp;</span></span></font></span><span style="font-variant: normal"><font color="#24292e"><span style="text-decoration: none"><font size="2" style="font-size: 10pt"><span style="font-style: normal"><span style="font-weight: normal"><span style="background: #f6f8fa">Tiens,
+alors je t’écoute !<br/>
+<br/>
+</span></span></span></font></span></font></span><span style="font-variant: normal"><font color="#24292e"><span style="text-decoration: none"><span style="background: #f6f8fa">&nbsp;</span></span></font></span><span style="font-variant: normal"><font color="#24292e"><span style="text-decoration: none"><font size="2" style="font-size: 10pt"><span style="font-style: normal"><span style="font-weight: normal"><span style="background: #f6f8fa">&gt;Pourquoi
+?<br/>
+Alors, vas-y je t’écoute !<br/>
+<br/>
+</span></span></span></font></span></font></span><span style="font-variant: normal"><font color="#24292e"><span style="text-decoration: none"><span style="background: #f6f8fa">&nbsp;</span></span></font></span><span style="font-variant: normal"><font color="#24292e"><span style="text-decoration: none"><font size="2" style="font-size: 10pt"><span style="font-style: normal"><span style="font-weight: normal"><span style="background: #f6f8fa">&gt;who<br/>
+Alors,
+dis-moi quelque-chose je t’écoute !<br/>
+<br/>
+</span></span></span></font></span></font></span><span style="font-variant: normal"><font color="#24292e"><span style="text-decoration: none"><span style="background: #f6f8fa">&nbsp;</span></span></font></span><span style="font-variant: normal"><font color="#24292e"><span style="text-decoration: none"><font size="2" style="font-size: 10pt"><span style="font-style: normal"><span style="font-weight: normal"><span style="background: #f6f8fa">&gt;abc<br/>
+</span></span></span></font></span></font></span><span style="font-variant: normal"><font color="#24292e"><span style="text-decoration: none"><span style="background: #f6f8fa">&nbsp;</span></span></font></span><span style="font-variant: normal"><font color="#24292e"><span style="text-decoration: none"><font size="2" style="font-size: 10pt"><span style="font-style: normal"><span style="font-weight: normal"><span style="background: #f6f8fa">I
+don't know what to say.<br/>
+<br/>
+</span></span></span></font></span></font></span><span style="font-variant: normal"><font color="#24292e"><span style="text-decoration: none"><span style="background: #f6f8fa">&nbsp;</span></span></font></span><span style="font-variant: normal"><font color="#24292e"><span style="text-decoration: none"><font size="2" style="font-size: 10pt"><span style="font-style: normal"><span style="font-weight: normal"><span style="background: #f6f8fa">&gt;def<br/>
+</span></span></span></font></span></font></span><span style="font-variant: normal"><font color="#24292e"><span style="text-decoration: none"><span style="background: #f6f8fa">&nbsp;</span></span></font></span><span style="font-variant: normal"><font color="#24292e"><span style="text-decoration: none"><font size="2" style="font-size: 10pt"><span style="font-style: normal"><span style="font-weight: normal"><span style="background: #f6f8fa">I
+don't know what to say.<br/>
+</span></span></span></font></span></font></span></font><br/>
+<br/>
+
+</p>
+<p style="margin-bottom: 0.42cm; line-height: 138%"><font face="Droid Sans Fallback, sans-serif"><span style="font-variant: normal"><font color="#24292e"><span style="text-decoration: none"><font size="3" style="font-size: 12pt"><span style="font-style: normal"><span style="font-weight: normal"><span style="background: transparent">Le
+Bot essaie certaines combinaisons de notre modèle de sortie
+aléatoirement, puis se bloque à nouveau alors qu'il commence à se
+répéter. Normalement, un Bot n'aime pas se répéter, sauf si on le
+lui demande expressément à l'aide de la macro </span></span></span></font></span></font></span><span style="font-variant: normal"><font color="#24292e"><span style="text-decoration: none"><font size="2" style="font-size: 10pt"><span style="font-style: normal"><span style="font-weight: normal"><span style="background: transparent">^repeat()</span></span></span></font></span></font></span><span style="font-variant: normal"><font color="#24292e"><span style="text-decoration: none"><span style="background: transparent">
+</span></span></font></span><span style="font-variant: normal"><font color="#24292e"><span style="text-decoration: none"><font size="3" style="font-size: 12pt"><span style="font-style: normal"><span style="font-weight: normal"><span style="background: transparent">:</span></span></span></font></span></font></span></font></p>
+<p style="margin-bottom: 0.42cm; line-height: 174%"><font face="Droid Sans Fallback, sans-serif"><span style="font-variant: normal"><font color="#24292e"><span style="text-decoration: none"><font size="2" style="font-size: 10pt"><span style="font-style: normal"><span style="font-weight: normal"><span style="background: #f6f8fa">topic:
+~introductions []<br/>
+<br/>
+t: ^keep() ^repeat() [Salut] [Hé]
+[Tiens], [alors] [vas-y] [dis-moi quelque-chose] je t’écoute !</span></span></span></font></span></font></span></font></p>
+<p style="margin-bottom: 0.42cm; font-variant: normal; font-style: normal; font-weight: normal; line-height: 138%; text-decoration: none">
+<font color="#24292e"><font face="Droid Sans Fallback, sans-serif"><font size="3" style="font-size: 12pt"><span style="background: transparent">Avec
+un tel Bot on peut Chatter à l’infini.</span></font></font></font></p>
+<p><font face="Droid Sans Fallback, sans-serif"><br/>
+<br/>
+</font>--------------------------------------
+Le tutoriel original s’arrête ici
+------------------------------------------</p>
+<p><strong>à faire...</strong></p>
+</body>
+</html>

@@ -1,0 +1,2220 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<title></title>
+	<meta name="generator" content="LibreOffice 5.3.1.2 (Linux)"/>
+	<meta name="author" content="mathieu "/>
+	<meta name="created" content="2017-09-04T13:45:19.860366543"/>
+	<meta name="changed" content="2017-12-02T10:25:17.260527423"/>
+	<style type="text/css">
+		@page { margin: 2cm }
+		p { margin-bottom: 0.25cm; line-height: 120% }
+		h1 { margin-bottom: 0.21cm }
+		h1.western { font-family: "Liberation Serif", serif }
+		h1.cjk { font-family: "Droid Sans Fallback"; font-size: 24pt }
+		h1.ctl { font-family: "FreeSans"; font-size: 24pt }
+		h2.western { font-family: "Droid Sans", sans-serif; font-size: 16pt }
+		h2.cjk { font-family: "Droid Sans Fallback"; font-size: 16pt }
+		h2.ctl { font-family: "FreeSans"; font-size: 16pt }
+		h3 { color: #808080 }
+		h3.western { font-family: "Droid Sans", sans-serif }
+		h3.cjk { font-family: "Droid Sans Fallback" }
+		h3.ctl { font-family: "FreeSans" }
+		pre.cjk { font-family: "Nimbus Mono L", monospace }
+		td p { margin-bottom: 0cm }
+		th p { margin-bottom: 0cm }
+		code.cjk { font-family: "Nimbus Mono L", monospace }
+		a:link { so-language: zxx }
+	</style>
+</head>
+<body lang="fr-FR" dir="ltr">
+<p align="center" style="margin-top: 0.42cm; margin-bottom: 0.21cm; line-height: 100%; page-break-after: avoid"><a name="chatscript-basic-user-manual"></a>
+<font face="Droid Sans, sans-serif"><font size="6" style="font-size: 28pt"><b>ChatScript
+<br/>
+</b><span style="font-variant: normal"><font color="#212121"><font face="arial, sans-serif"><font size="6" style="font-size: 21pt"><span style="letter-spacing: normal"><span style="font-style: normal"><span style="font-weight: normal">Manuel
+d'utilisation basique de ChatScript</span></span></span></font></font></font></span></font></font></p>
+<p>© Bruce Wilcox, mailto:gowilcox@gmail.com
+www.brilligunderstanding.com <br/>
+Revision 9/24/2017 cs7.55</p>
+<p style="margin-bottom: 0.42cm; font-variant: normal; letter-spacing: normal; font-style: normal; font-weight: normal; line-height: 138%; orphans: 2; widows: 2; text-decoration: none">
+<font color="#24292e"><font face="Droid Sans Fallback, sans-serif"><font size="2" style="font-size: 10pt"><span style="background: transparent"><font size="3" style="font-size: 12pt">T</font><font size="3" style="font-size: 12pt">raduction
+Mathieu Rigard </font><font size="3" style="font-size: 12pt">02/12/2017
+</font><font size="3" style="font-size: 12pt">pour Utopia&nbsp;:
+<a href="mailto:m.rigard@utopia-french.tech">m.rigard@utopia-french.tech</a>
+</font><a href="https://utopia-french.tech/"><font size="3" style="font-size: 12pt">https://utopia-french.tech</font></a></span></font></font></font></p>
+<p style="margin-bottom: 0.42cm; font-variant: normal; letter-spacing: normal; font-style: normal; font-weight: normal; line-height: 138%; orphans: 2; widows: 2; text-decoration: none">
+<font color="#800000"><font face="Droid Sans Fallback, sans-serif"><font size="3" style="font-size: 12pt"><span style="background: transparent">A
+faire&nbsp;: corrections et suite de la traduction (90&nbsp;%
+effectués), ancrer les liens.</span></font></font></font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%">Présentation</p>
+<p style="margin-bottom: 0cm; line-height: 100%">Sujets simples</p>
+<p style="margin-bottom: 0cm; line-height: 100%">Modèles simples</p>
+<p style="margin-bottom: 0cm; line-height: 100%">Sortie simple</p>
+<p style="margin-bottom: 0cm; line-height: 100%">Variables</p>
+<p style="margin-bottom: 0cm; line-height: 100%">Résumé</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<h1 class="western">Présentation</h1>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%">ChatScript (CS) est
+un langage de script conçu pour traiter l'entrée d'un texte par
+l'utilisateur et générer une réponse textuelle en retour.</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%">Le chat se déroule
+en volées, comme le tennis. Le programme traite une ou plusieurs
+phrases de l'utilisateur et émet une ou plusieurs phrases en
+réponse.</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%">Couramment, c'est ce
+qu’on appelle un Chatbot, un programme qui prend les commentaires
+d'un humain et produit une réponse. Il converse avec vous. Mais j'ai
+également construit un Chatbot dédié à la lecture de document. Ce
+qui est traité, dans ce cas là, c'est l'intégralité d’un
+document.</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%">Quoi qu'il en soit,
+la sortie générée par le Bot dépend de son programme. Mon
+programme a été conçu pour trouver la table des matières, la
+limite de chaque chapitre et l'index à la fin de l'ouvrage.</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%">Donc, plus
+largement, ChatScript est un système de manipulation du langage
+naturel, pas uniquement pour la programmation d'un Chatbot.</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%">Ce document traite
+de la façon d'écrire un script. Vous trouverez une approche plus
+générale de la façon de concevoir et de créer un Bot dans le
+document «&nbsp;Écrire un Chatbot&nbsp;», présent dans la
+documentation.</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<h2 class="western">Texte en entrée et en sortie</h2>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%">ChatScript prend une
+ou plusieurs phrases entrées par l'utilisateur. Une phrase dans CS
+signifie nominalement la séquence de mots jusqu'à certains
+caractères-Token déterminants la fin de la phrase. Par défaut,
+voici les caractères de fin de phrase :</p>
+<table width="643" cellpadding="4" cellspacing="0">
+	<col width="75">
+	<col width="128">
+	<col width="121">
+	<col width="98">
+	<col width="105">
+	<col width="68">
+	<tr valign="top">
+		<td width="75" style="border: none; padding: 0cm">
+			<p align="center">Le point</p>
+		</td>
+		<td width="128" style="border: none; padding: 0cm">
+			<p align="center">Le point d'interrogation</p>
+		</td>
+		<td width="121" style="border: none; padding: 0cm">
+			<p align="center">Le point d'exclamation</p>
+		</td>
+		<td width="98" style="border: none; padding: 0cm">
+			<p align="center">Le point-virgule</p>
+		</td>
+		<td width="105" style="border: none; padding: 0cm">
+			<p align="center">Les deux points</p>
+		</td>
+		<td width="68" style="border: none; padding: 0cm">
+			<p align="center">Le tiret</p>
+		</td>
+	</tr>
+	<tr valign="top">
+		<td width="75" style="border: none; padding: 0cm">
+			<p align="center">.</p>
+		</td>
+		<td width="128" style="border: none; padding: 0cm">
+			<p align="center">?</p>
+		</td>
+		<td width="121" style="border: none; padding: 0cm">
+			<p align="center">!</p>
+		</td>
+		<td width="98" style="border: none; padding: 0cm">
+			<p align="center">;</p>
+		</td>
+		<td width="105" style="border: none; padding: 0cm">
+			<p align="center">:</p>
+		</td>
+		<td width="68" style="border: none; padding: 0cm">
+			<p align="center">-</p>
+		</td>
+	</tr>
+</table>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%">Par exemple&nbsp;:
+la phrase de utilisateur suivante est divisée en trois phrases:</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font size="2" style="font-size: 10pt">Quel
+est ton nom ? Le mien est Alfred ; Je viens de Londres.</font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%">On peut aussi
+désactiver cette façon de déterminer les fins de phrase.</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%">ChatScript émet une
+ou plusieurs phrases en retour, pour l'utilisateur.</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font size="2" style="font-size: 10pt">Je
+m'appelle Harry!</font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font size="2" style="font-size: 10pt">Je
+suis une démonstration de chatbot, de Californie (USA).</font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<h2 class="western">Règles</h2>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%">Fondamentalement, un
+script est une série de <i>règles</i>.</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%">Une règle complète
+comporte<i> </i><span style="font-style: normal">un</span><i> </i><i><b>type</b></i>,
+une <i><b>étiquette</b></i>, un <i><b>modèle</b></i> et un
+<i><b>Répondeur </b></i>. Voici une règle simple et complète:</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font size="2" style="font-size: 10pt">?:
+VIANDE (vous aimez la viande) Oui j'aime ça</font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%">Le <i><b>T</b></i><i><b>ype</b></i>
+de cette règle est <font size="2" style="font-size: 10pt"><span style="font-style: normal"><b>?:</b></span></font><font size="2" style="font-size: 10pt">
+</font>, Ce qui signifie qu'elle réagit uniquement aux questions.
+<i><b>L’Étiquette</b></i> est <font size="2" style="font-size: 10pt">VIANDE</font>.
+Le <i><b>M</b></i><i><b>odèle</b></i> est entre () et cherche à
+trouver les mots&nbsp;: <font size="2" style="font-size: 10pt">vous
+aimez la viande</font> dans cet ordre précis, n'importe où dans
+l'entrée. Dans cet exemple, à la question <i>Aimez-vous la viande</i>.
+La <i>réponse</i> sera <font size="2" style="font-size: 10pt">Oui
+j'aime ça</font>.</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%">Le <i><b>T</b></i><i><b>ype</b></i>
+restreint le type d'entrée pour lesquelles la règle s'appliquera.
+Vous pouvez restreindre les règles aux déclarations, aux questions,
+ou seulement lorsque le Bot prend le contrôle de la conversation et
+propose une sentence (c'est alors un <i>G</i><i>ambi</i><i>t</i>).
+Les <i><b>T</b></i><i><b>ypes</b></i> sont une lettre suivie par deux
+points.</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><i><b>L’Étiquette</b></i>
+est facultative et sert en particulier à la documentation et au
+débogage. Elle permet également à la règle d’interagir avec
+d'autres règles.</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%">Un <i><b>M</b></i><i><b>odèle</b></i>
+est un ensemble de conditions plus spécifiques qui permettent ou
+bloquent cette règle, le plus souvent par la correspondance des mots
+de la phrase entrée, mais parfois en tenant compte de l'historique
+antérieur de la conversation, de l'heure du jour ou de tout autre
+élément.</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%">L<span style="font-style: normal"><span style="font-weight: normal">e
+</span></span><i><b>Répondeur</b></i> est ce que cette règle fait
+si elle est autorisée à s'exécuter. Étant donné que l'objectif
+de l'ensemble est de générer une réponse, la sortie la plus simple
+est simplement la phrase à dire. Les réponses plus complexes
+peuvent mettre en œuvre l'exécution de conditions, de boucles,
+l'appel de fonctions etc.</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%">Le système exécute
+normalement des règles dans un ordre spécifique, les unes après
+les autres, appliquant les restrictions de type et de modèle, puis
+génère des réponses destinées à l'utilisateur. Une fois que la
+réponse est sortie, le système est terminé (sauf si vous souhaitez
+explicitement faire plus).</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<h2 class="western">Les sujets (Topics)</h2>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%">Les règles sont
+regroupées dans des collections appelées <i><b>topics</b></i>.</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%">Vous dites au
+système d'exécuter un <i><b>sujet</b></i> (<i><b>topic</b></i><span style="font-style: normal"><span style="font-weight: normal">)</span></span>,
+et il commence à exécuter des règles sur ce sujet jusqu'à ce
+qu'il génère une sortie.</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%">Les <span style="font-weight: normal">sujets
+peuvent invoquer d'autres sujets. </span><span style="font-weight: normal">La
+manière exacte de</span><span style="font-weight: normal"> traiter
+une entrée est contrôlé par un </span><i><span style="font-weight: normal">script
+de contrôle</span></i><span style="font-weight: normal"> qui est
+lui-même un </span><i><span style="font-weight: normal">sujet</span></i><span style="font-weight: normal">
+(</span><i><span style="font-weight: normal">topic</span></i><span style="font-style: normal"><span style="font-weight: normal">)</span></span><span style="font-weight: normal">.
+Il appelle les fonctions du moteur et exécute </span><span style="font-weight: normal">suivant
+ses conditions</span><span style="font-weight: normal"> d'autres
+sujets.</span></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<h2 class="western">Syntaxe du code</h2>
+<h3 class="western">Encodage CharSet</h3>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%">ChatScript lit les
+fichiers texte ASCI et les fichiers<b> UTF-8.</b> Il ne lit pas
+correctement les fichiers UTF-16.</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<h3 class="western">Espaces vides</h3>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%">ChatScript ignore
+généralement les espaces vides en surnombre. Vous pouvez avoir une
+pléthore de tabulations, d'espaces et de retours chariots.</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%">Par exemple, les
+règles:</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font size="2" style="font-size: 10pt">?:
+(Quand mourrez-vous) je ne sais pas.</font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%">et:</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%">	<font size="2" style="font-size: 10pt">?:
+(Quand      allez-vous  	 mourir)</font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font size="2" style="font-size: 10pt">		Je
+ne sais pas  	 .</font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%">sont interprétés
+de la même manière.</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%">Mais, vous devez
+utiliser des espaces pour séparer les tokens.</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<h3 class="western">Casse</h3>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%">ChatScript est
+insensible à la casse pour dans le code du script lui-même. De
+toute évidence, la casse est importante dans la production
+littérale.</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%">Et les <b>mots dans
+les </b><b>parenthèses</b><b> d</b><b>oivent</b><b> être </b><b>en</b><b>
+minuscules</b>, à moins qu'ils ne soient les noms propres ou le mot
+«I» («&nbsp;Je&nbsp;» en anglais).</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%">REMARQUE: Ne mettez
+pas un mot minuscule en majuscules dans un <i><b>mo</b></i><i><b>dèle</b></i>
+simplement parce qu'il commence une phrase.</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<h3 class="western">commentaires</h3>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%">Le caractère de
+commentaire est le hachtag #.</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%">Il s'étend jusqu'à
+la fin de la ligne. Les commentaires ordinaires doivent avoir au
+moins un espace après eux, pour permettre au système de distinguer
+les commentaires à partir de constantes numériques comme #NOUN</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font size="2" style="font-size: 10pt">#
+cette ligne est un commentaire</font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font size="2" style="font-size: 10pt">s:
+(Je déteste la viande) Donc moi. # un commentaire à la fin d'une
+réponse</font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%">Des commentaires
+spéciaux sur la documentation commencent par #! (développé dans un
+autre document).</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font size="2" style="font-size: 10pt">#!
+Je déteste la viande</font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font size="2" style="font-size: 10pt">s:
+(je déteste la viande) vraiment?</font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<h3 class="western">Nom des déclarations légales</h3>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%">Un <i><span style="font-weight: normal">Topic
+(</span></i><i><span style="font-weight: normal">sujet</span></i><i><span style="font-weight: normal">)</span></i><span style="font-weight: normal">
+</span>ou une <i><span style="font-weight: normal">fonction</span></i>
+(défini plus loin) ne doit contenir que des caractères
+alphanumériques, des caractères de soulignement (_), des tirets (-)
+et des espaces (.). Ils doivent commencer par ~ et continuer avec un
+caractère alphabétique au départ.</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%">Les variables
+doivent commencer par $ ou $$ ou $ _, puis continuer avec un
+caractère alphabétique au départ, puis continuer encore, avec les
+numéros alphanumériques, les caractères de soulignement ou les
+traits d'union.</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<h2 class="western">La démo «&nbsp;Hello Word&nbsp;»</h2>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%">Faisons fonctionner
+le système dans une démo simple.</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<h3 class="western">Windows</h3>
+<p style="margin-bottom: 0cm; line-height: 100%">Téléchargez et
+extrayez sous Windows dans un dossier (le mien s'appelle ChatScript),
+en gardant les fichiers dans leurs dossiers respectifs.
+Double-cliquez sur le fichier chatscript.exe dans le dossier
+BINARIES.</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<h3 class="western">Linux</h3>
+<p style="margin-bottom: 0cm; line-height: 100%">L'exécution sur un
+système Linux n'est pas très différente. Téléchargez et extrayez
+dans un répertoire sous Linux, en gardant les fichiers dans leurs
+dossiers. L'exécutable livré avec le produit est LinuxChatScript64
+(version 64 bits) dans le dossier BINARIES. Vous devez modifier les
+autorisations pour la rendre exécutable. En outre, la version Linux
+prend par défaut le mode serveur, donc vous devez l'exécuter comme
+suit:</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="Liberation Mono, monospace"><font size="3" style="font-size: 12pt">BINARIES
+/ LinuxChatScript64 local</font></font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%">Cela ne fonctionnera
+PAS si vous avez un Linux 32 bits et vous devrez recompiler sur votre
+machine. Voir Installation et mise à jour du manuel ChatScript.</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<h3 class="western">MacOs</h3>
+<p style="margin-bottom: 0cm; line-height: 100%">Avec MacOS, le
+fichier exécutable change:</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="Liberation Mono, monospace">BINARIES
+/ MacChatScript local</font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%">Le système imprime
+un tas de statistiques car il charge des données. Après quoi il
+dit:</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<pre class="western"><code class="western"><font size="2" style="font-size: 10pt">Enter user name: (Entrez le nom d'utilisateur)</font></code></pre><p style="margin-bottom: 0cm; line-height: 100%">
+<br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%">Sélectionnez un nom
+d'utilisateur. C'est arbitraire, mais c'est ainsi que le système
+vous connaît lorsque vous démarrez plus tard. Le système répondra
+avec message:</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<pre class="western"><code class="western">Welcome to ChatScript (Bienvenue dans ChatScript)</code></pre><p style="margin-bottom: 0cm; line-height: 100%">
+<br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%">Maintenant saisissez
+<font size="2" style="font-size: 10pt"><i>(à cette date la version
+de Harry proposée est en Anglais, donc doit être interprété dans
+cette langue</i></font><font size="2" style="font-size: 10pt">)</font>
+: <i>Quel est votre nom ?</i> - vous obtenez <i>mon nom est Harry</i>
+si vous avez taper ceci correctement. Vous pouvez également demander
+<i>comment était votre enfance ?</i> et <i>de quoi avez-vous peur</i>
+et <i>quelle est votre histoire</i>.</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%">En fait, vous pouvez
+dire ou demander quoi ce que vous voulez et obtenir une réponse
+presque raisonnable car Harry discute. S'il ne connaît rien de
+précis sur votre sujet (ce qui est presque toujours le cas), il peut
+se bloquer et se laisser aller à la place. Vous pouvez donc discuter
+de tout.</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%">D'accord.
+Maintenant, vous avez une idée de ce qui est préinstallé.</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%">Si vous voulez vous
+perfectionner dans le fonctionnement du Bot Harry et essayer de le
+changer, lisez le document BOTHARRY. De même si vous voulez
+construire votre propre robot (en commençant par cloner Harry).
+Examinons rapidement ce qui se construit.</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<h2 class="western">Aperçu rapide des fichiers de sujets «&nbsp;topic&nbsp;»
+(.top)</h2>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%">Chatscript est
+tellement simple qu'un enfant pourrait le maîtriser en quelques
+secondes. Et si vous y croyez, j'ai plusieurs autres trucs à vous
+vendre, vous êtes un bon client. Mais comme certaines personnes
+essaieront de plonger directement, sans lire le reste de la
+documentation, voici un petit guide de ce que trouverez dans un
+fichier Topic simple.</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%">Les règles
+commencent par <font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">t:</font></font>
+ou <font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">?:
+</font></font><font face="Liberation Mono, monospace"><font size="3" style="font-size: 12pt">o</font></font><font size="3" style="font-size: 12pt">u</font>
+<font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">u:</font></font>
+ou <font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">s:</font></font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%">    <font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">s:
+</font></font>signifie que la règle réagit aux <i><span style="font-weight: normal">instructions</span></i>.</p>
+<p style="margin-bottom: 0cm; line-height: 100%">    <font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">?:
+</font></font>signifie que la règle réagit aux <i>questions</i>.</p>
+<p style="margin-bottom: 0cm; line-height: 100%">    <font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">u:
+</font></font>signifie que la règle réagit à l'union des deux.</p>
+<p style="margin-bottom: 0cm; line-height: 100%">    <font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">t:
+</font></font>signifie que la règle offre un <i>gambit</i> de sujet
+lorsque chatbot a le contrôle</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%">Les règles
+commencent également par <font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">a:
+b: </font></font>etc., mais ce sont des <i>réponses</i>, pas des
+règles de niveau supérieur. Elles sont utilisées pour anticiper
+comment un utilisateur peut répondre à la sortie et donner un
+retour direct en fonction de cette réponse.</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%">Les règles sont
+donc classées comme suit:</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<table width="643" cellpadding="2" cellspacing="0">
+	<col width="113">
+	<col width="56">
+	<col width="462">
+	<thead>
+		<tr>
+			<th width="113" style="border: none; padding: 0cm">
+				<p align="center">Type de règle</p>
+			</th>
+			<th width="56" style="border: none; padding: 0cm">
+				<p align="center">syntaxe</p>
+			</th>
+			<th width="462" style="border: none; padding: 0cm">
+				<p>description</p>
+			</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td width="113" style="border: none; padding: 0cm">
+				<p align="center"><strong><b>Répondeur</b></strong><strong><b>s</b></strong></p>
+			</td>
+			<td width="56" style="border: none; padding: 0cm">
+				<p align="center"><code class="western">s:</code><br/>
+<code class="western">?:</code><br/>
+<code class="western">u:</code></p>
+			</td>
+			<td width="462" style="border: none; padding: 0cm">
+				<p>qui sont des règles qui tentent de réagir à l'entrée de
+				l'utilisateur non provoquée par le Bot. Dans les cas où
+				l'utilisateur directement une question hors contexte par exemple.</p>
+			</td>
+		</tr>
+		<tr>
+			<td width="113" style="border: none; padding: 0cm">
+				<p align="center"><strong>Répliques</strong></p>
+			</td>
+			<td width="56" style="border: none; padding: 0cm">
+				<p align="center"><code class="western">a:</code><br/>
+<code class="western">b:</code><br/>
+<code class="western">c:</code><br/>
+<code class="western">d:</code><br/>
+<code class="western">e:</code><br/>
+<code class="western">f:</code><br/>
+<code class="western">g:</code><br/>
+<code class="western">h:</code><br/>
+<code class="western">i:</code><br/>
+<code class="western">j:</code><br/>
+<code class="western">k:</code><br/>
+<code class="western">l:</code><br/>
+<code class="western">m:</code><br/>
+<code class="western">n:</code><br/>
+<code class="western">o:</code><br/>
+<code class="western">p:</code><br/>
+<code class="western">q:</code></p>
+			</td>
+			<td width="462" style="border: none; padding: 0cm">
+				<p>sont des tentatives pour prédire la réponse immédiate d'un
+				utilisateur à quelque chose que le chatbot dit. Ils ne sont
+				déclenchés que si la saisie survient immédiatement après que
+				la règle qu'ils suivent a été utilisée.</p>
+			</td>
+		</tr>
+		<tr>
+			<td width="113" style="border: none; padding: 0cm">
+				<p align="center"><strong>gambits</strong></p>
+			</td>
+			<td width="56" style="border: none; padding: 0cm">
+				<p align="center"><code class="western">r:</code><br/>
+<code class="western">t:</code></p>
+			</td>
+			<td width="462" style="border: none; padding: 0cm">
+				<pre class="western" style="text-align: left"><font face="Droid Sans Arabic, sans-serif"><font size="3" style="font-size: 12pt"><span lang="fr-FR">c'est</span></font></font><font face="Droid Sans Arabic, sans-serif"><font size="3" style="font-size: 12pt"><span lang="fr-FR"> l'histoire que le chatbot </span></font></font><font face="Droid Sans Arabic, sans-serif"><font size="3" style="font-size: 12pt"><span lang="fr-FR">amène </span></font></font><font face="Droid Sans Arabic, sans-serif"><font size="3" style="font-size: 12pt"><span lang="fr-FR">sur un sujet ou la conversation </span></font></font><font face="Droid Sans Arabic, sans-serif"><font size="3" style="font-size: 12pt"><span lang="fr-FR">dans</span></font></font><font face="Droid Sans Arabic, sans-serif"><font size="3" style="font-size: 12pt"><span lang="fr-FR"> laquelle </span></font></font><font face="Droid Sans Arabic, sans-serif"><font size="3" style="font-size: 12pt"><span lang="fr-FR">le </span></font></font><font face="Droid Sans Arabic, sans-serif"><font size="3" style="font-size: 12pt"><span lang="fr-FR">chatbot essaie de diriger l'utilisateur. r: sont des gamb</span></font></font><font face="Droid Sans Arabic, sans-serif"><font size="3" style="font-size: 12pt"><span lang="fr-FR">it</span></font></font><font face="Droid Sans Arabic, sans-serif"><font size="3" style="font-size: 12pt"><span lang="fr-FR">s aléatoires (expliqué </span></font></font><a href="../../Dropbox/Documents/ChatScript-7.53/HTMLDOCUMENTATION/ChatScript-Advanced-User-Manual.html#random-gambit">plus </a><a href="../../Dropbox/Documents/ChatScript-7.53/HTMLDOCUMENTATION/ChatScript-Advanced-User-Manual.html#random-gambit">loin</a><font face="Droid Sans Arabic, sans-serif"><font size="3" style="font-size: 12pt"><span lang="fr-FR">)</span></font></font></pre>
+			</td>
+		</tr>
+	</tbody>
+</table>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%">Les règles
+présentent généralement leurs <i><b>modèles</b></i> entre
+parenthèses (sauf les gambits t: règles pour lesquelles un modèle
+est facultatif). Ceux-ci essaient généralement de trouver des mots
+ou des séquences spécifiques de mots dans l'entrée de
+l'utilisateur. Dans la règle:</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">u:
+(prendre la fuite)</font></font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%">le système
+cherchera si le mot «&nbsp;prendre&nbsp;» peut être trouvé
+n'importe où dans la phrase, et si oui, s'il est immédiatement
+suivi du mot «&nbsp;la&nbsp;» puis «&nbsp;fuite&nbsp;». Par
+contre, à chaque fois que vous voyez [...] cela signifie qu’il
+cherchera les mots séparément. 
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%">Ainsi&nbsp;:</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">u:
+([effrayant peur])</font></font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%">signifie que le
+système doit trouver n'importe où dans la phrase un des mots
+<font face="Droid Sans Fallback, sans-serif"><font size="3" style="font-size: 12pt"><i>effrayant</i></font></font><font face="Droid Sans Fallback, sans-serif"><font size="3" style="font-size: 12pt">
+</font></font>ou<i> peur</i>. Et la <i>peur</i> peut être dans l'une
+de ses formes connexes (c’est la notion de peur qui est cherchée)
+: <i>peur, </i><i>apeuré</i><i>, </i><i>terrifié</i>.</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%">Dans les fichiers
+«&nbsp;sample&nbsp;», vous verrez des mots ordinaires et des ~mots.
+Les mots précédés du tiret «&nbsp;Tilde&nbsp;» se réfèrent à
+un groupe de mots conceptuel, une liste de mots qui se rapproche du
+~mot. Par exemple.,</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%">~aime représente un
+ensemble de mots qui signifient aimer quelque chose ou quelqu’un.</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%">~animaux signifie
+une importante liste de noms d'animaux.</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%">Ce sont des
+raccourcis intéressant à utiliser avec la recherche  []. Au lieu
+d'avoir à écrire [éléphant de tigre léopard alligator crocodile
+lion ...] dans chacune des règles, lorsque le concept est enregistré
+on peut simplement dire ~animaux.</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><b>Les règles</b>
+sont toujours regroupées dans une rubique ou «&nbsp;Topic&nbsp;»,
+comme le sujet: ~enfance peut former un Topic. Les rubriques
+contiennent une liste de mots clés pertinents qui suivent
+directement le nom de la rubrique (du Topic). Passée cette première
+ligne, les règles peuvent être indiquées dans n'importe quel
+ordre. Les gambits, ces lignes qui commencent par un t:, offrent une
+histoire ou un flux de conversation prévu.</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%">Si vous demandez des
+informations dans une conversation, vous devez équilibrer la balance
+en fournissant des informations. Par exemple, si vous demandez ce que
+quelqu'un apprécie comme passe-temps, il sera attendu après la
+réponse une réponse à la même question. Comme dans:</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">topic:
+école [école université apprendre]</font></font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">t:
+Où allez-vous à l'école ?</font></font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">t:
+Je vais à Harvard.</font></font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">t:
+Dans quelle filière ?</font></font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">t:
+J'étudie la finances.</font></font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%">Et votre sujet doit
+être prêt à traiter des questions arbitraires liées à l'école
+de l'utilisateur.</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%">S'il dit&nbsp;: «&nbsp;je
+vais à Yale. Quelle était la mascotte de votre école ?&nbsp;»,
+vous aimeriez avoir ajouté des réponses à la question de la
+mascotte avant de passer à l’anticipation volontaire (via les t:)
+annonçant que vous êtes allé à Harvard.</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%">C'est ce que le
+Topic simple sur l'enfance tente de faire. Poser des questions
+<i>G</i><i>ambit</i>, répondre avec des remarques appropriées à
+leur réponses, proposer des réponses concernant le chatbot à ces
+même <i>G</i><i>ambit</i><i>s</i>, passez à la suite et suivez
+quelques questions simples posées sur le sujet dans le Topic.</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%">Les commentaires
+commencent par <i>#</i>. Dans le fichier, le commentaire <i>#</i> est
+seul, il s’agit d’un commentaire ordinaire.</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%">Commentaires
+spéciaux <i>#!</i> donne un exemple d'entrée par l’utilisateur
+auquel la règle qui suit immédiatement doit correspondre et gérer.
+Ceci indique à la fois quelles entrées devrait correspondre à la
+règle ci-dessous et permet au moteur de la tester automatiquement.</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%">Le commentaire
+spécial donne un seul exemple d'entrée correspondante, pas toutes
+les entrées possibles pouvant correspondre. Cela vous aide à
+comprendre ce à quoi <b>un </b><b>Répondeur</b><b> </b>ou <b>une
+</b><b>R</b><b>éplique</b> sont censé réagir. Il n'a aucun impact
+sur un utilisateur en conversation, cela aide simplement la lecture
+du code.</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<h2 class="western">Quels fichiers avons-nous ?</h2>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%">Le moteur ChatScript
+peut exécuter plusieurs bots à la fois (voir le manuel ChatScript
+Multiple Bots), chacun avec une personnalité unique. Ainsi, un
+utilisateur peut se connecter et parler avec une personnalité
+spécifique tandis qu'un autre utilisateur se connecte et parle avec
+un autre (ou le même).</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<table width="643" cellpadding="4" cellspacing="0">
+	<col width="135">
+	<col width="490">
+	<tr valign="top">
+		<td width="135" style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0.1cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0cm">
+			<p><b>Répertoires</b></p>
+		</td>
+		<td width="490" style="border: 1px solid #000000; padding: 0.1cm">
+			<p><b>Fichiers</b></p>
+			<p style="font-weight: normal"><br/>
+
+			</p>
+		</td>
+	</tr>
+	<tr valign="top">
+		<td width="135" style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0cm">
+			<p style="font-weight: normal">BINARIES</p>
+		</td>
+		<td width="490" style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding-top: 0cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0.1cm">
+			<p style="font-weight: normal">Fichiers exécutables. Tous les
+			exécutables sont dans le dossier BINARIES. Le système suppose
+			qu'ils sont lancés à partir de là (est le répertoire de
+			travail actuel) et modifie le répertoire d'un niveau pour accéder
+			à tous les autres dossiers.</p>
+		</td>
+	</tr>
+	<tr valign="top">
+		<td width="135" style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0cm">
+			<p style="font-weight: normal">USERS</p>
+		</td>
+		<td width="490" style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding-top: 0cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0.1cm">
+			<p style="font-weight: normal">Fichiers d'historique. La
+			conversation de chaque utilisateur est suivie par le système et
+			conservée dans des fichiers du répertoire USERS. Un utilisateur
+			peut revenir au même Chat des jours plus tard, et le système
+			sait ce qui s'est passé dans les conversations précédentes et
+			que c'est le début d'une nouvelle conversation. Le système
+			conserve également un fichier journal par utilisateur
+			enregistrant ses conversations pour l'auteur (CS n'utilise pas ce
+			fichier, il l'enregistre simplement) et un fichier topic pour
+			chaque duo utilisateur/chatbot, où il stocke l'état actuel de la
+			conversation pour le moteur. Si le script enregistre des faits sur
+			l'utilisateur pendant la conversation, ceux-ci sont également
+			stockés dans le fichier topic_*.txt.</p>
+		</td>
+	</tr>
+	<tr valign="top">
+		<td width="135" style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0cm">
+			<p style="font-weight: normal">DICT</p>
+		</td>
+		<td width="490" style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding-top: 0cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0.1cm">
+			<p style="font-weight: normal">Fichiers du dictionnaire. Le
+			dossier DICT est le dictionnaire sous-jacent du système. Vous ne
+			le modifierez probablement pas. Il a un sous-dossier ENGLISH qui
+			est un dictionnaire complet qu'il utilise par défaut. Si vous
+			essayez d'exécuter ChatScript sur un appareil mobile, vous
+			souhaiterez probablement copier sur le contenu de BASIC dans le
+			dossier ENGLISH, pour utiliser un dictionnaire plus petit.</p>
+		</td>
+	</tr>
+	<tr valign="top">
+		<td width="135" style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0cm">
+			<p style="font-weight: normal">LIVEDATA</p>
+		</td>
+		<td width="490" style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding-top: 0cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0.1cm">
+			<p style="font-weight: normal">Fichiers d’Extension du
+			Dictionnaire. Le dossier LIVEDATA contient des extensions du
+			dictionnaire et du système d'exécution que vous pouvez modifier
+			en tant qu'utilisateur avancé.</p>
+		</td>
+	</tr>
+	<tr valign="top">
+		<td width="135" style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0cm">
+			<p style="font-weight: normal">RAWDATA</p>
+		</td>
+		<td width="490" style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding-top: 0cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0.1cm">
+			<p style="font-weight: normal">Fichiers de connaissances. Le
+			dossier RAWDATA est l'endroit où sont conservées les données
+			brutes pour prendre en charge le Chat (bien que vous puissiez la
+			garder n'importe où car changer n'est pas compilé dans le
+			moteur). Il existe des dossiers pour HARRY, ONTOLOGIE, WORLDDATA,
+			STOCKPILE, NLTK, POSTGRES et QUIBBLES. Normalement, lorsque vous
+			définissez un chatbot, vous ajoutez un dossier avec le nom de
+			votre chatbot. De cette façon, vous pouvez simplement intégrer
+			les mises à jour du système principal chaque fois qu'une
+			nouvelle version est créée.</p>
+		</td>
+	</tr>
+	<tr valign="top">
+		<td width="135" style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0cm">
+			<p style="font-weight: normal">TOPIC</p>
+		</td>
+		<td width="490" style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding-top: 0cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0.1cm">
+			<p style="font-weight: normal">Ces données sont exécutées dans
+			le script &quot;compilateur&quot; et la sortie est stockée dans
+			le répertoire TOPIC, qui contient vos données de script
+			compilées.</p>
+		</td>
+	</tr>
+	<tr valign="top">
+		<td width="135" style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0cm">
+			<p style="font-weight: normal">VERIFY</p>
+		</td>
+		<td width="490" style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding-top: 0cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0.1cm">
+			<p style="font-weight: normal">Si votre script contient des
+			données de vérification incorporées (commentaires commençants
+			par #!), permettant au système de tester si vos modèles font
+			réellement ce que vous voulez qu’ils fassent, ces données sont
+			stockées dans le répertoire VERIFY après la compilation.</p>
+		</td>
+	</tr>
+	<tr valign="top">
+		<td width="135" style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0cm">
+			<p style="font-weight: normal">SRC</p>
+		</td>
+		<td width="490" style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding-top: 0cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0.1cm">
+			<p style="font-weight: normal">Fichiers sources. SRC est une
+			source pour reconstruire le moteur. Il a un fichier
+			dictionarySystem.h qui est lu pendant le chargement pour définir
+			les constantes du moteur qui peuvent être utilisées dans les
+			scripts.</p>
+		</td>
+	</tr>
+	<tr valign="top">
+		<td width="135" style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0cm">
+			<p style="font-weight: normal">WIKI</p>
+		</td>
+		<td width="490" style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding-top: 0cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0.1cm">
+			<p style="font-weight: normal">Fichiers de documentation. Ce
+			document et d'autres peuvent être trouvés dans WIKI.</p>
+		</td>
+	</tr>
+	<tr valign="top">
+		<td width="135" style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0cm">
+			<p style="font-weight: normal">LOGS</p>
+		</td>
+		<td width="490" style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding-top: 0cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0.1cm">
+			<p style="font-weight: normal">Si ChatScript détecte les bogues
+			pendant l'exécution, il les stocke dans bugs.txt dans ce dossier.
+			Un serveur stockera également son journal ici.</p>
+		</td>
+	</tr>
+	<tr valign="top">
+		<td width="135" style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0cm">
+			<p style="font-weight: normal">Compilation Files</p>
+		</td>
+		<td width="490" style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding-top: 0cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0.1cm">
+			<p style="font-weight: normal">Les dossiers LINUX, MAC et VS2010
+			sont destinés à reconstruire le moteur exécutable.
+			LOEBNERVS2010 construit une version du concours Loebner.</p>
+		</td>
+	</tr>
+	<tr valign="top">
+		<td width="135" style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0cm">
+			<p style="font-weight: normal">Top Level Files</p>
+		</td>
+		<td width="490" style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding-top: 0cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0.1cm">
+			<p style="margin-bottom: 0cm">Outre chatscript.exe, les fichiers
+			de niveau supérieur suivants existent:</p>
+			<p style="margin-bottom: 0cm">authorizedIP.txt - en tant que
+			serveur, cela permet à certains utilisateurs d'entrer des
+			commandes</p>
+			<p style="margin-bottom: 0cm">changes.txt - liste des changements
+			entre versions</p>
+			<p style="margin-bottom: 0cm">version.txt - la version actuelle</p>
+			<p style="font-weight: normal">talk.vbs - script pour activer la
+			sortie vocale dans Windows</p>
+		</td>
+	</tr>
+	<tr valign="top">
+		<td width="135" style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0cm">
+			<p style="font-weight: normal">REGRESS</p>
+		</td>
+		<td width="490" style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding-top: 0cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0.1cm">
+			<p>Les fichiers qui peuvent faire des tests de régression de
+			différents types sont ici.</p>
+		</td>
+	</tr>
+	<tr valign="top">
+		<td width="135" style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0cm">
+			<p style="font-weight: normal">Server Batch Files</p>
+		</td>
+		<td width="490" style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding-top: 0cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0.1cm">
+			<p style="font-weight: normal">Fichiers de serveurs pour Windows
+			qui peuvent exécuter le moteur en tant que serveur local ou
+			client local.</p>
+		</td>
+	</tr>
+	<tr valign="top">
+		<td width="135" style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0cm">
+			<p style="font-weight: normal">Third Party Tools</p>
+		</td>
+		<td width="490" style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding-top: 0cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0.1cm">
+			<p style="font-weight: normal">Les outils de tiers font référence
+			à certains outils tierces de ChatScript.</p>
+		</td>
+	</tr>
+	<tr valign="top">
+		<td width="135" style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0cm">
+			<p style="font-weight: normal">TMP</p>
+		</td>
+		<td width="490" style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding-top: 0cm; padding-bottom: 0.1cm; padding-left: 0.1cm; padding-right: 0.1cm">
+			<p style="font-weight: normal">Les fichiers transitoires TMP
+			utilisés pour supporter le débogage sont conservés ici.</p>
+		</td>
+	</tr>
+</table>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<h2 class="western">Les TOPICS simples</h2>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%">Dans un thème, une
+rubrique (TOPIC), le système n'exécute pas toutes les règles. Vous
+ne choisissez pas non plus une règle à exécuter. Au lieu de cela,
+vous (l'auteur) organisez des collections de règles dans des sujets
+et le système choisit le sujet à exécuter à tout moment. Il
+exécute à son tour ses règles.</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%">Voici un exemple de
+déclaration de Topic simple:</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">topic:
+~MORT [corps mortel mort mort corps]</font></font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">t:
+je ne veux pas mourir</font></font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">?:
+(Quand allez-vous mourir) je ne sais pas.</font></font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%">Le Topic déclare
+son nom, ses mots clés, puis ses règles. Il se termine par la fin
+du fichier ou une nouvelle déclaration de niveau supérieur (qui
+comprend&nbsp;: <font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">t</font></font><font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">opic</font></font><font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">:,
+concept:, table:, tablemacro:, outputmacro:, patternmacro:,
+dualmacro:, bot:, d</font></font><font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">ata:</font></font><font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">,
+canon:, </font></font><font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">query:</font></font><font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">,
+plan:, d</font></font><font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">es</font></font><font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">cri</font></font><font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">b</font></font><font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">e:</font></font>,
+et <font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">replace:</font></font>
+).</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%">Le nom du Topic doit
+commencer par un ~, un caractère alphabétique, puis être un nom
+légal standard (ne contient que des caractères alphanumériques,
+des caractères de soulignement, des traits d'union et des points).</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<h3 class="western">Mots clés</h3>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%">Les mots clés
+permettent au système de considérer ce Topic en fonction des
+correspondances avec l'entrée de l'utilisateur.</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%">Si l'entrée de
+l'utilisateur n'a pas de mots clés en commun avec le sujet,
+normalement, le sujet et toutes ses règles ne seront pas prises en
+considération.</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%">Les mots-clés issus
+d’une phrase de l'utilisateur déclenchent le Topic correspondant
+le plus proche (basé sur le nombre et la longueur des mots-clés)
+pour le tester.</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%">Si le moteur peut
+trouver une réponse correspondant, alors il se déplace vers ce
+sujet et répond. Sinon, le moteur essaie d'autres sujets
+correspondants. Finalement, si il ne peut pas trouver de réponse
+approprié, il peut revenir au sujet le plus pertinent et laissez
+simplement un Gambit (la règle commençant par <font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">t:</font></font>).</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%">Peu importe si le
+nouveau Topic a des réponses qui chevauchent les répliques d'un
+autre Topic (les deux pourraient correspondre à la requête). Vous
+pouvez avoir un sujet sur ~funéraire et une autre sur ~mort. Une
+phrase d'entrée que je ne croit pas en la mort pourrait vous
+acheminer vers l'un ou l'autre sujet, mais c'est une bonne chose.</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%">Si vous êtes au
+milieu d'un Topic et que l'utilisateur dit quelque chose qui est hors
+sujet, le système cherchera un Topic qui correspond aux mots-clés
+de l'entrée et verra si un sujet correspondant a une réponse pour
+réagir à l'entrée. Dans l'affirmative, le système passera à ce
+Topic.</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%">Le nouveau Topic
+devient le Topic actif et l'ancien Topic devient «&nbsp;en
+attente&nbsp;», mis dans la liste des Topics susceptibles de revenir
+lorsque le nouveau sujet sera épuisé. Ce comportement est le
+comportement par défaut et vous pouvez créer d'autres comportements
+en créant un script de contrôle pour le faire (avancé).</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%">Les Topics
+facilitent le regroupement logique des règles. Les mots-clés d’un
+Topic signifient que l'auteur peut développer un domaine de
+conversation indépendant sans tenir compte des Topics préexistant
+et le système le trouvera automatiquement et l'invoquera selon le
+cas.</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%">Les Topics ne
+doivent pas obligatoirement avoir de mots-clés. Mais pour qu’une
+règle dans un Topic puisse être appelée, soit le Topic a des
+mots-clés qui peuvent être trouvés dans la règle elle-même,
+SOIT, le Topic est déjà le Topic courant (une autre règle avait
+des mots-clés dans son modèle qui étaient également mots clés du
+Topic alors vous êtes déjà dans le Topic) SOIT enfin, le Topic a
+été directement appelé par le script de contrôle ou un autre
+sujet.</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<h3 class="western">Règles des Gambits</h3>
+<p><br/>
+<br/>
+
+</p>
+<p>En plus des <b>Répondeur</b><b>s</b> réagissant aux entrées des
+utilisateurs (<font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">s:,
+?:, u:</font></font>) un Topic peut avoir des Gambits à proposer
+(<font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">t:</font></font>).</p>
+<p><br/>
+<br/>
+
+</p>
+<p>Les Gambits créent une histoire cohérente sur le sujet si le Bot
+maîtrise la conversation.</p>
+<p>Pourtant, si l'utilisateur pose des questions, le système peut
+utiliser un <b>Répondeur </b>pour répondre directement ou
+réutiliser un Gambit qu’il avait prévu de proposer de toutes
+façons. C'est entièrement à vous de décider de l'ordre des
+<b>Répondeur</b><b>s</b> et des <b>G</b><b>ambi</b><b>t</b><b>s</b>.
+Vous pouvez séparer <font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">s:</font></font>
+de <font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">?:</font></font>
+de <font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">u:</font></font>
+ou les mélangez.</p>
+<p>Vous pouvez avoir des <b>Répondeur</b><b>s</b><b> </b>mélangées
+à des <b>G</b><b>ambi</b><b>t</b><b>s</b>.</p>
+<p>Qu'est-ce que cela signifie pour le chatbot d'être &quot;en
+contrôle&quot; de la conversation?</p>
+<p>Lorsque l'utilisateur tape une déclaration ou une question, le
+système verra si il a une <b>R</b><b>éplique</b> ou un <b>Répondeur</b><b>
+</b>qui correspond directement à l'entrée. Si c'est le cas, il
+répondra avec. Cette réponse «&nbsp;forcée&nbsp;» signifie que
+l'humain maîtrise la conversation. Si, cependant, le chatbot ne peut
+pas trouver une réponse pour l'entrée, alors le chatbot est libre
+de dire tout ce qu'il veut. Alors il est en contrôle.</p>
+<p>Peut-être va-t-il émettre un Gambit du Topic dans lequel il
+était précédement. Peut-être partira-t-il sur un Gambit d'un
+Topic étroitement lié à l'entrée de l'utilisateur. Peut-être
+essaiera-t-il de diriger la conversation vers un nouveau sujet
+spécifique, un Topic différent. Tout ce qui est contrôlé par la
+logique du script de contrôle (dont il existe un code par défaut
+fourni avec ChatScript mais que vous pouvez modifier).</p>
+<p>Le Gambit typique n'a pas <b>d’Étiquette</b> ni de <b>M</b><b>odèle</b>.
+Il pourrait en avoir. Il se compose généralement uniquement de son
+type de règle (<font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">t:</font></font>)
+et des données de sortie.</p>
+<p><br/>
+<br/>
+
+</p>
+<h3 class="western">L’ordre d'exécution</h3>
+<p>Un sujet est exécuté en mode <b>Gambit </b>(c'est-à-dire t: et
+la ligne qui suit) ou en mode <b>Répondeur</b> (avec <font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">s:,
+?:</font></font> et <font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">u:</font></font>
+et leurs lignes). Les règles sont placées dans l'ordre où vous
+voulez qu'elles soient essayées.</p>
+<p>Dans le cas des Gambits, l'ordre raconte une histoire.</p>
+<p>Pour les <b>Répondeurs</b>, les règles sont ordinairement
+classées des plus spécifiques aux moins spécifiques,
+éventuellement groupées par thème. Donc, une <b>Répondeur</b>
+essayant d'enregistrer la couleur de vos cheveux viendrait avant
+celle qui réagirait simplement à toute référence à vos cheveux.</p>
+<p><br/>
+<br/>
+
+</p>
+<p>Par défaut, le système évite de se répéter, marquant comme
+règles utilisées celle qui ont déjà généré une émission par
+le Chatbot. C'est ainsi que l’histoire proposée par un Topic peut
+être racontée. Le premier Gambit est exprimé, marqué comme lu,
+puis ensuite, lorsque sortira le second gambit il sera à nouveau
+marqué comme lu, et ainsi de suite.</p>
+<p>De même, un <b>R</b><b>épondeur </b>qui réagit à une entrée
+délivrera son message, puis s’effacera. Si l'utilisateur répète
+son apport, cette règle ne sera plus utilisée, et une autre règle
+devra répondre à sa place.</p>
+<p>Le fichier <font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">RAWDATA/skeleton.top</font></font>
+comporte un tas de Topics déjà prédéfinis avec des mots-clés,
+mais pas de Répondeurs ou de Gambits.</p>
+<p>Si vous avez rempli certains de ces Topics avec des règles et
+avez enregistré le lien dans le fichier <font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">RAWDATA/filesHarry.txt
+</font></font>et reconstruit les données (<font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">:build</font></font>),
+vous avez un Chatbot&nbsp;!</p>
+<p><br/>
+<br/>
+
+</p>
+<h3 class="western">Les Répliques</h3>
+<p>Si vous vous attendez à ce que l'utilisateur réponde d'une
+manière particulière à votre sollicitation, vous pouvez modifier
+le script pour examiner sa prochaine entrée et voir si elle
+correspond. Quand cela fonctionne, votre Chatbot semble comprendre
+l'utilisateur. Cela s’appelle des <b>Répliques</b> et toutes les
+règles peuvent en posséder.</p>
+<p><font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">s:
+(J'aime les épinards) Êtes-vous un fan des dessins animés de
+Popeye?</font></font></p>
+<p>    <font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">a:
+(oui) Je les ai regardé enfant. Avez-vous aimé Olive Oyl?</font></font></p>
+<p>        <font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">b:
+(non) Moi non plus. Elle était trop maigre.</font></font></p>
+<p>        <font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">b:
+(oui) Vous aimez probablement les femmes minces.</font></font></p>
+<p>    <font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">a:
+(non) Quelles dessins animés regardez-vous?</font></font></p>
+<p>        <font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">b:
+(aucun) Vous menez une vie monacale.</font></font></p>
+<p>        <font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">b:
+(Mickey Mouse) La Star de Disney.</font></font></p>
+<p>Les <b>Répliques</b> utilisent de <font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">a:
+</font></font>à <font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">q:</font></font>
+pour indiquer la profondeur de la séquence.</p>
+<p>Toutes les <b>Répliques</b> de même niveau ont la même lettre
+et sont des alternatives qui seront testées dans l'ordre. Alors,
+après que le Chatbot ait demandé <font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">Êtes-vous
+un fan</font></font>... il va tester la prochaine entrée pour oui,
+puis non. Dès qu'il trouve une réplique en correspondance, il
+l'exécutera et se terminera. S'il ne trouve aucun, alors le système
+passe à son comportement normal.</p>
+<p>Les <b>Répliques</b> peuvent avoir des <b>Répliques</b>, comme
+indiqué ci-dessus. Une présentation comme ci-dessus est correcte,
+elle rend visiblement évident l’agencement des répliques dans
+votre script.</p>
+<p><br/>
+<br/>
+
+</p>
+<p>Remarque</p>
+<p>Techniquement, on utilisera pas <font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">oui
+</font></font>et <font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">non</font></font>
+réellement comme cela. Ils seront considérés comme spéciaux et
+traités comme des interjections (comme toutes les autres synonymes
+ayant de nombreuses façon d’exprimer la même chose). Pour que
+l'exemple ci-dessus fonctionne réellement dans le moteur, vous
+devriez utiliser ~oui et ~non. Mais vous apprenez les concepts et les
+interjections plus tard.</p>
+<h3 class="western">Étiquettes de règles</h3>
+<p>Toutes les règles (Répondeurs, Gambits, Répliques) peuvent
+avoir des <b>Étiquette</b> liées. Les étiquettes peuvent être
+utilisées de façon très variées. D'autres règles peuvent
+utiliser des fonctions ciblant une règle étiquetée particulière.
+Vous pouvez utiliser les capacités de débogage pour tester une
+règle et ainsi vous pouvez tracer une règle pour la vérifier. Et
+vous obtenez  alors une sorte de documentation vous indiquant votre
+règle.</p>
+<p>Une <b>Étiquette</b> est un mot unique placé entre le type de
+règle et son <b>M</b><b>o</b><b>dèle</b>. Si la règle est un
+Gambit, vous devez forcément ajouter un <b>M</b><b>o</b><b>dèle</b>,
+même si ce n'est qu’une parenthèse vides.</p>
+<p><br/>
+<br/>
+
+</p>
+<p><font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">t:
+MES_YEUX () Mes yeux sont bleus</font></font></p>
+<p><font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">?:
+COULEURDESYEUX (couleur * yeux) J'ai des yeux bleus</font></font></p>
+<p><font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">u:
+LUNETTES ([contacts lunettes]) Je ne porte pas de lunettes, mais j'ai
+des lentilles de contacts.</font></font></p>
+<p><font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">?:
+AVEUGLE (vous * aveugle) Je ne suis pas aveugle.</font></font></p>
+<p><font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">?:
+DALTONIEN (vous * [daltonien &quot;pas voir le vert&quot;)) Je ne
+suis pas daltonien.</font></font></p>
+<p>Note, ChatScript est une langue orientée Token (les jetons sont
+généralement une suite de caractères sans espaces). Vous devez
+placer un ou plusieurs espaces après les <font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">:</font></font>
+et avant l'étiquette. AUTREMENT <font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">?:</font></font><font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">COULEURDESYEUX</font></font>
+est un jeton unique et non la déclaration d'une règle (<font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">?:</font></font>)
+et d'une étiquette.</p>
+<p>Le fichier <font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">simpletopic.top</font></font>
+comporte un exemple appelé <code class="western"><font size="2" style="font-size: 10pt">~Childhood</font></code>
+d’une complexité normale (qui peut être compris après avoir lu
+«&nbsp;advanced output&nbsp;»).</p>
+<p><br/>
+<br/>
+
+</p>
+<p><br/>
+<br/>
+
+</p>
+<h1 class="western">Les modèles simples</h1>
+<p><br/>
+<br/>
+
+</p>
+<p>Comme indiqué précédemment, une règle ne peut pas déclencher
+à moins que son modèle ne corresponde, et un modèle, dans une
+règle, se trouve placé entre parenthèses (et ses éléments y sont
+présentés dans un ordre précis formant une séquence).</p>
+<p>Les écrire un modèle est demande précision et doigté. Si votre
+modèle est trop spécifique, il manquera toutes sortes de
+possibilités de répondre à des significations similaires. Si votre
+modèle est</p>
+<p><font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">?:
+(quand allez-vous rentrer chez vous) Je rentre chez moi demain</font></font></p>
+<p>et l'entrée est «&nbsp;<font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">quand
+allez-vous à la maison</font></font>&nbsp;», le Bot ne réagira
+pas. Mais si votre modèle est trop large, le robot répond à des
+significations complètement erronées. Si votre modèle est</p>
+<p><font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">s:
+(maison) Je rentre chez moi demain.</font></font></p>
+<p>alors il réagit à «&nbsp;<font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">connais-tu
+les elfes de maison ?</font></font>&nbsp;» de manière inappropriée.</p>
+<h2 class="western">La séquence ( )</h2>
+<p>J'ai dit que les parenthèses étaient comprises par le système
+dans l'ordre de la séquence proposée, n'importe où dans l'entrée.
+Ainsi</p>
+<p><font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">s:
+(je t'aime) M’aimez-vous vraiment ?</font></font></p>
+<p>correspondra à Comme je t'aime ! et <font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">je
+t'aime </font></font><font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">et
+j’aime toutes les femmes</font></font> et <font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">tout
+le monde sait que je t'aime</font></font>. Vous pouvez même mettre
+des parenthèses dans des parenthèses, non que ça ait une
+quelconque utilité.</p>
+<p><font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">s:
+(je ( t'aime)) M’aimez-vous vraiment ?</font></font></p>
+<p>Ce modèle est le même que le précédent sans les parenthèses
+imbriquées. Alors que les parenthèses extérieures font commencer
+leur premier élément correspondant à n'importe quelle partie de la
+phrase, la seconde parenthèse en hérite et les éléments contenus
+dans cette dernière sont sélectionnés consécutivement. Ainsi, le
+contenu de la seconde parenthèse dois venir consécutivement dans la
+phrase à celui de la première pour que la règle soit valide.</p>
+<p>Une autre façon de demander une séquence est de proposer des
+guillemets de part et d’autre.</p>
+<p><font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">s:
+(&quot;Je t'aime&quot;) M’aimez-vous vraiment ?</font></font></p>
+<p>Il y a deux raisons d'utiliser le double guillemets. Tout d'abord,
+si vous essayez trouver une suite de mot qui exprime une idée. Par
+exemple, comme mot-clé d'un sujet, vous pouvez faire:</p>
+<p><font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">topic:
+~mort [&quot;être mort&quot; &quot;passer l’arme à gauche&quot;]</font></font></p>
+<p>Deuxièmement, lorsque vous essayez de spécifier une idée pour
+laquelle vous n'êtes pas certain de la façon elle apparaîtra ni
+s'il s'agit d'un mot ou d'une séquence de mots.</p>
+<p><br/>
+<br/>
+
+</p>
+<p>Une mise en Token impliquant une ponctuation peut être délicate.
+Par exemple, le mot <font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">Bob's</font></font>
+est en fait «&nbsp;tokenisé&nbsp;» comme deux mots: Bob et s. Et
+dans ce qu’on peut trouver sur le Net,<font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">
+New_Year's_Eve</font></font> est un mot unique.</p>
+<p><br/>
+<br/>
+
+</p>
+<p>Vous ne le savez peut-être pas, mais chaque fois que vous pensez
+à quelque chose sous forme de mots multiples, vous êtes sûr de ne
+pas vous tromper en le mettant entre guillemets (ex&nbsp;: «Nouvel
+An») et en laissant ChatScript gérer la façon dont il est stocké
+en interne. Ceci est particulièrement vrai pour les noms de
+personnes, les titres de livres et d'autres noms propres à plusieurs
+mots.</p>
+<p><br/>
+<br/>
+
+</p>
+<p>Mettez la ponctuation dans les guillemets pour être sûrs. Le
+modèle correspondant à une séquence est limité à 5 mots à la
+suite et les reliera à la fois aux formes originales et canoniques.</p>
+<h2 class="western">Limiter les phrases avec &lt; et &gt;</h2>
+<p>Parfois, pour avoir une signification appropriée dans le modèle,
+vous devez effectivement savoir où une entrée commence et se
+termine. Par exemple:</p>
+<p><font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">u:
+(Qu'est-ce qu'un éléphant) Un éléphant est un pachyderme.</font></font></p>
+<p>Fonctionne avec <font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">Dites-moi
+qu'est-ce qu’un éléphant</font></font> et <font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">qu'est-ce
+qu’un éléphant</font></font> et <font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">qu'est-ce
+qu'un éléphant fait dans la salle</font></font>. Ce dernier est mal
+adapté.</p>
+<p><br/>
+<br/>
+
+</p>
+<p>Le &gt; correspond à la fin de la phrase. Cela permet de gérer
+correctement les phrases ci-dessus comme suit:</p>
+<p><font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">u:
+(Qu'est-ce qu'un éléphant &gt; ) Un éléphant est un pachyderme.</font></font></p>
+<p>Le &lt; retourne au début de la phrase pour trouver une
+concordance avec ce qui lui est lié (ici&nbsp;: <font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">roses)</font></font>.
+Ainsi</p>
+<p><font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">u:
+(roses &lt; j'aime) J'aime les roses aussi.</font></font></p>
+<p>Fonctionne avec <font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">J'aime
+les roses</font></font> parce qu'il trouve <font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">roses
+</font></font>n'importe où dans la phrase, puis le &lt; réinitialise
+la position de la correspondance au début de la phrase, puis il
+trouve le <font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">j'aime</font></font>
+au début. Bien sûr, cela ne fonctionne pas avec  <font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">Vous
+savez que j'aime les roses</font></font> parce que <font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">j'aime</font></font>
+n’est pas au début de la phrase.</p>
+<h2 class="western">Le Joker (ou Troncature) simple indéfini *</h2>
+<p><br/>
+<br/>
+
+</p>
+<p>Le caractère générique * signifie 0 ou plus de mots en séquence
+successive. Il peut être utilisé pour élargir un modèle :</p>
+<p><font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">?:
+(quand * vous * à la maison) je rentre à la maison demain</font></font></p>
+<p>Ce modèle répond à <font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">Quand
+allez-vous aller à la maison </font></font><font face="Liberation Mono, monospace"><font size="3" style="font-size: 12pt">et</font></font><font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">
+Quand Roger est avec vous, y a-t-il quelqu'un à la maison </font></font><font size="2" style="font-size: 10pt">?</font></p>
+<p><br/>
+<br/>
+
+</p>
+<h2 class="western">Joker précis *n</h2>
+<p>Comme vous le remarquerez peut-être, les Joker indéfinies
+peuvent permettre à toutes sortes de méfaits de se faufiler dans
+une correspondance. Une manière plus précise de gérer le Joker
+consiste indiquer exactement combien de mots peuvent être couverts
+par l’astérisque. Le * suivi d'un nombre représente combien de
+mots il couvre.</p>
+<p><font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">?:
+(quand *1 vous *1 à la maison) Je suis rentré à la maison hier</font></font></p>
+<p>Fonctionne avec <font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">Quand
+êtes-vous rentré </font></font><font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">à
+la </font></font><font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">maison</font></font>
+mais n'acceptera pas de grandes variations comme <font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">quand</font></font><font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">
+Roger est avec vous </font></font><font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">à
+la maison</font></font> ni <font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">quand
+vous rentrez à la maison</font></font>, car le le premier * 1 n’a
+pas pu s’exprimer.</p>
+<h2 class="western">Joker à restriction de portée *~n</h2>
+<p>La manière habituelle de gérer les excès des caractères
+génériques précédents consiste à utiliser un caractère
+générique restreint. Il s'agit d'un * suivi d'un ~ et d'un nombre,
+comme *~3. Cela signifie à partir de 0 jusqu'à ce numéro, ou
+approximativement ce nombre.</p>
+<p>Un choix courant est *~2. Cela laisse place à certains mots de
+remplissage (comme un déterminant et un adjectif ou peut-être un
+type d'adverbe), sans les exiger ou laisser la phrase s’étendre.</p>
+<p><font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">?:
+(vous *~2 aller *~2 à la maison) Je vais souvent dans cette maison.</font></font></p>
+<p>Cela répond également à <font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">Vous
+pouvez </font></font><font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">aller</font></font><font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">
+à la maison</font></font> et à <font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">vous
+</font></font><font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">pouvez
+toujours</font></font><font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">
+aller </font></font><font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">à
+la maison</font></font>.</p>
+<h2 class="western">Les marqueurs non désordonnés &lt;&lt; &gt;&gt;</h2>
+<p>Souvent, vous voudrez faire correspondre plusieurs mots-clés,
+mais vous ne les voudrez pas dans n’importe quel ordre. Par
+exemple, la phrase <font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">j'aime
+les oiseaux </font></font><font face="Droid Sans arabic, sans-serif"><font size="3" style="font-size: 12pt">ressemble</font></font><font face="Droid Sans arabic, sans-serif"><font size="3" style="font-size: 12pt">
+</font></font>beaucoup à <font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">les
+oiseaux </font></font><font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">c’est</font></font><font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">
+ce que j'aime</font></font>, mais le sujet et le complément ont
+changé de place. Une façon un peu fastidieuse de les faire
+correspondre dans l’ordre est :</p>
+<p><font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">s:
+(~Je &lt;* aime &lt;* oiseaux) J'aime les oiseaux aussi.</font></font></p>
+<p>Cela fonctionne en remontant au début de la phrase et en
+permettant à n'importe quel nombre de mots de faire correspondre un
+caractère générique jusqu'à ce que le prochain mot-clé soit
+trouvé. C'est moche. La manière la plus propre est d'utiliser les
+marqueurs non désordonnés.</p>
+<p><font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">s:
+(&lt;&lt; J'aime les oiseaux &gt;&gt;) J'aime les oiseaux aussi.</font></font></p>
+<p>Puisque les mots peuvent être trouvés dans n'importe quel ordre,
+cela réinitialise le mécanisme de numérisation à la condition
+initiale de départ, qui est toujours &lt;* signifiant que vous
+pouvez associer l’élément suivant n'importe où dans la phrase.</p>
+<p>La position est remise librement au début suivant la séquence &lt;&lt;
+&gt;&gt;, donc, si vous aviez :</p>
+<p><font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">u:
+(J'aime &lt;&lt; vraiment &gt;&gt; photos)</font></font></p>
+<p>et une saisie comme <font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">Des</font></font><font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">
+photos que j'aime vraiment</font></font>, fonctionnerait parce que le
+système trouvera bien <font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">j'aime</font></font>
+ n'importe où dans la phrase, puis réinitialisera la position
+librement pour recommencer et trouvera <font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">des
+photos</font></font> autre part ailleurs dans la phrase.</p>
+<h2 class="western">Les choix []</h2>
+<p>Vous pouvez combiner des mots différents à la même position
+dans la phrase en plaçant ces choix entre crochet.</p>
+<p><font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">?:
+(vous [nagez pêchez skiez]) Oui ça m’arrive.</font></font></p>
+<p>Cela fonctionnera avec <font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">Vous
+nagez</font></font> et <font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">Est-ce
+que vous pêchez&nbsp;? </font></font><font face="Droid Sans Ar, sans-serif"><font size="3" style="font-size: 12pt">Comme
+avec</font></font> <font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">Vous
+skiez&nbsp;?</font></font> Les choix peuvent être des alternatives
+importantes ou ils peuvent être des synonymes.</p>
+<p><font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">?:
+(vous [mangez ingérez &quot;vous en mettez plein la lampe&quot;
+(êtes le prédateur naturel)] *~2 viande) J'adore la viande</font></font></p>
+<p>Notez que les éléments d'un choix peuvent être des séquences
+de mots soit entre guillemets soit entre crochets.</p>
+<h2 class="western">Les ~Concepts</h2>
+<p>Les choix sont utiles pour les synonymes, mais vous devez les
+répéter à chaque fois dans chaque règle. Ainsi, déclarer une
+liste de choix dans un seul endroit et de les utiliser partout
+ailleurs devient pratique. C'est ce que permettent les <b>Concepts</b>.
+Il sont très important dans les modèles qui font intervenir le sens
+plus que le mot lui-même.</p>
+<p><font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">concept:
+~mange [manger ingérer bouffe &quot;met plein la lampe&quot;]</font></font></p>
+<p>Contrairement aux choix, un concept ne peut pas utiliser les
+parenthèses pour contenir une séquence de mots, bien qu'il puisse
+utiliser les expressions entre guillemets.</p>
+<p>Un concept est une déclaration de niveau supérieur consistant en
+un nom commençant par ~ et qui ne comporte que des caractères
+alphanumériques et des caractères de soulignement. Un concept
+comporte une liste de mots qui le définit. Vous pouvez utiliser le
+nom de l'ensemble dans n'importe quelle catégorie de mot-clé ou de
+thème à la place d'un mot.</p>
+<p><font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">s:
+(je </font></font><font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">~</font></font><font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">mange
+de la viande) Vraiment ? </font></font><font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">Moi
+j</font></font><font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">e
+suis végétalien.</font></font></p>
+<p>Pensez au caractère ~ comme s’il signifiait approximativement.
+Les noms de <b>Topic</b><b> </b>sont également des noms de concepts,
+les mots-clés les accompagnant sont leurs <b>C</b><b>hoix</b>.</p>
+<p>ChatScript peut représenter des synonymes de mots comme ci-dessus
+ou des mots affiliés comme ci-dessous.</p>
+<p><font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">concept:
+~baseball [arbitre batte base balle]</font></font></p>
+<p><font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">#
+une déclaration de Topic</font></font></p>
+<p><font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">s:
+(~baseball) Je ne suis fan des sports américains comme le baseball.</font></font></p>
+<p>Un concept peut aussi être un ordre naturel de mots qu'un script
+avancé peut utiliser. Le concept commandé ci-dessous montre la
+question de la «&nbsp;main&nbsp;» au poker.</p>
+<p>concept: ~pokerhand [ quinte royale quinte flush carré de rois
+full ]</p>
+<p>Le modèle :</p>
+<p><font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">?:
+(qui * mieux * ~pokerhand * ou * ~pokerhand) ...</font></font></p>
+<p>détecte des questions comme qu’est-ce qui est mieux, une quinte
+flush ou une quinte royale&nbsp;? et le système a des fonctions qui
+peuvent exploiter l’ordonnancement du concept pour fournir une
+réponse correcte.</p>
+<p>Vous pouvez encapsuler des concepts dans d’autres concepts, donc
+il est correct de mettre :</p>
+<p><font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">concept:
+~nourriture [ ~viande ~dessert lasagne ~légumes ~fruit ]</font></font></p>
+<p>L'héritage hiérarchique est important dans la généralisation
+des modèles. Les concepts peuvent être utilisés pour créer des
+ontologies complètes de verbes, de noms, d'adjectifs et d'adverbes,
+permettant de faire correspondre les significations générales ou
+idiomatiques.</p>
+<p><br/>
+<br/>
+
+</p>
+<p>Le système comme il se présente est déjà programmé, il suffit
+de l'activer. Si vous exécutez la commande :build 0 sur le chatbot,
+vous construirez l'ontologie sous-jacente et la connaissance qu’à
+du monde le système. A vous d’explorer les dictionnaires et
+ensembles conceptuels existants.</p>
+<p><br/>
+<br/>
+
+</p>
+<p>En plus des ensembles fixes (plus de 1600), le système définit
+automatiquement des séries d’ensembles basés sur un dictionnaire.
+Ceux-ci comprennent des éléments de la phrase comme ~nom ainsi que
+des concepts généraux comme ~nombre.</p>
+<p><br/>
+<br/>
+
+</p>
+<p>Pour une liste complète, voir le <a href="../../Dropbox/Documents/ChatScript-7.53/HTMLDOCUMENTATION/ChatScript-System-Variables-and-Engine-defined-Concepts.html">ChatScript
+System Variables and Engine-defined Concepts</a> manual.</p>
+<h2 class="western">Capitalisation</h2>
+<p>Quelle que soit la façon dont vous tapez votre saisie, avec ou
+sans majuscules, le système tentera de comprendre le mot que vous
+voulez dire.</p>
+<p>Si vous écrivez&nbsp;: <font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">Puis-je
+revenir en arrière</font></font>, vous ne voulez pas dire que
+<font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">Puis-je</font></font>
+est un nom propre. Vous voulez dire, <font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">puis-je
+revenir en arrière</font></font>, et c'est ce que le système
+comprend.</p>
+<p>Cela signifie que lorsque vous écrivez des <b>Mo</b><b>dèles</b>,
+vous ne devez pas mettre de majuscules au premier mot de phrases.
+Vous mettrez des majuscules que pour les noms propres. Donc, ce
+modèle:</p>
+<p><font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">u:
+(Puis-je revenir en arrière)</font></font></p>
+<p>est faux et ne correspondra à rien et devrait être</p>
+<p><font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">u:
+(puis-je revenir en arrière)</font></font></p>
+<h2 class="western">Noms propres</h2>
+<p>Vous devez toujours mettre les noms propres à plusieurs mots
+entre guillemets, en particulier ceux avec ponctuation intégrée.
+Vous voulez que CS sache que toute la phrase est considérée comme
+une entité unique. Alors</p>
+<p><font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">u:
+( &quot;Dr. Watson&quot; )</font></font></p>
+<p><font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">u:
+( &quot;The Beatles&quot; )</font></font></p>
+<p><br/>
+<br/>
+
+</p>
+<h2 class="western">Interjections, &quot;actes de discours&quot; et
+ensembles de concepts</h2>
+<p><br/>
+<br/>
+
+</p>
+<p><font face="Droid Sans Arabic, sans-serif"><font size="3" style="font-size: 12pt">Un
+certains nombre de mots et de phrases sont interprétées
+différemment selon qu’ils se trouvent au début où à une autre
+position dans la phrase. Par exemple&nbsp;: Salut, ça va et c'est
+pour lui une chance de salut sont différents. De même, C’est sûr
+et Crois-tu vraiment que c’est sûr ne veulent pas dire la même
+chose.</font></font></p>
+<p><font face="Droid Sans Arabic, sans-serif"><font size="3" style="font-size: 12pt">Les
+mots qui ont un sens différent au début d'une phrase sont
+communément appelés interjections.</font></font></p>
+<p><font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt"><font face="Droid Sans Arabic, sans-serif"><font size="3" style="font-size: 12pt">Dans
+ChatScript, ceux-ci sont définis par le fichier interjections.txt
+(pour l'anglais, voir <a href="../../../LIVEDATA/ENGLISH/SUBSTITUTES/interjections.txt">interjections.txt</a>).</font></font></font></font></p>
+<p><br/>
+<br/>
+
+</p>
+<p><font face="Droid Sans Arabic, sans-serif"><font size="3" style="font-size: 12pt">En
+outre, ce fichier enrichit le concept avec des <i>actes de discours</i>,
+des phrases qui sont elles-même des sortes d’interjections. Toutes
+les interjections et ces actes de discours correspondent à des
+ensembles de concepts, qui seront traités par le moteur en lieu et
+place des entrées réelles de l'utilisateur.</font></font></p>
+<p><font face="Droid Sans Arabic, sans-serif"><font size="3" style="font-size: 12pt">Par
+exemple, <i>oui</i> et <i>ok</i> et <i>bien sûr</i>, tous sont
+traités grâce au fichier d'interjections comme signifiant l'acte de
+discours d’être d'accord. Donc, vous ne verrez pas <i>oui</i>,<i>
+</i><i>j’y vais</i><i> </i>sortir du moteur. Le fichier
+d'interjections fera bifurquer («&nbsp;<font face="Droid SSans Arabic, sans-serif">remapp</font><font face="Droid SSans Arabic, sans-serif">er&nbsp;»)
+</font>oui par ~yes, en le séparant de la phrase originale, suivie
+de j’y vais comme nouvelle phrase.</font></font></p>
+<p><font face="Droid Sans Arabic, sans-serif"><font size="3" style="font-size: 12pt">Ces
+interjections génériques (qui sont ouvertes au contrôle de
+l'auteur via interjections.txt) répertoriées dans le manuel
+</font></font><a href="../../Dropbox/Documents/ChatScript-7.53/HTMLDOCUMENTATION/ChatScript-System-Variables-and-Engine-defined-Concepts.html"><font face="Droid Sans Arabic, sans-serif"><font size="3" style="font-size: 12pt">ChatScript
+System Variables and Engine-defined Concepts manual</font></font></a><font face="Droid Sans Arabic, sans-serif"><font size="3" style="font-size: 12pt">.</font></font></p>
+<p><font face="Droid Sans Arabic, sans-serif"><font size="3" style="font-size: 12pt">Parce
+que toutes les interjections de début de phrase sont ainsi
+interrompues dans leur propre phrase, ce type de modèle ne
+fonctionnera pas:</font></font></p>
+<p><font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">u:
+(~yes _*)</font></font></p>
+<p><font face="Droid SSans Arabic, sans-serif"><font size="3" style="font-size: 12pt">Vous
+ne pouvez pas capturer le reste de la phrase ici, car cela fera
+partie de la phrase suivante pour le moteur. Cela signifie que les
+interjections agissent un peu différemment des autres concepts. Si
+vous utilisez un mot dans un modèle qui peut être remappé lors de
+la saisie, le compilateur de script émettra un avertissement.
+Probablement vous devriez utiliser le nom remappé à la place.</font></font></p>
+<h2 class="western">Canonisation</h2>
+<p><font face="Droid SSans Arabic, sans-serif"><font size="3" style="font-size: 12pt">Le
+système vous aide en généralisant vos <b>Modèles</b>. Il
+sélectionne à la fois le mot original et sa forme canonique si le
+mot de votre <b>Modèle </b>est sous sa forme canonique. Il vérifie
+également les formes minuscules et majuscules de vos mots. Pour les
+noms, la forme canonique est au singulier. Donc, si votre <b>Modèle
+</b>est:</font></font></p>
+<p><font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">?:
+(chien) J'ai un chat</font></font></p>
+<p><font face="Droid SSans Arabic, sans-serif"><font size="3" style="font-size: 12pt">Cela
+répondra également à <font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">moi,
+j'aime les chiens</font></font> et à<font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">
+j'ai un chien</font></font>. Alors que le motif</font></font></p>
+<p><font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">?:
+(chiens) J'ai un chat</font></font></p>
+<p><font face="Droid SSans Arabic, sans-serif"><font size="3" style="font-size: 12pt">ne
+répondra qu'à <font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">j’aime
+les chiens </font></font>mais pas à <font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">j’ai
+un chien</font></font>.</font></font></p>
+<p><font face="Droid SSans Arabic, sans-serif"><font size="3" style="font-size: 12pt">Pour
+les verbes, la forme canonique est à l'infinitif. Si votre modèle
+est:</font></font></p>
+<p><font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">?:
+(avoir *~2 raison) Oui.</font></font></p>
+<p><font face="Droid SSans Arabic, sans-serif"><font size="3" style="font-size: 12pt">Répondra
+de la même façon à <font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">A
+t il</font></font><font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">
+raison ?</font></font> comme à <font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">Ont
+ils raison ? </font></font>et <font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">ayons
+tous raison</font></font>. <font color="#800000">(les passages en
+rouge sont à revoir </font><font color="#800000">ou corriger</font><font color="#800000">)</font>.</font></font></p>
+<ul>
+	<li/>
+<p><font color="#800000"><font face="Droid SSans Arabic, sans-serif"><font size="3" style="font-size: 12pt">Les
+	suffixes possessifs </font></font><font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">mon
+	ma </font></font><font face="Droid SSans Arabic, sans-serif"><font size="3" style="font-size: 12pt">sont
+	traités comme </font></font><font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">mon</font></font><font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">.</font></font></font></p>
+	<li/>
+<p><font color="#800000"><font face="Droid SSans Arabic, sans-serif"><font size="3" style="font-size: 12pt">Les
+	adjectifs et les adverbes reviennent à leur forme de base.</font></font></font></p>
+	<li/>
+<p><font color="#800000"><font face="Droid SSans Arabic, sans-serif"><font size="3" style="font-size: 12pt">Les
+	déterminants <font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">un
+	le la ce celui-là</font></font> deviennent <font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">un</font></font>.</font></font></font></p>
+	<li/>
+<p><font color="#800000"><font face="Droid SSans Arabic, sans-serif"><font size="3" style="font-size: 12pt">Les
+	numéros en toutes lettres comme <font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">deux
+	mille</font></font> <font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">vingt</font></font><font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">-</font></font><font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">et</font></font><font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">-</font></font><font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">un</font></font>
+	sont transcrits en format numérique.</font></font></font></p>
+	<li/>
+<p><font face="Droid SSans Arabic, sans-serif"><font size="3" style="font-size: 12pt"><font color="#800000">Les
+	</font><font color="#800000">nombres à virgules</font><font color="#800000">
+	</font><font color="#800000">sont traduits en </font><font color="#800000">nombres
+	entiers s'ils correspondent exactement à la valeur, tandis que les
+	valeurs de devise deviennent des </font><font color="#800000">nombres
+	à virgules.</font></font></font></p>
+	<li/>
+<p><font face="Droid SSans Arabic, sans-serif"><font size="3" style="font-size: 12pt"><font color="#800000">Les
+	pronoms personnels comme </font><font color="#800000"><font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">moi,
+	mon moi-même</font></font></font><font color="#800000">, passent à
+	la forme du sujet </font><font color="#800000"><font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">je</font></font></font><font color="#800000">,
+	alors</font><font color="#800000"><font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">
+	qu</font></font></font><font color="#800000"><font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">i</font></font></font><font color="#800000"><font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">,
+	qu</font></font></font><font color="#800000"><font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">i
+	</font></font></font><font color="#800000"><font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">que
+	soit, </font></font></font><font color="#800000"><font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">celui
+	qui, celui là, </font></font></font><font color="#800000"><font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">quelqu'un</font></font></font><font color="#800000">
+	devie</font><font color="#800000">nne</font><font color="#800000">nt
+	</font><font color="#800000"><font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">quelqu'un
+	</font></font></font><font color="#800000">et </font><font color="#800000"><font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">quoi,
+	quand</font></font></font><font color="#800000">, deviennent</font><font color="#800000"><font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">
+	quand</font></font></font><font color="#800000"> et </font><font color="#800000"><font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">que
+	qui-que-ce-soit</font></font></font><font color="#800000"> devient
+	</font><font color="#800000"><font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">lequel</font></font></font><font color="#800000"><font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">.</font></font></font>
+	</font></font>
+	</p>
+</ul>
+<p><font face="Droid SSans Arabic, sans-serif"><font size="3" style="font-size: 12pt">Le
+fichier canonical.txt dans LIVEDATA contrôle la majeure partie de
+ces derniers.</font></font></p>
+<p><font face="Droid SSans Arabic, sans-serif"><font size="3" style="font-size: 12pt">Si
+le système voit </font></font><em>&amp; </em><font face="Droid SSans Arabic, sans-serif"><font size="3" style="font-size: 12pt">dans
+l'entrée, il le modifie </font></font><font face="Droid SSans Arabic, sans-serif"><font size="3" style="font-size: 12pt">en</font></font><font face="Droid SSans Arabic, sans-serif"><font size="3" style="font-size: 12pt">
+</font></font><font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">et</font></font><font face="Droid SSans Arabic, sans-serif"><font size="3" style="font-size: 12pt">.
+Cela change aussi </font></font><font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">_</font></font><font face="Droid SSans Arabic, sans-serif"><font size="3" style="font-size: 12pt">
+</font></font><font face="Droid SSans Arabic, sans-serif"><font size="3" style="font-size: 12pt">en</font></font><font face="Droid SSans Arabic, sans-serif"><font size="3" style="font-size: 12pt">
+</font></font><font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">'_</font></font><font face="Droid SSans Arabic, sans-serif"><font size="3" style="font-size: 12pt">.</font></font></p>
+<p><font face="Droid SSans Arabic, sans-serif"><font size="3" style="font-size: 12pt">Dans
+ChatScript, le simple concept ci-dessous accepte tous les temps et
+toutes les conjugaisons des verbes listés :</font></font></p>
+<p><font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">concept:
+~être [ être ressemble paraît semble ]</font></font></p>
+<p><font face="Droid SSans Arabic, sans-serif"><font size="3" style="font-size: 12pt">Si
+vous mettez une apostrophe devant un mot ou utilisez des mots qui ne
+sont pas sous leur forme canonique, le système se limitera à ce que
+vous avez utilisé dans le Modèle:</font></font></p>
+<p><font face="Droid SSans Arabic, sans-serif"><font size="3" style="font-size: 12pt"><font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">u:
+( </font></font><font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">tu
+‘</font></font><font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">aime
+bien )</font></font> Cela correspond <font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">tu
+aime bien</font></font>, mais pas à <font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">tu
+aimais bien</font></font>.</font></font></p>
+<p><font face="Droid SSans Arabic, sans-serif"><font size="3" style="font-size: 12pt"><font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">S:
+( </font></font><font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">tu
+est </font></font><font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">)</font></font>
+Est lu comme <font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">Tu
+es </font></font>mais pas comme <font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">tu
+étais</font></font> ni <font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">tu
+n’est pas</font></font></font></font></p>
+<p><font face="Droid SSans Arabic, sans-serif"><font size="3" style="font-size: 12pt">Il
+en va de même pour les concepts:</font></font></p>
+<p><font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">u:
+( '~adverbes_etendus )</font></font></p>
+<p><br/>
+<br/>
+
+</p>
+<h2 class="western">Exclamation ! Et double exclamation !!</h2>
+<p><font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt"><font face="Droid Sans Arabic, sans-serif"><font size="3" style="font-size: 12pt">On
+peut également rechercher l’absence d’un mot à un certain
+endroit de la phrase. L’utilisation de</font></font>&nbsp;!
+<font face="Drois sans Arabic, sans-serif"><font size="3" style="font-size: 12pt">signifie
+que ce qui est cherché à partir ce cet emplacement ne doit pas être
+trouvé dans la suite de la phrase pour que la règle s’exécute.
+Lorsqu'il est placé au début du Modèle, on ne dois le trouver
+nulle part ailleurs dans la phrase:</font></font></font></font></p>
+<p><font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">u:
+(![ pas jamais rarement ] je ~ingérer * ~viande) Vous mangez de la
+viande.</font></font></p>
+<p><font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">u:
+(! ~négation je * ~aime * ~viande ) Vous aimez la viande.</font></font></p>
+<p><font face="Droid Sans Arabic, sans-serif"><font size="3" style="font-size: 12pt">Alors
+que ! vérifie tout le reste de la phrase, !! vérifie uniquement le
+prochain mot après l’endroit où vous vous trouvez. Alors</font></font></p>
+<p><font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">u:
+(test !!ça) Je gagne</font></font></p>
+<p><font face="Droid Sans Arabic, sans-serif"><font size="3" style="font-size: 12pt">fonctionnera
+avec la saisie <font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">teste
+si ça marche</font></font> mais pas avec au <font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">test
+</font></font><font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">ça
+marche</font></font>.</font></font></p>
+<h2 class="western">Mots facultatifs <font face="Liberation Mono, monospace">{}</font></h2>
+<p><font face="Droid Sans Arabic, sans-serif"><font size="3" style="font-size: 12pt">Parfois,
+vous pouvez vous attendre à ce qu'un mot soit ou pourrait ne pas
+être indiqué. Votre Modèle peut anticiper cela, faire comme si il
+était présent. <font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">{``}</font></font>
+est proche du choix <font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">[``]</font></font>,
+sauf que sa correspondance est facultative. Il est autorisé à ne
+pas trouver le mot.</font></font></p>
+<p><font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">?:
+( C’est chaud une température de ~nombre {degré deg} Farenheit )
+Ça a l’air chaud.</font></font></p>
+<p><font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">S:
+( définissez {le mot (la signification de)} *1 &gt; ) Désolé. Je
+ne sais pas.</font></font></p>
+<p><font face="Droid Sans Arabic, sans-serif"><font size="3" style="font-size: 12pt">Notez
+comment nous n'avons pas eu à dire des degrés au pluriel dans la
+liste facultative, car cela est automatiquement compris en utilisant
+le degré canonique.</font></font></p>
+<p><font face="Droid Sans Arabic, sans-serif"><font size="3" style="font-size: 12pt">Si
+vous souhaitez tester une séquence de mots facultatifs, vous pouvez
+faire deux choses:</font></font></p>
+<p><font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">u:
+({rentrez} {vous} {vers} la maison)</font></font></p>
+<p><font face="Droid Sans Arabic, sans-serif"><font size="3" style="font-size: 12pt">ou</font></font></p>
+<p><font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">u:
+({&quot;aller vous à&quot;} la maison)</font></font></p>
+<p><font face="Droid Sans Arabic, sans-serif"><font size="3" style="font-size: 12pt">Dans
+une phrase entre guillemets, vous pouvez utiliser les formes
+canoniques ou les formes exactes. Et vous pouvez faire une phrase
+entre guillement de 4 mots (mais pas plus).</font></font></p>
+<h2 class="western">Les commandes</h2>
+<p><font face="Droid Sans Arabic, sans-serif"><font size="3" style="font-size: 12pt">Vous
+pouvez passer des commandes au système (le préfixe est<font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">&nbsp;:</font></font>
+) pour vous renseigner sur des choses, contrôler des choses,
+déboguer des choses, etc. Dans cette section simple, nous allons
+examiner les commandes servant à examiner les mots et leurs
+relations avec eux-mêmes et les concepts. Toutes les commandes sont
+invisibles pour le chat normal en ce sens qu'elles n'affectent pas
+l'état de traitement de l'utilisateur. Une liste de toutes les
+commandes peut être obtenue en tapant <font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">:commands</font></font>.</font></font></p>
+<p><font face="Droid Sans Arabic, sans-serif"><font size="3" style="font-size: 12pt">La
+documentation sur la plupart d'entre elles se trouve dans le manuel
+</font></font><a href="../../Dropbox/Documents/ChatScript-7.53/HTMLDOCUMENTATION/ChatScript-Debugging-Manual.html">ChatScript
+Debugging Manual</a><font face="Droid Sans Arabic, sans-serif"><font size="3" style="font-size: 12pt">.</font></font></p>
+<p><font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">:word
+mot</font></font></p>
+<p><font face="Droid Sans Arabic, sans-serif"><font size="3" style="font-size: 12pt">Affiche
+le dictionnaire et les informations sur les faits et les concepts
+liés au mot. Il affiche tout ce que le système connaît sur le mot
+donné - ses expressions, les attributs comme s'il s'agit d'un nom
+singulier, quelles sont ses significations dans le dictionnaire, et à
+quels Eléments et Faits il est directement lié. Tapez simplement
+quelque chose comme <font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">:</font></font><font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">word</font></font><font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">
+tennis</font></font></font></font></p>
+<p><font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">:up
+mot</font></font></p>
+<p><font face="Droid Sans Arabic, sans-serif"><font size="3" style="font-size: 12pt">Alors
+que <font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">:</font></font><font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">word</font></font>
+est intéressant, dans le but de voir ce qui correspond, la commande
+<font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">:</font></font><font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">up</font></font>
+est plus utile, car elle vous indique comment ce mot participe dans
+les ensembles et dans la hiérarchie héritée à la fois des
+concepts et du Net, ainsi, l’ensemble des relations répertoriées
+serait reconnu si le mot donné comme argument est utilisé.</font></font></p>
+<p><font face="Droid Sans Arabic, sans-serif"><font size="3" style="font-size: 12pt">Supposons
+que vous créez le concept de <font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">~bâtiments</font></font>.
+Il suffit de penser à un mot que vous voulez y inclure, comme
+<i>T</i><i>emple</i>,</font></font></p>
+<pre class="western"><font face="Droid Sans Arabic, sans-serif"><font size="3" style="font-size: 12pt"><code class="western">&gt;&gt;:up temple</code></font></font>
+
+<code class="western">For temple:</code>
+<code class="western"> </code><code class="western">Set hierarchy:</code>
+<code class="western">    </code><code class="western">~religious_buildings</code>
+<code class="western">       </code><code class="western">~building</code>
+<code class="western">          </code><code class="western">~tool</code>
+<code class="western">          </code><code class="western">~locatedentity</code>
+<code class="western">             </code><code class="western">~there</code>
+<code class="western">          </code><code class="western">~immovable</code>
+<code class="western">             </code><code class="western">~functions</code>
+<code class="western">          </code><code class="western">~enterable</code>
+<code class="western">          </code><code class="western">~artifacts</code>
+<code class="western">             </code><code class="western">~objects</code>
+<code class="western">                </code><code class="western">~nounlist</code>
+<code class="western">             </code><code class="western">~human_data</code>
+<code class="western"> </code><code class="western">Wordnet hierarchy:</code>
+<code class="western">  </code><code class="western">temple~1:N    the place of worship for a Jewish congregation</code>
+<code class="western">    </code><code class="western">is house_of_worship~1  any building where congregations gather for prayer</code>
+<code class="western">       </code><code class="western">is building~3 a structure that has a roof and walls and stands more or less permanently in one place</code>
+<code class="western">          </code><code class="western">is structure~1 a thing constructed</code>
+<code class="western">             </code><code class="western">is artifact~1 a man-made object taken as a whole</code>
+<code class="western">                </code><code class="western">is whole~1 an assemblage of parts that is regarded as a single entity</code>
+<code class="western">                </code><code class="western">~entirety_words</code>
+<code class="western">                </code><code class="western">~goodness</code>
+<code class="western">                   </code><code class="western">is object~1 a tangible and visible entity</code>
+<code class="western">                   </code><code class="western">~verbal_disagree</code>
+<code class="western">                      </code><code class="western">is physical_entity~1 an entity that has physical existence</code>
+<code class="western">                         </code><code class="western">is entity~1 that which is perceived or known or inferred to have its own distinct existence</code>
+<code class="western">                         </code><code class="western">~nounroot</code>
+<code class="western">  </code><code class="western">temple~2:N    place of worship consisting of an edifice for the worship of a deity</code>
+<code class="western">    </code><code class="western">is house_of_worship~1  any building where congregations gather for prayer</code>
+<code class="western">  </code><code class="western">temple~3:N    an edifice devoted to special or exalted purposes</code>
+<code class="western">    </code><code class="western">is building~3  a structure that has a roof and walls and stands more or less permanently in one place</code>
+<code class="western">  </code><code class="western">temple~4:N    the flat area on either side of the forehead</code>
+<code class="western">    </code><code class="western">is feature~2  the characteristic parts of a person's face: eyes and nose and mouth and chin</code>
+<code class="western">    </code><code class="western">~focus</code>
+<code class="western">       </code><code class="western">is body_part~1 any part of an organism such as an organ or extremity</code>
+<code class="western">          </code><code class="western">is piece~11 a portion of a natural object</code>
+<code class="western">          </code><code class="western">~unitmeasure</code>
+<code class="western">             </code><code class="western">is thing~1 a separate and self-contained entity</code>
+<code class="western">                </code><code class="western">is physical_entity~1 an entity that has physical existence</code></pre><p>
+<font face="Droid Sans Arabic, sans-serif"><font size="3" style="font-size: 12pt">Si
+nous essayons de construire le concept de bâtiments, alors le
+<font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">temple~1</font></font>,
+le <font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">temple~2</font></font><font face="Liberation Mono, monospace">
+</font>et le <font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">temple~3
+</font></font>sont des définitions qui ont du sens (:N ne nomme
+qu’une expression). Mais notez qu’au début de l’affichage que
+ces définitions proviennent toutes de <font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">building~3</font></font>,
+et que l'utiliser aurait du sens et engloberait tout ce que le
+WoldNet considérerait comme un bâtiment dans ce sens.</font></font></p>
+<pre class="western"><font face="Droid Sans Arabic, sans-serif"><font size="3" style="font-size: 12pt"><code class="western">:down </code><code class="western">mot</code><code class="western"> limit</code></font></font></pre><p>
+<br/>
+<br/>
+
+</p>
+<p><font face="Droid Sans Arabic, sans-serif"><font size="3" style="font-size: 12pt">prend
+un mot et poursuit sa hiérarchie en affichant ce qui hérite de lui.
+La limite combien de niveaux jusqu’où aller (la valeur par défaut
+est 2) car la digression peut se développer très loin pour certains
+mots. Si le mot est un concept ou un nom de Topic, il affiche ses
+membres de haut niveau. </font></font><code class="western">:down
+entit</code><code class="western">é</code><code class="western"> 1</code><font face="Droid Sans Arabic, sans-serif"><font size="3" style="font-size: 12pt">
+ou </font></font><code class="western"><font size="3" style="font-size: 12pt">:down
+~animaux 2</font></code><font face="Droid Sans Arabic, sans-serif"><font size="3" style="font-size: 12pt">.</font></font></p>
+<p><br/>
+<br/>
+
+</p>
+<h1 class="western">SORTIE SIMPLE</h1>
+<p><br/>
+<br/>
+
+</p>
+<p><font face="Droid Sans Arabic, sans-serif"><font size="3" style="font-size: 12pt">L'objectif
+</font></font><font face="Droid Sans Arabic, sans-serif"><font size="3" style="font-size: 12pt">pour
+le moteur</font></font><font face="Droid Sans Arabic, sans-serif"><font size="3" style="font-size: 12pt">
+est de générer des résultats à afficher à un utilisateur. Quand
+une </font></font><font face="Droid Sans Arabic, sans-serif"><font size="3" style="font-size: 12pt">R</font></font><font face="Droid Sans Arabic, sans-serif"><font size="3" style="font-size: 12pt">ègle
+le fait, elle a atteint l'objectif du </font></font><font face="Droid Sans Arabic, sans-serif"><font size="3" style="font-size: 12pt">Topic</font></font><font face="Droid Sans Arabic, sans-serif"><font size="3" style="font-size: 12pt">.</font></font></p>
+<h2 class="western">Sortie directe</h2>
+<p><font face="Droid Sans Arabic, sans-serif"><font size="3" style="font-size: 12pt">Pour
+générer une sortie simple, mettez simplement le texte que vous
+voulez afficher après le </font></font><font face="Droid Sans Arabic, sans-serif"><font size="3" style="font-size: 12pt">Modèle
+</font></font><font face="Droid Sans Arabic, sans-serif"><font size="3" style="font-size: 12pt">d'une
+</font></font><font face="Droid Sans Arabic, sans-serif"><font size="3" style="font-size: 12pt">R</font></font><font face="Droid Sans Arabic, sans-serif"><font size="3" style="font-size: 12pt">ègle.
+Les </font></font><font face="Droid Sans Arabic, sans-serif"><font size="3" style="font-size: 12pt">Gambits</font></font><font face="Droid Sans Arabic, sans-serif"><font size="3" style="font-size: 12pt">
+ne doivent pas comporter de composant d’</font></font><font face="Droid Sans Arabic, sans-serif"><font size="3" style="font-size: 12pt">un
+Modèle</font></font><font face="Droid Sans Arabic, sans-serif"><font size="3" style="font-size: 12pt">,
+auquel cas leur </font></font><font face="Droid Sans Arabic, sans-serif"><font size="3" style="font-size: 12pt">affichage
+a lieu im</font></font><font face="Droid Sans Arabic, sans-serif"><font size="3" style="font-size: 12pt">médiatement.</font></font></p>
+<p><font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">t:
+Ceci est délivré pour l'utilisateur.</font></font></p>
+<p><font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">?:
+( salut ) comment allez-vous? Vivez-vous ? Allez-vous mourir bientôt
+?</font></font></p>
+<h2 class="western">Auto formatage</h2>
+<p><font face="Droid Sans Arabic, sans-serif"><font size="3" style="font-size: 12pt">Vous
+donnez les mots et la ponctuation pour l'affichage. Le système les
+formate automatiquement, peu importe si les virgules, les espaces et
+les tabulation qui les précèdent, ou combien de mots-clés ou
+d'onglets existent entre les mots. Le système les reformate
+automatiquement. <font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">Je
+vous aime bien?</font></font> et <font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">Je
+vous aime bien ?</font></font> Seront affichés de la même façon.</font></font></p>
+<p><font face="Droid Sans Arabic, sans-serif"><font size="3" style="font-size: 12pt">Si
+vous avez réellement besoin de contrôler l'espacement, consultez
+les « formatages avec guillemets» (</font></font>formatted double
+quotes)<font face="Droid Sans Arabic, sans-serif"><font size="3" style="font-size: 12pt">
+dans le manuel utilisateur avancé <a href="../../Dropbox/Documents/ChatScript-7.53/HTMLDOCUMENTATION/ChatScript-Advanced-User-Manual.html#formatted-double-quotes-activeformat-stringd">ChatScript
+Advanced User Manual</a>.</font></font></p>
+<p><br/>
+<br/>
+
+</p>
+<h2 class="western">Sortie littérale \</h2>
+<p><font face="Droid Sans Arabic, sans-serif"><font size="3" style="font-size: 12pt">Pour
+obtenir une sortie de caractères réservé ayant un sens pour le
+moteur, comme <b>[</b> et <b>]</b> , vous devez mettre une barre
+oblique inverse juste devant eux&nbsp;:<font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">
+</font></font><font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">\</font></font>.
+A l’inverse, pour afficher une nouvelle ligne, vous utiliserez <font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">\n</font></font>
+et une tabulation avec <font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">\t</font></font>.</font></font></p>
+<h2 class="western">Sortie aléatoire []</h2>
+<p><font face="Droid Sans Arabic, sans-serif"><font size="3" style="font-size: 12pt">Vous
+pouvez sélectionner parmi une gamme de choix en utilisant des choix
+de sortie. Chaque choix est placé entre [], et un ensemble contigu
+de ceux-ci forment une zone dans laquelle le système choisira au
+hasard. Chaque fois que les articles sont présentés de façon
+discontinue, vous obtenez une nouvelle zone aléatoire.</font></font></p>
+<p><font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">?:
+(salut) [bonjour.] [salut] [hey] Tu va [danser] [nager] [manger]
+prochainement ?</font></font></p>
+<p><font face="Droid Sans Arabic, sans-serif"><font size="3" style="font-size: 12pt">Dans
+ce qui précède il y a deux zones aléatoires, séparées par un
+texte fixe. Ainsi, il pourrait produire</font></font></p>
+<p><font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">hey
+Tu vas danser prochainement ?</font></font></p>
+<p><font face="Droid Sans Arabic, sans-serif"><font size="3" style="font-size: 12pt">Ou
+</font></font>
+</p>
+<p><font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">bonjour.
+Tu va manger prochainement ?</font></font></p>
+<p><br/>
+<br/>
+
+</p>
+<h1 class="western">Les variables</h1>
+<p><br/>
+<br/>
+
+</p>
+<p><font face="Droid Sans Arabic, sans-serif"><font size="3" style="font-size: 12pt">Un
+chatBot avec aucune capacité de se souvenir, même brièvement, de
+ce que disent les utilisateurs, serait pauvre. ChatScript prend en
+charge plusieurs niveaux de mémorisation. La variable ultime crée
+des Faits, mais elle fait l’objet de son propre manuel </font></font><a href="../../Dropbox/Documents/ChatScript-7.53/HTMLDOCUMENTATION/ChatScript-Fact-Manual.html">ChatScript
+Fact Manual</a><font face="Droid Sans Arabic, sans-serif"><font size="3" style="font-size: 12pt">.</font></font></p>
+<h2 class="western">_* la variable de correspondance</h2>
+<p><font face="Droid Sans Arabic, sans-serif"><font size="3" style="font-size: 12pt">Lorsque
+vous utilisez des </font></font><font face="Droid Sans Arabic, sans-serif"><font size="3" style="font-size: 12pt">Joker</font></font><font face="Droid Sans Arabic, sans-serif"><font size="3" style="font-size: 12pt">
+et définissez un </font></font><font face="Droid Sans Arabic, sans-serif"><font size="3" style="font-size: 12pt">Modèle</font></font><font face="Droid Sans Arabic, sans-serif"><font size="3" style="font-size: 12pt">,
+vous pouvez demander au système de mémoriser brièvement le mot qu</font></font><font face="Droid Sans Arabic, sans-serif"><font size="3" style="font-size: 12pt">i
+</font></font><font face="Droid Sans Arabic, sans-serif"><font size="3" style="font-size: 12pt">correspond</font></font><font face="Droid Sans Arabic, sans-serif"><font size="3" style="font-size: 12pt">ra</font></font><font face="Droid Sans Arabic, sans-serif"><font size="3" style="font-size: 12pt">.
+Il suffit de placer un trait de soulignement devant ce que vous
+voulez mémoris</font></font><font face="Droid Sans Arabic, sans-serif"><font size="3" style="font-size: 12pt">er</font></font><font face="Droid Sans Arabic, sans-serif"><font size="3" style="font-size: 12pt">.</font></font></p>
+<p><font face="Droid Sans Arabic, sans-serif"><font size="3" style="font-size: 12pt">Le
+but de la mémorisation est de pouvoir utiliser </font></font><font face="Droid Sans Arabic, sans-serif"><font size="3" style="font-size: 12pt">s</font></font><font face="Droid Sans Arabic, sans-serif"><font size="3" style="font-size: 12pt">a
+valeur sur </font></font><font face="Droid Sans Arabic, sans-serif"><font size="3" style="font-size: 12pt">une</font></font><font face="Droid Sans Arabic, sans-serif"><font size="3" style="font-size: 12pt">
+sortie. Les résultats de la mémorisation sont stockés </font></font><font face="Droid Sans Arabic, sans-serif"><font size="3" style="font-size: 12pt">comme</font></font><font face="Droid Sans Arabic, sans-serif"><font size="3" style="font-size: 12pt">
+</font></font><font face="Droid Sans Arabic, sans-serif"><font size="3" style="font-size: 12pt">V</font></font><font face="Droid Sans Arabic, sans-serif"><font size="3" style="font-size: 12pt">ariables
+de </font></font><font face="Droid Sans Arabic, sans-serif"><font size="3" style="font-size: 12pt">C</font></font><font face="Droid Sans Arabic, sans-serif"><font size="3" style="font-size: 12pt">orrespondance
+nommées </font></font><font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">_0</font></font><font face="Droid Sans Arabic, sans-serif"><font size="3" style="font-size: 12pt">,
+</font></font><font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">_1</font></font><font face="Droid Sans Arabic, sans-serif"><font size="3" style="font-size: 12pt">,
+etc., selon le nombre de soulignement que vous </font></font><font face="Droid Sans Arabic, sans-serif"><font size="3" style="font-size: 12pt">aurez
+</font></font><font face="Droid Sans Arabic, sans-serif"><font size="3" style="font-size: 12pt">utilise</font></font><font face="Droid Sans Arabic, sans-serif"><font size="3" style="font-size: 12pt">r</font></font><font face="Droid Sans Arabic, sans-serif"><font size="3" style="font-size: 12pt">
+dans </font></font><font face="Droid Sans Arabic, sans-serif"><font size="3" style="font-size: 12pt">votre</font></font><font face="Droid Sans Arabic, sans-serif"><font size="3" style="font-size: 12pt">
+</font></font><font face="Droid Sans Arabic, sans-serif"><font size="3" style="font-size: 12pt">M</font></font><font face="Droid Sans Arabic, sans-serif"><font size="3" style="font-size: 12pt">odèle.</font></font></p>
+<p><br/>
+<br/>
+
+</p>
+<p><font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">?:
+(tu manges *~2 _~viande) Non, je déteste _0.</font></font></p>
+<p><font face="Droid Sans Arabic, sans-serif"><font size="3" style="font-size: 12pt">Si
+l'entrée est-ce que </font></font><font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">tu</font></font><font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">
+mange</font></font><font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">s</font></font><font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">
+du jambon</font></font><font face="Droid Sans Arabic, sans-serif"><font size="3" style="font-size: 12pt">,
+la sortie serait </font></font><font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">Non,
+je déteste le jambon</font></font><font face="Droid Sans Arabic, sans-serif"><font size="3" style="font-size: 12pt">.
+Bien sûr, la valeur de </font></font><font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">_0</font></font><font face="Droid Sans Arabic, sans-serif"><font size="3" style="font-size: 12pt">
+n'est garantie que pour l'exécution de cette </font></font><font face="Droid Sans Arabic, sans-serif"><font size="3" style="font-size: 12pt">R</font></font><font face="Droid Sans Arabic, sans-serif"><font size="3" style="font-size: 12pt">ègle.
+Les variables de correspondance peuvent être effacées lorsque vous
+exécutez une autre règle. Ou ils peuvent durer un moment.</font></font></p>
+<p><font face="Droid Sans Arabic, sans-serif"><font size="3" style="font-size: 12pt">Au
+plus, il durera la durée de </font></font><font face="Droid Sans Arabic, sans-serif"><font size="3" style="font-size: 12pt">cette</font></font><font face="Droid Sans Arabic, sans-serif"><font size="3" style="font-size: 12pt">
+volée (plusieurs phrases peut-être) après quoi il devrait être
+présumé détruit. Chaque fois que vous commencez une volée, vous
+devriez présumer que les variables de correspondance contiennent des
+</font></font><font face="Droid Sans Arabic, sans-serif"><font size="3" style="font-size: 12pt">résidus</font></font><font face="Droid Sans Arabic, sans-serif"><font size="3" style="font-size: 12pt">
+inconnus.</font></font></p>
+<p><font face="Droid Sans Arabic, sans-serif"><font size="3" style="font-size: 12pt">ChatScript
+enregistre ces variables </font></font><font face="Droid Sans Arabic, sans-serif"><font size="3" style="font-size: 12pt">de
+</font></font><font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">_0</font></font><font face="Droid Sans Arabic, sans-serif"><font size="3" style="font-size: 12pt">
+à </font></font><font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">_20</font></font><font face="Droid Sans Arabic, sans-serif"><font size="3" style="font-size: 12pt">.</font></font></p>
+<p><font face="Droid Sans Arabic, sans-serif"><font size="3" style="font-size: 12pt">J'utilise
+souvent la gamme </font></font><font face="Droid Sans Arabic, sans-serif"><font size="3" style="font-size: 12pt">de
+</font></font><font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">_10</font></font><font face="Droid Sans Arabic, sans-serif"><font size="3" style="font-size: 12pt">
+à </font></font><font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">_20</font></font><font face="Droid Sans Arabic, sans-serif"><font size="3" style="font-size: 12pt">
+comme variable</font></font><font face="Droid Sans Arabic, sans-serif"><font size="3" style="font-size: 12pt">s
+«&nbsp;de sécurité&nbsp;»</font></font><font face="Droid Sans Arabic, sans-serif"><font size="3" style="font-size: 12pt">
+pour la durée d'une volée, car je n'ajouterai jamais autant de
+variables dans une seule phrase. Il est peu probable que je </font></font><font face="Droid Sans Arabic, sans-serif"><font size="3" style="font-size: 12pt">dépasse
+</font></font><font face="Droid Sans Arabic, sans-serif"><font size="3" style="font-size: 12pt">5.
+Je peux donc les </font></font><font face="Droid Sans Arabic, sans-serif"><font size="3" style="font-size: 12pt">utiliser</font></font><font face="Droid Sans Arabic, sans-serif"><font size="3" style="font-size: 12pt">
+comme je le souhaite.</font></font></p>
+<p><font face="Droid Sans Arabic, sans-serif"><font size="3" style="font-size: 12pt">Lorsque
+le système mémorise vo</font></font><font face="Droid Sans Arabic, sans-serif"><font size="3" style="font-size: 12pt">s
+</font></font><font face="Droid Sans Arabic, sans-serif"><font size="3" style="font-size: 12pt">variables
+de correspondance _, il stocke à la fois le mot original, sa forme
+canonique et </font></font><font face="Droid Sans Arabic, sans-serif"><font size="3" style="font-size: 12pt">s</font></font><font face="Droid Sans Arabic, sans-serif"><font size="3" style="font-size: 12pt">a
+position d</font></font><font face="Droid Sans Arabic, sans-serif"><font size="3" style="font-size: 12pt">ans
+le</font></font><font face="Droid Sans Arabic, sans-serif"><font size="3" style="font-size: 12pt">
+texte. En sortie, par défaut, vous obtenez la forme canonique. Si
+vous voulez </font></font><font face="Droid Sans Arabic, sans-serif"><font size="3" style="font-size: 12pt">utiliser
+la forme</font></font><font face="Droid Sans Arabic, sans-serif"><font size="3" style="font-size: 12pt">
+original</font></font><font face="Droid Sans Arabic, sans-serif"><font size="3" style="font-size: 12pt">e</font></font><font face="Droid Sans Arabic, sans-serif"><font size="3" style="font-size: 12pt">,
+vous devez </font></font><font face="Droid Sans Arabic, sans-serif"><font size="3" style="font-size: 12pt">faire</font></font><font face="Droid Sans Arabic, sans-serif"><font size="3" style="font-size: 12pt">
+précéder votre référence </font></font><font face="Droid Sans Arabic, sans-serif"><font size="3" style="font-size: 12pt">d’</font></font><font face="Droid Sans Arabic, sans-serif"><font size="3" style="font-size: 12pt">une
+apostrophe.</font></font></p>
+<p><font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">?:
+(vous mangez _ [jambon oeufs bacon]) Je mange '_0.</font></font></p>
+<p><font face="Droid Sans Arabic, sans-serif"><font size="3" style="font-size: 12pt">Si
+l'entrée est&nbsp;: </font></font><font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">vous
+mangez des œufs</font></font><font face="Droid Sans Arabic, sans-serif"><font size="3" style="font-size: 12pt">,
+</font></font><font face="Droid Sans Arabic, sans-serif"><font size="3" style="font-size: 12pt">la
+sortie sera </font></font><font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">je
+</font></font><font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">mange</font></font><font face="Liberation Mono, monospace"><font size="2" style="font-size: 10pt">
+des œufs</font></font><font face="Droid Sans Arabic, sans-serif"><font size="3" style="font-size: 12pt">.
+Si j</font></font><font face="Droid Sans Arabic, sans-serif"><font size="3" style="font-size: 12pt">e
+n</font></font><font face="Droid Sans Arabic, sans-serif"><font size="3" style="font-size: 12pt">'avais
+</font></font><font face="Droid Sans Arabic, sans-serif"><font size="3" style="font-size: 12pt">pas
+</font></font><font face="Droid Sans Arabic, sans-serif"><font size="3" style="font-size: 12pt">utilisé
+l'apostrophe, la sortie aurait été que je mange </font></font><font face="Droid Sans Arabic, sans-serif"><font size="3" style="font-size: 12pt">un
+</font></font><font face="Droid Sans Arabic, sans-serif"><font size="3" style="font-size: 12pt">œuf.</font></font></p>
+</body>
+</html>

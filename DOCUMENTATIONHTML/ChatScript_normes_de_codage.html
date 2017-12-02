@@ -1,0 +1,646 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<title></title>
+	<meta name="generator" content="LibreOffice 5.3.1.2 (Linux)"/>
+	<meta name="created" content="2017-10-24T08:20:00.014782799"/>
+	<meta name="changed" content="2017-12-02T10:27:12.403055742"/>
+	<style type="text/css">
+		@page { margin: 2cm }
+		p { margin-bottom: 0.25cm; line-height: 120% }
+		h1 { margin-bottom: 0.21cm }
+		h1.western { font-family: "Liberation Sans", sans-serif; font-size: 18pt }
+		h1.cjk { font-family: "Noto Sans CJK SC Regular"; font-size: 18pt }
+		h1.ctl { font-family: "FreeSans"; font-size: 18pt }
+		pre.cjk { font-family: "DejaVu Sans Mono", monospace }
+		p.sdfootnote { margin-left: 0.6cm; text-indent: -0.6cm; margin-bottom: 0cm; font-size: 10pt; line-height: 100% }
+		a:link { so-language: zxx }
+		a.sdfootnoteanc { font-size: 57% }
+	</style>
+</head>
+<body lang="fr-FR" dir="ltr">
+<p align="center" style="margin-top: 0.42cm; margin-bottom: 0.21cm; line-height: 100%; page-break-after: avoid">
+<font face="Arabic Sans, sans-serif"><font size="6" style="font-size: 28pt"><b>Normes
+de codage ChatScript</b></font></font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0.42cm; font-variant: normal; letter-spacing: normal; font-style: normal; font-weight: normal; line-height: 138%; orphans: 2; widows: 2; text-decoration: none">
+<font color="#24292e"><font face="Droid Sans Fallback, sans-serif"><font size="2" style="font-size: 10pt"><span style="background: transparent">Traduction
+Mathieu Rigard 02/12/2017 pour Utopia&nbsp;:
+<a href="mailto:m.rigard@utopia-french.tech">m.rigard@utopia-french.tech</a></span></font></font></font></p>
+<p style="margin-bottom: 0.42cm; font-variant: normal; letter-spacing: normal; font-style: normal; font-weight: normal; line-height: 138%; orphans: 2; widows: 2; text-decoration: none">
+<font color="#800000"><font face="Droid Sans Fallback, sans-serif"><font size="2" style="font-size: 10pt"><span style="background: transparent">A
+faire&nbsp;: correction et ancrer les liens.</span></font></font></font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<pre class="western" style="font-variant: normal; letter-spacing: normal; font-style: normal; font-weight: normal"><a name="tw-target-text"></a><font color="#212121"><font face="Arabic Sans, sans-serif"><font size="3" style="font-size: 12pt">Contenu:</font></font></font>
+<font color="#212121"><font face="Arabic Sans, sans-serif"><font size="3" style="font-size: 12pt"><span lang="fr-FR">Bonne indentation </span></font></font></font>
+<font color="#212121"><font face="Arabic Sans, sans-serif"><font size="3" style="font-size: 12pt"><span lang="fr-FR">Étiquettes de règles</span></font></font></font>
+<font color="#212121"><font face="Arabic Sans, sans-serif"><font size="3" style="font-size: 12pt"><span lang="fr-FR">Exemples d'entrées</span></font></font></font>
+<font color="#212121"><font face="Arabic Sans, sans-serif"><font size="3" style="font-size: 12pt"><span lang="fr-FR">Modèles faciles à lire</span></font></font></font>
+<font color="#212121"><font face="Arabic Sans, sans-serif"><font size="3" style="font-size: 12pt"><span lang="fr-FR">Affichage facile à lire</span></font></font></font>
+<font color="#212121"><font face="Arabic Sans, sans-serif"><font size="3" style="font-size: 12pt"><span lang="fr-FR">Ensembles de règles connexes</span></font></font></font>
+<font color="#212121"><font face="Arabic Sans, sans-serif"><font size="3" style="font-size: 12pt"><span lang="fr-FR">Localisation de concepts/fonctions</span></font></font></font>
+<font color="#212121"><font face="Arabic Sans, sans-serif"><font size="3" style="font-size: 12pt"><span lang="fr-FR">Casse des mots-clés et fautes d'orthographe</span></font></font></font></pre><p style="margin-bottom: 0cm; line-height: 100%">
+<br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="Arabic Sans, sans-serif">Les
+normes de codage vous permettent à vous, ainsi qu'aux autres, de
+comprendre votre code.</font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="Arabic Sans, sans-serif">Ils
+peuvent également permettre à d'autres personnes qui ne sont pas
+des programmeurs de voir un résumé de votre code, généré par CS
+: c’est la fonctionnalité <font size="2" style="font-size: 10pt"><i>:abstract</i></font>.</font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="Arabic Sans, sans-serif">Pour
+utiliser <font size="2" style="font-size: 10pt"><i>:abstract</i></font>,
+connectez-vous simplement en local avec un nouveau nom d'utilisateur
+(ou effacez le contenu du dossier USERS), puis tapez &quot; :abstract
+~mytopic&quot; pour un topic. Le résumé ne sera pas lisible à
+l'écran mais est capturé dans le journal (log) de l'utilisateur.
+Renommez simplement ce fichier journal et déplacez-le ailleurs.</font></p>
+<h1 class="western" style="page-break-before: always"><font face="Arabic Sans, sans-serif">Indentation
+des règles</font></h1>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="Arabic Sans, sans-serif">Ne
+pas indenter les règles de niveau supérieur.</font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="Arabic Sans, sans-serif">Réponses
+en retrait (une tabulation) par niveau.</font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="Arabic Sans, sans-serif">Laissez
+la ligne vide avant une règle de haut niveau.</font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="Arabic Sans, sans-serif"><b>Ex</b><b>e</b><b>mples</b>
+:</font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="Arabic Sans, sans-serif">t:
+Comment vas-tu&nbsp;?</font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="Arabic Sans, sans-serif">	a:
+(~goodness) content pour toi.</font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="Arabic Sans, sans-serif">		b:
+(toi) pas si mal.</font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="Arabic Sans, sans-serif">	a:
+(~badness) désolé pour toi.</font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="Arabic Sans, sans-serif">	b:
+(toi) pas si mal. # à ne pas faire - mauvais niveau d'indentation</font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="Arabic Sans, sans-serif">	</font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="Arabic Sans, sans-serif">u:
+(Comment vas-tu) Je vais bien.</font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="Arabic Sans, sans-serif">u:
+(et après) xxx # à ne pas faire<span style="font-variant: normal"><font color="#212121"><font size="3" style="font-size: 12pt"><span style="letter-spacing: normal"><span lang="fr-FR"><span style="font-style: normal"><span style="font-weight: normal">
+- coincé immédiatement après la règle de haut niveau</span></span></span></span></font></font></span></font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="Arabic Sans, sans-serif">	u:
+(pourquoi pas) parce que. # c'est une mauvaise indentation de la
+règle de haut niveau.</font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="Arabic Sans, sans-serif"><b>Explications
+</b>: D'une part, vous voulez minimiser l'espace inutile sur une
+page. Alors</font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="Arabic Sans, sans-serif">les
+règles de premier niveau ne doivent pas être indentées<a class="sdfootnoteanc" name="sdfootnote1anc" href="#sdfootnote1sym"><sup>1</sup></a>
+(ni leurs exemples d'entrées). D'autre part, vous voulez voir
+facilement la structure du code, alors mettre des tabulation
+(indenter) vos répliques est de nature à clarifier la structure du
+dialogue. Ainsi vous pourrez repérer facilement l’endroit où un
+segment de règle se termine et où un autre commence. Donc, je
+sépare les règles de haut niveau et je garde les répliques
+ensemble.</font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<h1 class="western" style="page-break-before: always">Étiquettes de
+règles</h1>
+<p><br/>
+<br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="sans-serif"><font size="4" style="font-size: 13pt">Faire
+des étiquettes significatives en utilisant des lettres majuscules.</font></font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="sans-serif"><font size="4" style="font-size: 13pt">Étiquetez
+toutes les règles qui ont leur propre texte de sortie.</font></font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="sans-serif"><font size="4" style="font-size: 13pt"><b>Exemples
+</b>:</font></font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="sans-serif"><font size="4" style="font-size: 13pt">t:
+DEMANDE_EMAIL () Quelle est votre adresse email ?</font></font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="sans-serif"><font size="4" style="font-size: 13pt">	a:
+EMAIL_DONNE (~email_url) Merci.</font></font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="sans-serif"><font size="4" style="font-size: 13pt">	a:
+() ^reuse (EMAIL_DONNE)</font></font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="sans-serif"><font size="4" style="font-size: 13pt">t:
+B55 () Quelle est votre adresse email ?# <font face="Arabic Sans, sans-serif">à
+ne pas faire</font> - étiquette sans signification</font></font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="Arabic Sans, sans-serif"><font size="4" style="font-size: 13pt"><b>Explications&nbsp;</b><span style="font-weight: normal">:</span></font></font></p>
+<p style="margin-bottom: 0cm; font-weight: normal; line-height: 100%">
+<br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="sans-serif"><font size="4" style="font-size: 13pt">En
+utilisant des lettres majuscules pour les étiquettes de règles (à
+la fois à la règle et dans les endroits avec ^reuse où l’on
+réutilise la règle), il est facile de les voir dans une masse de
+texte comme on en obtient avec la commande :trace. </font></font>
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="sans-serif"><font size="4" style="font-size: 13pt">Si
+</font><font size="4" style="font-size: 13pt">vous ne travaillez pas
+sur</font><font size="4" style="font-size: 13pt"> votre propre projet
+de bot p</font><font size="4" style="font-size: 13pt">erso, </font><font size="4" style="font-size: 13pt">chaque
+règle qui génère une sortie devrait avoir un tel label </font><font size="4" style="font-size: 13pt">qui</font><font size="4" style="font-size: 13pt">
+apparaîtra dans un résumé. Cela permet aux autres de se référer
+à votre règle et peut-être </font><font size="4" style="font-size: 13pt">de</font><font size="4" style="font-size: 13pt">
+l</font><font size="4" style="font-size: 13pt">a</font><font size="4" style="font-size: 13pt">
+trouver dans les fichiers journaux des clients.</font></font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<h1 class="western" style="page-break-before: always">Des modèles
+faciles à lire</h1>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="sans-serif"><font size="4" style="font-size: 13pt">Évitez
+les parenthèses superflues.</font></font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="sans-serif"><font size="4" style="font-size: 13pt">Pour
+des motifs multiples, placez chacun sur sa propre ligne.</font></font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="sans-serif"><font size="4" style="font-size: 13pt">Exemples:</font></font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="sans-serif"><font size="4" style="font-size: 13pt">?:
+QUE_PRODUIT_BRILLIG ([</font></font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="sans-serif"><font size="4" style="font-size: 13pt">	(
+Que * &quot;Brillig Understanding&quot; )</font></font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="sans-serif"><font size="4" style="font-size: 13pt">	(
+[dit parle savoir] * ~2 &quot;à propos de&quot; &quot;Brillig
+Understanding&quot; )</font></font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="sans-serif"><font size="4" style="font-size: 13pt">	])</font></font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="sans-serif"><font size="4" style="font-size: 13pt">	Brillig
+Understanding fait des systèmes de langage naturel.</font></font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="sans-serif"><font size="4" style="font-size: 13pt">u:
+MAUVAIS_CHOIX ([</font></font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="sans-serif"><font size="4" style="font-size: 13pt">	(&lt;&lt;
+société Brillig &gt;&gt;) # parenthèses superflues</font></font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="sans-serif"><font size="4" style="font-size: 13pt">	(~</font><font size="4" style="font-size: 13pt">monmot</font><font size="4" style="font-size: 13pt">)
+# parenthèses superflues</font></font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="sans-serif"><font size="4" style="font-size: 13pt">	([</font><font size="4" style="font-size: 13pt">mot</font><font size="4" style="font-size: 13pt">1
+</font><font size="4" style="font-size: 13pt">mot</font><font size="4" style="font-size: 13pt">2])
+# parenthèses superflues</font></font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="sans-serif"><font size="4" style="font-size: 13pt">	])</font></font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="sans-serif"><font face="Arabic Sans, sans-serif"><font size="4" style="font-size: 13pt"><b>Explications&nbsp;</b></font></font><font face="Arabic Sans, sans-serif"><font size="4" style="font-size: 13pt"><span style="font-weight: normal">:</span></font></font></font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="sans-serif"><font size="4" style="font-size: 13pt">	Les
+parenthèses superflues rendent les modèles plus difficiles à lire,
+donc plus difficiles à corriger visuellement. Ils ralentissent
+également le moteur CS, mais pas de manière sensible. </font></font>
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="sans-serif"><font size="4" style="font-size: 13pt">	Lorsque
+vous utilisez plusieurs modèles dans une règle, les disposer chacun
+sur sa propre ligne vous permet (ou au correcteur du code) de les
+visualiser chacun séparément.</font></font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%; page-break-before: always">
+<br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<h1 class="western">Donner des exemples d'entré</h1>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="sans-serif"><font size="4" style="font-size: 13pt">Donner
+des exemples d'entré pour les répondeurs et les répliques.</font></font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="sans-serif"><font size="4" style="font-size: 13pt">Donnez
+plusieurs échantillons pour des constructions de phrase follement
+différentes lorsque vous avoir plusieurs Modèle dans une règle.</font></font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="sans-serif"><font size="4" style="font-size: 13pt">Exemples
+:</font></font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="sans-serif"><font size="4" style="font-size: 13pt">t:
+De quelle année s'agit-il ?</font></font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="sans-serif"><font size="4" style="font-size: 13pt">	#!
+1993</font></font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="sans-serif"><font size="4" style="font-size: 13pt">	a:
+(~ année) Super.</font></font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="sans-serif"><font size="4" style="font-size: 13pt">#!
+Comment vous appelez-vous</font></font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="sans-serif"><font size="4" style="font-size: 13pt">#!
+Qui es-tu?</font></font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="sans-serif"><font size="4" style="font-size: 13pt">?:
+([</font></font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="sans-serif"><font size="4" style="font-size: 13pt">	('tu
+[nom appelle])</font></font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="sans-serif"><font size="4" style="font-size: 13pt">	(qui
+est 'tu)</font></font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="sans-serif"><font size="4" style="font-size: 13pt">	])</font></font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="sans-serif"><font size="4" style="font-size: 13pt">	Je
+m'appelle Rose.</font></font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="sans-serif"><font face="Arabic Sans, sans-serif"><font size="4" style="font-size: 13pt"><b>Explications&nbsp;</b></font></font><font face="Arabic Sans, sans-serif"><font size="4" style="font-size: 13pt"><span style="font-weight: normal">:</span></font></font></font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="sans-serif"><font size="4" style="font-size: 13pt">	Les
+exemples d'</font><font size="4" style="font-size: 13pt">entrées</font><font size="4" style="font-size: 13pt">
+expliquent vos habitudes. Au lieu d'avoir à interpréter le </font><font size="4" style="font-size: 13pt">Modèle</font><font size="4" style="font-size: 13pt">,
+vous savez immédiatement ce que la règle a l'intention de faire. </font></font>
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="sans-serif"><font size="4" style="font-size: 13pt">	</font></font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="sans-serif"><font size="4" style="font-size: 13pt">	Les
+e</font><font size="4" style="font-size: 13pt">xemples d'entrées
+vous permet</font><font size="4" style="font-size: 13pt">tent</font><font size="4" style="font-size: 13pt">
+d'utiliser </font><font size="2" style="font-size: 10pt"><i>:abstract
+ </i></font><font size="4" style="font-size: 13pt">pour donner aux
+non-programmeurs une vue d'ensemble de votre code.</font></font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="sans-serif"><font size="4" style="font-size: 13pt">Les
+exemples d'entrées permettent également à CS de tester votre code
+à l'aide de </font><font size="2" style="font-size: 10pt"><i>:verify</i></font><font size="4" style="font-size: 13pt">.</font></font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<h1 class="western" style="page-break-before: always">Sortie de Règle
+facile à lire</h1>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="sans-serif"><font size="4" style="font-size: 13pt">Indenter
+chaque phrase et chaque énoncé de code CS sur des lignes
+distinctes.</font></font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="sans-serif"><font size="4" style="font-size: 13pt">Exemples
+:</font></font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="sans-serif"><font size="4" style="font-size: 13pt">#!
+Test</font></font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="sans-serif"><font size="4" style="font-size: 13pt">u:
+(test)</font></font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="sans-serif"><font size="4" style="font-size: 13pt">	$status
++= 1</font></font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="sans-serif"><font size="4" style="font-size: 13pt">	$_x
+= ^compute(1 + 2)</font></font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="sans-serif"><font size="4" style="font-size: 13pt">	La
+réponse est $_x.</font></font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="sans-serif"><font size="4" style="font-size: 13pt">	L'avez-vous
+manqué ?</font></font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="sans-serif"><font size="4" style="font-size: 13pt">#!
+Où êtes-vous né</font></font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="sans-serif"><font size="4" style="font-size: 13pt">u:
+(où * vous * né) # mauvais - difficile à lire</font></font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="sans-serif"><font size="4" style="font-size: 13pt">Je
+suis né à San Francisco près de la vieille église sur la colline.
+Je suis né fils unique mais mes parents en ont toujours voulu
+d’autres.</font></font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="sans-serif"><font size="4" style="font-size: 13pt">#!
+Où êtes-vous né</font></font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="sans-serif"><font size="4" style="font-size: 13pt">	u:
+(où * vous * né) # correct</font></font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="sans-serif"><font size="4" style="font-size: 13pt">	Je
+suis né à San Francisco près de la vieille église sur la colline.</font></font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="sans-serif"><font size="4" style="font-size: 13pt">	Je
+suis né un enfant unique mais mes parents en ont toujours voulu
+d’autres.</font></font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="sans-serif"><font face="Arabic Sans, sans-serif"><font size="4" style="font-size: 13pt"><b>Explications&nbsp;</b></font></font><font face="Arabic Sans, sans-serif"><font size="4" style="font-size: 13pt"><span style="font-weight: normal">:</span></font></font></font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="sans-serif"><font size="4" style="font-size: 13pt">	</font><font size="4" style="font-size: 13pt">La
+sortie de l'utilisateur à </font><font size="4" style="font-size: 13pt">plusieurs</font><font size="4" style="font-size: 13pt">
+phrases est plus difficile à lire sur une même ligne, cela peut
+donner de très longues lignes. Le code est certainement plus
+difficile à comprendre quand plusieurs actions sont sur la même
+ligne. D'un autre côté, si la la sortie est minuscule, vous pouvez
+le mettre sur une seule ligne comme ceci:</font></font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="sans-serif"><font size="4" style="font-size: 13pt">u:
+(test) OK. $status += 1</font></font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<h1 class="western" style="page-break-before: always"><font size="4" style="font-size: 13pt">Ensembles</font><font size="4" style="font-size: 13pt">
+de règles connexes</font></h1>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="sans-serif"><font size="4" style="font-size: 13pt">Mettre
+les règles associées dans </font><font size="4" style="font-size: 13pt">un
+même Topic.</font></font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="sans-serif"><font size="4" style="font-size: 13pt">Mettez
+des règles plus étroitement liées ensemble lorsque vous le pouvez.</font></font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="sans-serif"><font size="4" style="font-size: 13pt">Exemples
+:</font></font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="sans-serif"><font size="4" style="font-size: 13pt">topic</font><font size="4" style="font-size: 13pt">:
+~aliens ()</font></font></p>
+<p style="margin-bottom: 0cm; line-height: 100%">…</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="sans-serif"><font size="4" style="font-size: 13pt">topic</font><font size="4" style="font-size: 13pt">:
+~ family ()</font></font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="sans-serif"><font size="4" style="font-size: 13pt">#!
+x *** Parents</font></font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="sans-serif"><font size="4" style="font-size: 13pt">#!
+Qui est ta mère</font></font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="sans-serif"><font size="4" style="font-size: 13pt">?:
+(qui * mère) Maman.</font></font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="sans-serif"><font size="4" style="font-size: 13pt">#!
+Que fais ta mère?</font></font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="sans-serif"><font size="4" style="font-size: 13pt">?:
+(Que * mère * fait) Elle travaille.</font></font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="sans-serif"><font size="4" style="font-size: 13pt">#!
+Qui est ton père? # Note que nous avions toutes les choses de la
+mère ensemble avant le père</font></font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="sans-serif"><font size="4" style="font-size: 13pt">?:
+(qui * père) Papa.</font></font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="sans-serif"><font size="4" style="font-size: 13pt">#!
+Que fait ton père?</font></font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="sans-serif"><font size="4" style="font-size: 13pt">?:
+(Que * père * fait) Il travaille.</font></font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="sans-serif"><font size="4" style="font-size: 13pt">#!
+x *** Frères et sœurs</font></font></p>
+<p style="margin-bottom: 0cm; line-height: 100%">…</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="sans-serif"><font face="Arabic Sans, sans-serif"><font size="4" style="font-size: 13pt"><b>Explications&nbsp;</b></font></font><font face="Arabic Sans, sans-serif"><font size="4" style="font-size: 13pt"><span style="font-weight: normal">:</span></font></font></font></p>
+<p style="margin-bottom: 0cm; font-weight: normal; line-height: 100%">
+<br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="sans-serif"><font face="Arabic Sans, sans-serif"><font size="4" style="font-size: 13pt"><span style="font-weight: normal">	</span></font></font><font size="4" style="font-size: 13pt">Avec
+le groupage approprié, vous devez immédiatement savoir où ajoutez
+une nouvelle règle ou découvrez que plusieurs règles effectuent le
+même travail. </font></font>
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="sans-serif"><font size="4" style="font-size: 13pt">	</font><font size="4" style="font-size: 13pt">On</font><font size="4" style="font-size: 13pt">
+</font><font size="4" style="font-size: 13pt">peut </font><font size="4" style="font-size: 13pt">même
+annoter des groupes de règles pour </font><font size="4" style="font-size: 13pt">utiliser
+</font><font size="4" style="font-size: 13pt">:abstract en </font><font size="4" style="font-size: 13pt">marquant</font><font size="4" style="font-size: 13pt">
+#!x commentaires qui </font><font size="4" style="font-size: 13pt">seront
+alors visibles</font><font size="4" style="font-size: 13pt"> pour
+étiqueter le </font><font size="4" style="font-size: 13pt">groupe </font><font size="4" style="font-size: 13pt">et
+le rendre facile à suivre.</font></font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="sans-serif"><font size="4" style="font-size: 13pt">	Le
+seul problème peut être lorsque certaines règles </font><font size="4" style="font-size: 13pt">en
+amont viennent bloquer l’expression d’une leur succédant</font><font size="4" style="font-size: 13pt">
+et vous </font><font size="4" style="font-size: 13pt">oblige à</font><font size="4" style="font-size: 13pt">
+déplacer quelque chose. Envisagez d'utiliser </font><font size="4" style="font-size: 13pt">les
+exclusion </font><font size="2" style="font-size: 10pt"><i>!mots-clés</i></font><font size="4" style="font-size: 13pt">.</font></font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<h1 class="western" style="page-break-before: always">Localisation de
+concepts/fonctions</h1>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="sans-serif"><font size="4" style="font-size: 13pt">Si
+un concept ou une fonction est utilisé uniquement dans un fichier,
+placez-le dans ce fichier.</font></font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="sans-serif"><font size="4" style="font-size: 13pt">Si
+un concept ou une fonction est utilisé à plusieurs endroits,
+utilisez </font><font size="4" style="font-size: 13pt">un fichier
+global</font><font size="4" style="font-size: 13pt"> functions.top ou
+concepts.top.</font></font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="sans-serif"><font size="4" style="font-size: 13pt">Pour
+les tables utilisées uniquement dans un fichier,  </font><font size="4" style="font-size: 13pt">cela
+</font><font size="4" style="font-size: 13pt">dépend de la taille de
+la table.</font></font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="sans-serif"><font face="Arabic Sans, sans-serif"><font size="4" style="font-size: 13pt"><b>Explications&nbsp;</b></font></font><font face="Arabic Sans, sans-serif"><font size="4" style="font-size: 13pt"><span style="font-weight: normal">:</span></font></font></font></p>
+<p style="margin-bottom: 0cm; font-weight: normal; line-height: 100%">
+<br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="sans-serif"><font face="Arabic Sans, sans-serif"><font size="4" style="font-size: 13pt"><span style="font-weight: normal">	</span></font></font><font size="4" style="font-size: 13pt">
+Lorsque vous pouvez localiser </font><font size="4" style="font-size: 13pt">une
+</font><font size="4" style="font-size: 13pt">donnée dans le fichier
+qui l'utilise, cela le rend plus facile d’</font><font size="4" style="font-size: 13pt">en
+</font><font size="4" style="font-size: 13pt">trouver la définition
+quand vous voulez l'inspecter.</font></font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<h1 class="western" style="page-break-before: always"><font size="4" style="font-size: 13pt">Casse</font><font size="4" style="font-size: 13pt">
+des mots-clés et fautes d'orthographe</font></h1>
+<pre class="western" style="border: none; padding: 0cm; font-variant: normal; letter-spacing: normal; font-style: normal; font-weight: normal; line-height: 0.64cm; text-align: left; orphans: 2; widows: 2; background: #ffffff">
+<font color="#212121"><font face="Arabic Sans, sans-serif"><font size="4" style="font-size: 13pt"><span lang="fr-FR">Utilisez un dictionnaire de casse standard (ou votre dictionnaire de casse propre dans le cas de mots non répertoriés) pour les mots-clés dans concepts ou dans les Modèles.</span></font></font></font>
+
+<font color="#212121"><font face="Arabic Sans, sans-serif"><font size="3" style="font-size: 12pt"><span lang="fr-FR"><font size="4" style="font-size: 13pt">Évitez de mettre des fautes d'orthographe dans les concepts ou les mots-clés. Utilisez </font><font face="sans-serif"><font size="2" style="font-size: 10pt"><i>replace:</i></font></font><font size="4" style="font-size: 13pt"> dans votre fichier de scripts pour ajouter efficacement des entrées aux fichiers de substitutions prédéfinis</font></span></font></font></font>
+<font color="#212121"><font face="Arabic Sans, sans-serif"><font size="3" style="font-size: 12pt"><span lang="fr-FR"><font size="4" style="font-size: 13pt">dans ChatScript. Mais utilisez&nbsp;</font><font size="2" style="font-size: 10pt"><i>:</i></font><font face="sans-serif"><font size="2" style="font-size: 10pt"><i>replace </i></font></font><font size="4" style="font-size: 13pt">seulement quand le mot mal orthographié a une seule valeur évidente possible. </font><font size="2" style="font-size: 10pt"><i>replace:</i></font><font size="4" style="font-size: 13pt"> change le dictionnaire pour TOUT LES BOTS.</font></span></font></font></font>
+
+<font color="#212121"><font face="Arabic Sans, sans-serif"><font size="4" style="font-size: 13pt"><span lang="fr-FR">Pour les fautes d'orthographe qui sont des mots acceptables, ajoutez-les à concepts ou aux mots-clés.</span></font></font></font>
+
+
+<font color="#212121"><font face="Arabic Sans, sans-serif"><font size="4" style="font-size: 13pt"><span lang="fr-FR">Exemples :</span></font></font></font>
+
+<font color="#212121"><font face="Arabic Sans, sans-serif"><font size="4" style="font-size: 13pt"><span lang="fr-FR">concept: ~protocoles (Blu-ray WiFi)</span></font></font></font>
+<font color="#212121"><font face="Arabic Sans, sans-serif"><font size="3" style="font-size: 12pt"><span lang="fr-FR"><font size="4" style="font-size: 13pt">replace: blue_ray Blu-ray # </font><font size="4" style="font-size: 13pt">T</font><font size="4" style="font-size: 13pt">oujours. </font><font size="4" style="font-size: 13pt">Mettre cela comme </font><font size="4" style="font-size: 13pt">orthographe correcte</font></span></font></font></font>
+<font color="#212121"><font face="Arabic Sans, sans-serif"><font size="3" style="font-size: 12pt"><span lang="fr-FR"><font size="4" style="font-size: 13pt">replace: MS Microsoft # </font><font size="4" style="font-size: 13pt">Mauvais –</font><font size="4" style="font-size: 13pt"> vrai </font><font size="4" style="font-size: 13pt">pour les PC</font><font size="4" style="font-size: 13pt">, pas </font><font size="4" style="font-size: 13pt">pour le </font><font size="4" style="font-size: 13pt">médic</font><font size="4" style="font-size: 13pt">o-social</font></span></font></font></font>
+
+<font color="#212121"><font face="Arabic Sans, sans-serif"><font size="4" style="font-size: 13pt"><span lang="fr-FR"><span style="background: #ffff00">#! I used my brakes</span></span></font></font></font>
+<font color="#212121"><font face="Arabic Sans, sans-serif"><font size="4" style="font-size: 13pt"><span lang="fr-FR"><span style="background: #ffff00">u: ([brake break]) Don’t hit the brakes too hard. # misspell is a real word, list it</span></span></font></font></font>
+
+<font color="#212121"><font face="Arabic Sans, sans-serif"><font size="4" style="font-size: 13pt"><span lang="fr-FR">#! J'aime mars</span></font></font></font>
+<font color="#212121"><font face="Arabic Sans, sans-serif"><font size="3" style="font-size: 12pt"><span lang="fr-FR"><font size="4" style="font-size: 13pt">u: (_~plan</font><font size="4" style="font-size: 13pt">e</font><font size="4" style="font-size: 13pt">ts) '_0 # </font><font size="4" style="font-size: 13pt">produit </font><font size="4" style="font-size: 13pt">Mars même si l'utilisateur a tapé mars</font></span></font></font></font>
+
+<font color="#212121"><font face="Arabic Sans, sans-serif"><font size="4" style="font-size: 13pt"><span lang="fr-FR">#! Aimez-vous les moutons?</span></font></font></font>
+<font color="#212121"><font face="Arabic Sans, sans-serif"><font size="3" style="font-size: 12pt"><span lang="fr-FR"><font size="4" style="font-size: 13pt">u: ([</font><font size="4" style="font-size: 13pt">mouton</font><font size="4" style="font-size: 13pt"> </font><font size="4" style="font-size: 13pt">moutton</font><font size="4" style="font-size: 13pt"> </font><font size="4" style="font-size: 13pt">bouton</font><font size="4" style="font-size: 13pt">]) J'aime les moutons #  </font><font size="4" style="font-size: 13pt">c’est</font><font size="4" style="font-size: 13pt"> généralement </font><font size="4" style="font-size: 13pt">une mauvaise idée de faire cela</font></span></font></font></font>
+
+
+<font color="#212121"><font face="Arabic Sans, sans-serif"><font size="3" style="font-size: 12pt"><span lang="fr-FR"><font size="4" style="font-size: 13pt">Justification: Si un mot existe avec un </font><font size="4" style="font-size: 13pt">seule casse</font><font size="4" style="font-size: 13pt"> dans le dictionnaire, CS peut ajuste</font><font size="4" style="font-size: 13pt">r</font><font size="4" style="font-size: 13pt"> automatiquement l'entrée pour la rendre correcte. Même si un mot existe dans </font><font size="4" style="font-size: 13pt">plusieurs casses</font><font size="4" style="font-size: 13pt">, si un ensemble de concepts l'a dans </font><font size="4" style="font-size: 13pt">d’une seule façon</font><font size="4" style="font-size: 13pt"> (par exemple ~plan</font><font size="4" style="font-size: 13pt">e</font><font size="4" style="font-size: 13pt">ts ont le</font></span></font></font></font>
+<font color="#212121"><font face="Arabic Sans, sans-serif"><font size="3" style="font-size: 12pt"><span lang="fr-FR"><font size="4" style="font-size: 13pt">nom Mars et non le </font><font size="4" style="font-size: 13pt">mois de</font><font size="4" style="font-size: 13pt"> mars), si vous le mémorisez, CS peut mémoriser l</font><font size="4" style="font-size: 13pt">a casse </font><font size="4" style="font-size: 13pt">correct</font><font size="4" style="font-size: 13pt">e</font><font size="4" style="font-size: 13pt">. </font></span></font></font></font>
+<font color="#212121"><font face="Arabic Sans, sans-serif"><font size="3" style="font-size: 12pt"><span lang="fr-FR"><font size="4" style="font-size: 13pt">Parfois, vous vous attendez à des fautes de frappe. Mettre </font><font size="4" style="font-size: 13pt">la </font><font size="4" style="font-size: 13pt">forme </font><font size="4" style="font-size: 13pt">erronée</font><font size="4" style="font-size: 13pt"> dans vos modèles (comme </font><font size="4" style="font-size: 13pt">moutton</font><font size="4" style="font-size: 13pt">), signifie </font><font size="4" style="font-size: 13pt">le faire</font><font size="4" style="font-size: 13pt"> entr</font><font size="4" style="font-size: 13pt">er</font><font size="4" style="font-size: 13pt"> dans le dictionnaire comme </font><font size="4" style="font-size: 13pt">mot </font><font size="4" style="font-size: 13pt">acceptable. Cela signifie que la correction orthographique peut changer les &quot;fautes d'orthographe&quot; de</font></span></font></font></font>
+<font color="#212121"><font face="Arabic Sans, sans-serif"><font size="3" style="font-size: 12pt"><span lang="fr-FR"><font size="4" style="font-size: 13pt">fautes d'orthographe, provoquant la dérive des mots pour une entrée comme &quot;hep&quot;. Préfère utiliser </font><font size="2" style="font-size: 10pt"><i>replace:</i></font><font size="4" style="font-size: 13pt"> si une faute d'orthographe ne peut aller </font><font size="4" style="font-size: 13pt">qu’</font><font size="4" style="font-size: 13pt">à un endroit évident.</font></span></font></font></font></pre><p style="margin-bottom: 0cm; line-height: 100%">
+<br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<div id="sdfootnote1">
+	<p class="sdfootnote" align="left" style="margin-left: 0cm; text-indent: 0cm; orphans: 2; widows: 2">
+	<font size="2"><a class="sdfootnotesym" name="sdfootnote1sym" href="#sdfootnote1anc">1</a><span style="font-variant: normal"><font color="#222222"><font face="arial, sans-serif"><span style="letter-spacing: normal"><span style="font-style: normal"><span style="font-weight: normal">
+	typographie : une </span></span></span></font></font></span><span style="font-variant: normal"><font color="#222222"><font face="arial, sans-serif"><span style="letter-spacing: normal"><span style="font-style: normal"><b>indentation</b></span></span></font></font></span><span style="font-variant: normal"><font color="#222222"><span style="letter-spacing: normal">&nbsp;</span></font></span><span style="font-variant: normal"><font color="#222222"><font face="arial, sans-serif"><span style="letter-spacing: normal"><span style="font-style: normal"><span style="font-weight: normal">est
+	un retrait de la première ligne d'un paragraphe.</span></span></span></font></font></span></font></p>
+</div>
+</body>
+</html>
