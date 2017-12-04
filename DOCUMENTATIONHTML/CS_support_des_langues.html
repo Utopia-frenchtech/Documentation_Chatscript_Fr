@@ -1,0 +1,359 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<title></title>
+	<meta name="generator" content="LibreOffice 5.3.1.2 (Linux)"/>
+	<meta name="created" content="2017-12-04T19:45:55.213780010"/>
+	<meta name="changed" content="2017-12-04T20:40:14.735214217"/>
+	<style type="text/css">
+		@page { margin: 2cm }
+		p { margin-bottom: 0.25cm; line-height: 120% }
+		h2.western { font-family: "Liberation Sans", sans-serif; font-size: 16pt }
+		h2.cjk { font-family: "Noto Sans CJK SC Regular"; font-size: 16pt }
+		h2.ctl { font-family: "FreeSans"; font-size: 16pt }
+		a:link { so-language: zxx }
+		code.cjk { font-family: "DejaVu Sans Mono", monospace }
+	</style>
+</head>
+<body lang="fr-FR" dir="ltr">
+<p align="center" style="margin-top: 0.42cm; margin-bottom: 0.21cm; line-height: 100%; page-break-after: avoid">
+<font face="Liberation Sans, sans-serif"><font size="6" style="font-size: 28pt"><b>Support
+des langues étrangères </b></font></font>
+</p>
+<h2 class="western" align="center">(à l’Anglais)</h2>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="Droid Sans Fallback, sans-serif">©
+Mathieu Rigard, pour la traduction française,
+<a href="mailto:m.rigard@utopia-french.tech">m.rigard@utopia-french.tech</a>
+<a href="https://utopia-french.tech/">https://utopia-french.tech</a></font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="Droid Sans Fallback, sans-serif">avec
+l’autorisation de l’Auteur.</font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="Droid Sans Fallback, sans-serif">©
+Bruce Wilcox, mailto: gowilcox@gmail.com www.brilligunderstanding.com</font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="Droid Sans Fallback, sans-serif">Révision
+11/04/2017 cs7.61</font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font color="#800000"><font face="Droid Sans Fallback, sans-serif">Besoin&nbsp;:
+version 1.0, à relire et corriger.</font></font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<h2 class="western">Langue étrangère&nbsp;: Présentation</h2>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="Droid Sans Fallback, sans-serif">ChatScript
+vient nativement avec un support complet de l’anglais. Si vous
+voulez utiliser une langue différente, vous avez besoin d'une
+variété de choses&nbsp;:</font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="Droid Sans Fallback, sans-serif">-
+Le support du pos-tagging (facultatif si vous n'utilisez pas de
+mots-clés POS, le POS). <font size="2" style="font-size: 10pt"><i>[Le
+POS (Part Of Speech) Tagging consiste en le découpage de l’entrée
+de l’utilisateur en parties faisant sens comme sujet, verbe,
+complément. Note du traducteur]</i></font></font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="Droid Sans Fallback, sans-serif">-
+Le support de vérification orthographique</font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="Droid Sans Fallback, sans-serif">-
+Des concepts dans la langue (que vous utilisez)</font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="Droid Sans Fallback, sans-serif">-
+Des fichiers de substitutions LIVEDATA appropriées à la langue</font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="Droid Sans Fallback, sans-serif">-
+Des Modèles dans la langue</font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="Droid Sans Fallback, sans-serif">-
+Des Sortie dans la langue</font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="Droid Sans Fallback, sans-serif">-
+Des Lemmes (avec des pos-taggers étrangers ou accessible depuis
+^pos(canonical) ) <font size="2" style="font-size: 10pt"><i>[un Lemme
+est unes </i></font><span style="font-variant: normal"><font color="#000000"><font size="2" style="font-size: 10pt"><span style="letter-spacing: normal"><i><span style="font-weight: normal">unité
+autonome constituante du lexique d'une langue </span></i></span></font></font></span><span style="font-variant: normal"><font color="#000000"><font size="2" style="font-size: 10pt"><span style="letter-spacing: normal"><i><span style="font-weight: normal">Note
+du traducteur]</span></i></span></font></font></span></font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="Droid Sans Fallback, sans-serif">ChatScript
+propose un paramètre pour la ligne de commande <font size="2" style="font-size: 10pt">language=
+</font>qui indique à CS la langue que vous souhaitez utiliser. Il
+est par défaut en ANGLAIS. Les effets de ce paramètre sont les
+suivants&nbsp;:</font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="Droid Sans Fallback, sans-serif">-
+Si ce n'est pas en ANGLAIS, le pos-tagging interne (autre que le
+marquage des balises anglaises et des numéros et dates possibles) et
+l'analyse syntaxique sont désactivés.</font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="Droid Sans Fallback, sans-serif">-
+Si le treetagger est sous licence et possède cette langue, il pourra
+tagger le POS.</font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="Droid Sans Fallback, sans-serif">-
+Le système utilisera <font color="#000000"><font size="2" style="font-size: 10pt">DICT/langu</font></font><font color="#000000"><font size="2" style="font-size: 10pt">age</font></font>
+.</font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="Droid Sans Fallback, sans-serif">-
+Le système utilisera LIVEDATA/language</font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="Droid Sans Fallback, sans-serif">-
+Le compilateur de script compilera automatiquement les lignes
+marquées pour être compilées conditionnellement avec la langue
+(voir les commentaires sur la langue).</font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="Droid Sans Fallback, sans-serif">-
+Le système stockera également le fichier de sujet de l'utilisateur
+avec le suffixe de langue.</font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<h2 class="western">ENTRÉES et SORTIES</h2>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="Droid Sans Fallback, sans-serif">ChatScript
+prend en charge l’UTF8, ce qui vous laisse libre de la Sortie ou
+des Modèles dans votre langue. Idem pour LIVEDATA.</font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="Droid Sans Fallback, sans-serif">ChatScript
+prend en charge deux types de commentaires de compilation
+conditionnelle. Les commentaires sur une ligne ressemblent à ceci:</font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="Droid Sans Fallback, sans-serif"><font size="2" style="font-size: 10pt">#ENGLISH
+cette ligne va compiler si la langue est l'anglais mais pas si la
+langue est l’Allemand.</font></font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="Droid Sans Fallback, sans-serif"><font size="2" style="font-size: 10pt">#GERMAN
+cette ligne ne compilera pas si la langue est l'anglais mais
+compilera si la langue est l’allemand.</font></font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="Droid Sans Fallback, sans-serif">Comme
+toujours, ces commentaires vont jusqu'à la fin de la ligne. L'autre
+commentaire est le commentaire de bloc comme ceci:</font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="Droid Sans Fallback, sans-serif"><font size="2" style="font-size: 10pt"><span style="text-decoration: none">##&lt;&lt;</span></font></font><code class="western"><font face="Droid Sans Fallback, sans-serif"><font size="2" style="font-size: 10pt"><span style="text-decoration: none"><span style="background: transparent">ENGLISH</span></span></font></font></code><font face="Droid Sans Fallback, sans-serif"><font size="2" style="font-size: 10pt"><span style="text-decoration: none">
+ces </span></font></font><font face="Droid Sans Fallback, sans-serif"><font size="2" style="font-size: 10pt">lignes
+seront compilées en anglais</font></font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="Droid Sans Fallback, sans-serif"><font size="2" style="font-size: 10pt">jusqu'à
+un commentaire de bloc de fermeture normal ##&gt;&gt;</font></font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="Droid Sans Fallback, sans-serif">À
+l'aide de la compilation conditionnelle, vous pouvez faire en sorte
+que l'anglais et d'autres versions du code soient installées côte à
+côte si vous le souhaitez.</font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<h2 class="western">DICTIONNAIRE</h2>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="Droid Sans Fallback, sans-serif">Le
+fichier de dictionnaire peut être juste une liste de mots de la
+langue, un par ligne. Vous devez lister toutes les conjugaisons d'un
+mot car il n'y a pas de support intégré pour le comprendre. Vous
+pouvez également ajouter des balises POS tag équivalentes anglaises
+(voir les exemples dans les dictionnaires de langues étrangères
+existants) si vous souhaitez utiliser des mots-clés existants liés
+à des balises pos tag.</font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="Droid Sans Fallback, sans-serif">En
+plus des mots normaux, il y a un fichier LIVEDATA /.../ numbers.txt
+qui, pour une langue, décrit un nombre en toutes lettres et sa
+signification en chiffre.</font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="Droid Sans Fallback, sans-serif"><code class="western"><font size="2" style="font-size: 10pt"><span style="background: transparent">:buildforeign
+language</span></font></code><font size="2" style="font-size: 10pt">
+</font>peut être utilisée pour reconstruire un dictionnaire
+étranger étant donné les données rawwords dans le répertoire
+TreeTagger (que vous n'avez pas) et </font>
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<h2 class="western">POS-TAGS ET LEMMAS</h2>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="Droid Sans Fallback, sans-serif">Si
+vous voulez des valeurs POS réelles et des lemmes (forme canonique
+d'un mot), vous aurez besoin d'un POS-tagger ou d’utiliser
+^pos(canonical) sur un mot. Bien qu'il soit possible de raccorder un
+tagueur externe via un appel Web, il sera nettement plus lent qu'un
+système intégré.</font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="Droid Sans Fallback, sans-serif">ChatScript
+prend en charge le système TreeTagger intégré, qui prend en charge
+un certain nombre de langues. Cependant, vous ne pouvez l'utiliser
+que si vous n’en possédez pas une licence. Vous pouvez l'essayer
+en utilisant ^popen, comme dans le bot allemand, mais il sera lent
+car il doit réinitialiser TreeTagger pour chaque phrase. Le système
+intégré ne le fait pas. Une licence (par langue) est d'environ 1000
+$ pour une utilisation universelle à vie. Vous pouvez me contacter
+si vous voulez la prendre.</font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<h2 class="western">Exécution de CS dans une langue étrangère</h2>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="Droid Sans Fallback, sans-serif">Pour
+l'exécuter dans une langue, utilisez le paramètre <font size="2" style="font-size: 10pt">language=
+</font>en ligne de commande. Pour toute instance CS, vous ne pouvez
+prendre en charge qu'une seule langue à la fois (car CS ne peut pas
+charger plusieurs dictionnaires ou détecter automatiquement une
+langue). Donc, si vous voulez avoir des serveurs pour plusieurs
+langues, vous avez besoin de plusieurs serveurs, chacun étant
+redirigé de manière appropriée.</font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="Droid Sans Fallback, sans-serif">Le
+fichier de l'utilisateur où se trouvent les Topic est nommé par
+<font size="2" style="font-size: 10pt">username-botname-language</font>
+(pour l’anglais oubliez le <font size="2" style="font-size: 10pt">-language</font>
+). Cela signifie qu'un utilisateur discutant avec un serveur CS
+allemand a une conversation indépendante de n'importe quelle
+conversation qu'il a eue avec le serveur anglais. Si vous utilisez
+des fichiers LTM pour stocker des données à long terme sur
+l'utilisateur, vous pouvez choisir si ces données sont uniques par
+langue ou partagées, puisque le nom du fichier est écrit dans un
+script.</font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<h2 class="western">Traduire des concepts</h2>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="Droid Sans Fallback, sans-serif">Il
+y a un code intégré pour traduire les concepts en utilisant Google
+Traduction. Cela nécessite que vous ayez une clé d'api pour Google
+Traduction (mais vous pouvez vous inscrire gratuitement et obtenir un
+crédit de 300$ valable pendant 3 mois, ce qui est suffisant pour
+faire tout votre travail de traduction probablement). Vous dites à
+CS ceci comme un paramètre de ligne de commande:</font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="Droid Sans Fallback, sans-serif"><font size="2" style="font-size: 10pt">apikey=AIzaSyAxxxx</font></font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="Droid Sans Fallback, sans-serif">Quand
+je veux traduire tous les concepts de niveau 0, je fais ce qui suit:</font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="Droid Sans Fallback, sans-serif">1.
+effacer le contenu du dossier TOPIC</font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="Droid Sans Fallback, sans-serif">2.
+<font size="2" style="font-size: 10pt">:</font><font size="2" style="font-size: 10pt">build</font><font size="2" style="font-size: 10pt">
+0</font></font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="Droid Sans Fallback, sans-serif">3.
+exécuter CS en utilisant le paramètre de ligne de commande <font size="2" style="font-size: 10pt">noboot</font>
+et votre apikey</font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="Droid Sans Fallback, sans-serif">4.
+<font size="2" style="font-size: 10pt">:sortconcept x</font></font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="Droid Sans Fallback, sans-serif"><font size="2" style="font-size: 10pt">5.
+</font><font size="2" style="font-size: 10pt">:translateconcept</font>
+french monfichier</font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="Droid Sans Fallback, sans-serif">Si
+vous lancez <font size="2" style="font-size: 10pt">^csboot</font> et
+que cela génère de nouvelles données conceptuelles, vous avez
+besoin de noboot, sinon cela n'a pas d'importance.</font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="Droid Sans Fallback, sans-serif"><font size="2" style="font-size: 10pt">:sortconcept
+x</font> localise tous les concepts actuellement définis (donc
+seulement <font size="2" style="font-size: 10pt">:build 0</font>) et
+les écrit dans un fichier de niveau supérieur nommé concepts.top
+avec un concept par ligne. Ce fichier sera lu à l'étape suivante.</font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="Droid Sans Fallback, sans-serif"><font size="2" style="font-size: 10pt">:translateconcept</font></font><font face="Droid Sans Fallback, sans-serif">
+utilise l'apikey. Il lit chaque ligne de concepts.top (1 ligne par
+concept) et appelle google translate pour la langue que vous avez
+nommée, en enregistrant les résultats dans le chemin/fichier que
+vous avez donné. Actuellement, cela ne reconnaît que les noms de
+langue suivants: </font><font face="Droid Sans Fallback, sans-serif">german,
+french, italian, spanish, russian, hindi</font> (<font face="Droid Sans Fallback, sans-serif">allemand,
+français, italien, espagnol, russe, hindi). Je pourrais en ajouter
+plus si nécessaire.</font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="Droid Sans Fallback, sans-serif">Le
+fichier résultant ajoutera automatiquement chaque ligne avec des
+marqueurs de compilation conditionnels pour la langue que vous avez
+nommée, de sorte que vous pouvez directement l'ajouter à votre bot
+et il ne compilera que lorsque vous êtes dans ce mode de langue.</font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="Droid Sans Fallback, sans-serif">Si
+vous voulez traduire des concepts de votre bot, alors faites ce qui
+suit:</font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="Droid Sans Fallback, sans-serif">1.
+effacer le contenu du dossier TOPIC</font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="Droid Sans Fallback, sans-serif">2.
+<font size="2" style="font-size: 10pt">:build Harry</font> (ou quel
+que soit le nom de votre bot )</font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="Droid Sans Fallback, sans-serif">3.
+exécuter CS en utilisant le paramètre de ligne de commande noboot
+et votre apikey</font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="Droid Sans Fallback, sans-serif">4.
+<font size="2" style="font-size: 10pt">:sortconcept x</font></font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="Droid Sans Fallback, sans-serif">5.
+<font size="2" style="font-size: 10pt">:translateconcept french
+myfilename</font></font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="Droid Sans Fallback, sans-serif">Si
+vous voulez juste traduire un seul concept / Topic, vous pouvez
+appeler</font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="Droid Sans Fallback, sans-serif"><font size="2" style="font-size: 10pt">:translateconcept
+~myconcept monfichier french</font></font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font face="Droid Sans Fallback, sans-serif">Il
+fournira, en tant que sous-produit, la forme anglaise du concept
+triée sur une seule ligne dans cset.txt. Si vous ne donnez pas une
+langue et un nom de fichier, alors il va juste trier votre concept
+anglais et l'écrire.</font></p>
+</body>
+</html>
