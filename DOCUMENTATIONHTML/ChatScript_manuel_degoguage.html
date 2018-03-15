@@ -1,0 +1,512 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<title></title>
+	<meta name="generator" content="LibreOffice 5.4.5.1 (Linux)"/>
+	<meta name="created" content="2017-12-08T13:17:49.465605802"/>
+	<meta name="changed" content="2017-12-08T14:29:52.352695773"/>
+	<style type="text/css">
+		@page { margin: 2cm }
+		p { margin-bottom: 0.25cm; line-height: 120% }
+		h1 { margin-bottom: 0.21cm }
+		h1.western { font-family: "Liberation Serif", serif }
+		h1.cjk { font-family: "Noto Sans CJK SC Regular"; font-size: 24pt }
+		h1.ctl { font-family: "FreeSans"; font-size: 24pt }
+		h2.cjk { font-family: "Noto Sans CJK SC Regular" }
+		h2.ctl { font-family: "FreeSans" }
+		pre.cjk { font-family: "DejaVu Sans Mono", monospace }
+		h3.cjk { font-family: "Noto Sans CJK SC Regular" }
+		h3.ctl { font-family: "FreeSans" }
+		a:link { so-language: zxx }
+		code.cjk { font-family: "DejaVu Sans Mono", monospace }
+	</style>
+</head>
+<body lang="fr-FR" dir="ltr">
+<h1 class="western"><a name="chatscript-debugging-manual"></a>ChatScript
+Manuel de Déboguage 
+</h1>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%">© Bruce Wilcox,
+mailto:gowilcox@gmail.com <a href="http://www.brilligunderstanding.com/">www.brilligunderstanding.com</a></p>
+<p style="margin-bottom: 0cm; line-height: 100%">traduit par Mathieu
+Rigard pour Utopia-french.tech m.rigard@utopia-french.tech</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%">Révision 11/19/2017
+cs7.7</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%">Vous avez rédiger
+un script. Ça ne marche pas. Maintenant il vous faut savoir pourquoi
+? Vous devez le déboguer, le réparer et le recompiler. Le déboguage
+consiste principalement repérer ce que le système essaie de tester
+et à découvrir où il ne fait pas ce à quoi vous vous attendiez.
+Déboguer se fait le plus souvent en émettant des commandes vers
+moteur, par opposition à celles entrées dans le Chat.</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%">Si le système
+détecte des bogues pendant son exécution, ils vont dans
+TMP/bugs.txt Vous pouvez effacer tout le contenu du répertoire TMP à
+tout moment. Mais la plupart du temps ce n'est pas votre problème.</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%">Le débogage
+nécessite généralement l'utilisation de commandes <font size="2" style="font-size: 10pt">:xxxx</font>.
+Je ne me souviens pas toujours de toutes ces commandes, alors je
+lance&nbsp;:</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<h2 class="western"><a name="commands"></a><code class="western"><font size="3" style="font-size: 12pt">:commands</font></code></h2>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%">pour obtenir une
+liste des commandes et une description approximative.</p>
+<h2 class="western"><code class="western"><font size="3" style="font-size: 12pt">:commands</font></code></h2>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%">La déclaration
+ci-dessus affiche la liste suivante:</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<pre class="western"><code class="western"><font size="1" style="font-size: 8pt">---- Debugging commands -</font></code>
+<code class="western"><font size="1" style="font-size: 8pt">:do        - Execute the arguments as an output stream, e.g., invoke a function, set variables, etc</font></code>
+<code class="western"><font size="1" style="font-size: 8pt">:silent    - toggle silent - dont show outputs</font></code>
+<code class="western"><font size="1" style="font-size: 8pt">:log       - dump message into log file</font></code>
+<code class="western"><font size="1" style="font-size: 8pt">:noreact   - Disable replying to input</font></code>
+<code class="western"><font size="1" style="font-size: 8pt">:notime    - Toggle notiming during this topic</font></code>
+<code class="western"><font size="1" style="font-size: 8pt">:notrace   - Toggle notracing during this topic</font></code>
+<code class="western"><font size="1" style="font-size: 8pt">:redo      - Back up to turn n and try replacement user input</font></code>
+<code class="western"><font size="1" style="font-size: 8pt">:retry     - Back up and try replacement user input or just redo last sentence</font></code>
+<code class="western"><font size="1" style="font-size: 8pt">:say       - Make chatbot say this line</font></code>
+<code class="western"><font size="1" style="font-size: 8pt">:skip      - Erase next n gambits</font></code>
+<code class="western"><font size="1" style="font-size: 8pt">:show      - All, Input, Mark, Number, Pos, Stats, Topic, Topics, Why, Reject, Newlines</font></code>
+<code class="western"><font size="1" style="font-size: 8pt">:time      - Set timing variable </font></code>
+<code class="western">             </code><code class="western"><font size="1" style="font-size: 8pt">(all none prepare match ruleflow pattern query json macro user usercache sql tcp topic)</font></code>
+<code class="western"><font size="1" style="font-size: 8pt">:trace     - Set trace variable </font></code>
+<code class="western">             </code><code class="western"><font size="1" style="font-size: 8pt">(all none basic prepare match output pattern infer query substitute hierarchy fact control topic pos)</font></code>
+<code class="western"><font size="1" style="font-size: 8pt">:why       - Show rules causing most recent output</font></code>
+<code class="western"><font size="1" style="font-size: 8pt">:authorize - Flip authorization for all debug commands</font></code>
+
+<code class="western"><font size="1" style="font-size: 8pt">---- Fact info -</font></code>
+<code class="western"><font size="1" style="font-size: 8pt">:allfacts  - Write all facts to TMP/facts.tmp</font></code>
+<code class="western"><font size="1" style="font-size: 8pt">:facts     - Display all facts with given word or meaning or fact set</font></code>
+<code class="western"><font size="1" style="font-size: 8pt">:userfacts - Display current user facts</font></code>
+
+<code class="western"><font size="1" style="font-size: 8pt">---- Topic info -</font></code>
+<code class="western"><font size="1" style="font-size: 8pt">:gambits    - Show gambit sequence of topic</font></code>
+<code class="western"><font size="1" style="font-size: 8pt">:pending    - Show current pending topics list</font></code>
+<code class="western"><font size="1" style="font-size: 8pt">:topicstats - Show stats on all topics or named topic or NORMAL for non-system topics</font></code>
+<code class="western"><font size="1" style="font-size: 8pt">:topicinfo  - Show information on a topic</font></code>
+<code class="western"><font size="1" style="font-size: 8pt">:topics     - Show topics that given input resonates with</font></code>
+<code class="western"><font size="1" style="font-size: 8pt">:where      - What file is the given topic in</font></code>
+
+<code class="western"><font size="1" style="font-size: 8pt">---- System info -</font></code>
+<code class="western"><font size="1" style="font-size: 8pt">:commands        - Show all :commands</font></code>
+<code class="western"><font size="1" style="font-size: 8pt">:context         - Display current context labels</font></code>
+<code class="western"><font size="1" style="font-size: 8pt">:conceptlist     - Show all concepts- or with argument show concepts starting with argument</font></code>
+<code class="western"><font size="1" style="font-size: 8pt">:definition      - Show code of macro named</font></code>
+<code class="western"><font size="1" style="font-size: 8pt">:directories     - Show current directories</font></code>
+<code class="western"><font size="1" style="font-size: 8pt">:functions       - List all defined system ^functions</font></code>
+<code class="western"><font size="1" style="font-size: 8pt">:identify        - Give version data on this CS</font></code>
+<code class="western"><font size="1" style="font-size: 8pt">:macros          - List all user-defined ^macros and plans</font></code>
+<code class="western"><font size="1" style="font-size: 8pt">:memstats        - Show memory allocations</font></code>
+<code class="western"><font size="1" style="font-size: 8pt">:list            - $ (variables) @ (factsets)  _  (match variables)  ^ (macros)  ~ (topics&amp;concepts)</font></code>
+<code class="western"><font size="1" style="font-size: 8pt">:queries         - List all defined queries</font></code>
+<code class="western"><font size="1" style="font-size: 8pt">:timedfunctions  - List all user defined macros currently being timed</font></code>
+<code class="western"><font size="1" style="font-size: 8pt">:timedtopics     - List all topics currently being timed</font></code>
+<code class="western"><font size="1" style="font-size: 8pt">:tracedfunctions - List all user defined macros currently being traced</font></code>
+<code class="western"><font size="1" style="font-size: 8pt">:tracedtopics    - List all topics currently being traced</font></code>
+<code class="western"><font size="1" style="font-size: 8pt">:variables       - Display current user/sysytem/match/all variables</font></code>
+<code class="western"><font size="1" style="font-size: 8pt">:who             - show current login/computer pair</font></code>
+
+<code class="western"><font size="1" style="font-size: 8pt">---- Word information -</font></code>
+<code class="western"><font size="1" style="font-size: 8pt">:down      - Show wordnet items inheriting from here or concept members</font></code>
+<code class="western"><font size="1" style="font-size: 8pt">:concepts  - Show concepts triggered by this word</font></code>
+<code class="western"><font size="1" style="font-size: 8pt">:findwords - show words matching pattern of letters and *</font></code>
+<code class="western"><font size="1" style="font-size: 8pt">:hasflag   - List words of given set having or !having some system flag</font></code>
+<code class="western"><font size="1" style="font-size: 8pt">:nonset    - List words of POS type not encompassed by given set</font></code>
+<code class="western"><font size="1" style="font-size: 8pt">:overlap   - Direct members of set x that are also in set y somehow</font></code>
+<code class="western"><font size="1" style="font-size: 8pt">:up        - Display concept structure above a word</font></code>
+<code class="western"><font size="1" style="font-size: 8pt">:word      - Display information about given word</font></code>
+<code class="western"><font size="1" style="font-size: 8pt">:dualupper - Display words that have multiple upper-case forms</font></code>
+
+<code class="western"><font size="1" style="font-size: 8pt">---- System Control commands -</font></code>
+<code class="western"><font size="1" style="font-size: 8pt">:build   - Compile a script - filename {nospell,outputspell,reset}</font></code>
+<code class="western"><font size="1" style="font-size: 8pt">:bot     - Change to this bot</font></code>
+<code class="western"><font size="1" style="font-size: 8pt">:crash   - Simulate a server crash</font></code>
+<code class="western"><font size="1" style="font-size: 8pt">:debug   - Initiate debugger</font></code>
+<code class="western"><font size="1" style="font-size: 8pt">:flush   - Flush server cached user data to files</font></code>
+<code class="western"><font size="1" style="font-size: 8pt">:quit    - Exit ChatScript</font></code>
+<code class="western"><font size="1" style="font-size: 8pt">:reset   - Start user all over again, flushing his history</font></code>
+<code class="western"><font size="1" style="font-size: 8pt">:restart - Restart Chatscript</font></code>
+<code class="western"><font size="1" style="font-size: 8pt">:user    - Change to named user, not new conversation</font></code>
+
+<code class="western"><font size="1" style="font-size: 8pt">---- Script Testing -</font></code>
+<code class="western"><font size="1" style="font-size: 8pt">:autoreply   - [OK,Why] use one of those as all input.</font></code>
+<code class="western"><font size="1" style="font-size: 8pt">:common      - What concepts have the two words in common.</font></code>
+<code class="western"><font size="1" style="font-size: 8pt">:prepare     - Show results of tokenization, tagging, and marking on a sentence</font></code>
+<code class="western"><font size="1" style="font-size: 8pt">:regress     - create or test a regression file</font></code>
+<code class="western"><font size="1" style="font-size: 8pt">:source      - Switch input to named file</font></code>
+<code class="western"><font size="1" style="font-size: 8pt">:testpattern - See if a pattern works with an input.</font></code>
+<code class="western"><font size="1" style="font-size: 8pt">:testtopic   - Try named topic responders on input</font></code>
+<code class="western"><font size="1" style="font-size: 8pt">:verify      - Given test type &amp; topic, test that rules are accessible. </font></code>
+<code class="western">               </code><code class="western"><font size="1" style="font-size: 8pt">Tests: pattern (default), blocking(default), keyword(default), sample, gambit, all.</font></code>
+
+<code class="western"><font size="1" style="font-size: 8pt">---- Document Processing -</font></code>
+<code class="western"><font size="1" style="font-size: 8pt">:document - Switch input to named file/directory as a document {single, echo}</font></code>
+<code class="western"><font size="1" style="font-size: 8pt">:wikitext - read wiki xml and write plaintext</font></code>
+<code class="western"><font size="1" style="font-size: 8pt">:tsv    - convert a tab-delimited spreadsheet into CS table format, with double quotes around any string needing it</font></code>
+
+<code class="western"><font size="1" style="font-size: 8pt">---- Analytics -</font></code>
+<code class="western"><font size="1" style="font-size: 8pt">:abstract     - Display overview of ChatScript topics</font></code>
+<code class="western"><font size="1" style="font-size: 8pt">:coverage     - Save execution coverage of ChatScript rules</font></code>
+<code class="western"><font size="1" style="font-size: 8pt">:showcoverage - Display execution coverage of ChatScript rules</font></code>
+<code class="western"><font size="1" style="font-size: 8pt">:diff         - match 2 files and report lines that differ</font></code>
+<code class="western"><font size="1" style="font-size: 8pt">:trim         - Strip excess off chatlog file to make simple file TMP/tmp.txt</font></code>
+
+<code class="western"><font size="1" style="font-size: 8pt">---- internal support -</font></code>
+<code class="western"><font size="1" style="font-size: 8pt">:topicdump         - Dump topic data suitable for inclusion as extra topics into TMP/tmp.txt </font></code>
+<code class="western">                     </code><code class="western"><font size="1" style="font-size: 8pt">(:extratopic or PerformChatGivenTopic)</font></code>
+<code class="western"><font size="1" style="font-size: 8pt">:builddict         -  basic, layer0, layer1, or wordnet are options instead of default full</font></code>
+<code class="western"><font size="1" style="font-size: 8pt">:buildforeign      - rebuild a foreign dictionary (requires treetagger data)</font></code>
+<code class="western"><font size="1" style="font-size: 8pt">:clean             - Convert source files to NL instead of CR/LF for unix</font></code>
+<code class="western"><font size="1" style="font-size: 8pt">:extratopic        - given topic name and file as output from :topicdump, </font></code>
+<code class="western">                     </code><code class="western"><font size="1" style="font-size: 8pt">build in core topic and use it thereafter</font></code>
+<code class="western"><font size="1" style="font-size: 8pt">:pennformat        - rewrite penn tagfile (eg as output from stanford) as one liners</font></code>
+<code class="western"><font size="1" style="font-size: 8pt">:pennmatch         - FILE {raw ambig} compare penn file against internal result</font></code>
+<code class="western"><font size="1" style="font-size: 8pt">:pennnoun          - locate mass nouns in pennbank</font></code>
+<code class="western"><font size="1" style="font-size: 8pt">:pos               - Show results of tokenization and tagging</font></code>
+<code class="western"><font size="1" style="font-size: 8pt">:sortconcept       - Prepare concept file alphabetically (see writeup)</font></code>
+<code class="western"><font size="1" style="font-size: 8pt">:translateconcept  - TODO</font></code>
+<code class="western"><font size="1" style="font-size: 8pt">:timepos           - compute wps average to prepare inputs</font></code>
+<code class="western"><font size="1" style="font-size: 8pt">:verifypos         - Regress pos-tagging using default REGRESS/postest.txt file or named file</font></code>
+<code class="western"><font size="1" style="font-size: 8pt">:verifyspell       - Regress spell checker against file</font></code>
+<code class="western"><font size="1" style="font-size: 8pt">:verifysubstitutes - Regress test substitutes of all kinds</font></code>
+<code class="western"><font size="1" style="font-size: 8pt">:worddump          - show words via hardcoded test</font></code>
+<code class="western"><font size="1" style="font-size: 8pt">:verifySentence    - verification data</font></code></pre><p style="margin-bottom: 0cm; line-height: 100%">
+Toutes les commandes peuvent être écrites en entier, ou la plupart
+peuvent être abrégées en utilisant: premièrelettredernièrelettre,
+ex&nbsp;:</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%">:build</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%">peut devenir</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%">: bd</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font size="2" style="font-size: 10pt">:commands
+off </font>désactive localement les commandes jusqu'à ce qu'une
+commande <font size="2" style="font-size: 10pt">:c</font><font size="2" style="font-size: 10pt">ommands
+on</font> soit donnée.</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><b>Avant qu’il y
+ait un problème lors de l'exécution</b></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%">Avant de discuter
+avec votre Chatbot et de découvrir que les choses ne fonctionnent
+pas, il y a quelques choses à faire pour être averti des problèmes.</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<h2 class="western">La compilation (<code class="western">:build</code>)</h2>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%">Bien sûr, vous avez
+commencé avec <font size="2" style="font-size: 10pt">:build</font>
+pour compiler votre script. Il n'aurait pas laisser passé un script
+complètement faux, mais il a pu émettre des avertissements.</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%">Ce n'est
+probablement pas votre problème, mais regardons ce qu'il pourrait
+vous avoir dit comme avertissement. Le système vous avertira pendant
+la compilation et résumera ses résultats à la fin de la
+compilation. Les messages de compilation se produisent à l'écran et
+dans le fichier journal.</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%">Les avertissements
+les plus importants sont une référence à un ensemble ou à une
+étiquette <font size="2" style="font-size: 10pt">^reuse</font> non
+définies. Par exemple.,</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<pre class="western"><code class="western">*** Warning- missing set definition ~car_names</code>
+<code class="western">*** Warning- Missing cross-topic label ~allergy.JOHN for reuse</code></pre><p style="margin-bottom: 0cm; line-height: 100%">
+Vous devriez les corriger parce qu'ils sont clairement des erreurs,
+bien que le script s'exécute bien partout sauf dans ces endroits.</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<pre class="western"><code class="western">*** Warning- flowglow is unknown as a word in pattern</code></pre><p style="margin-bottom: 0cm; line-height: 100%">
+<br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%">Les avertissements
+concernant des mots dans les Modèles qu'il ne reconnaît pas ou
+qu’il connaît en minuscules alors que vous avez utilisé des
+majuscules peuvent être important ou pas. Aucun d'eux n'est
+particulièrement faux, à moins que vous ne l'ayez pas fait exprès.
+Les mots qu'il ne reconnaît pas apparaissent soit parce que vous
+avez fait une faute de frappe (vous avez besoin de le corriger) ou
+simplement parce que le mot n'est pas dans le dictionnaire.</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%">Les mots en
+majuscules sont à nouveau des mots qu'il connaît en minuscules,
+mais vous les avez utilisés en majuscules. Peut-être juste ou faux.</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%">L'édition du
+dictionnaire principal n'est pas une tâche pour les timides. Mais
+ChatScript maintient des dictionnaires secondaires dans le dossier
+TOPIC et ceux-ci sont faciles à ajuster. Pour les modifier, vous
+pouvez définir des concepts qui ajoutent des entrées locales de
+dictionnaire. Les mots importants comme bits sont dans
+<font size="2" style="font-size: 10pt">src/dictionarySystem.h</font>
+la bases c’est <font size="2" style="font-size: 10pt">NOUN, VERB,
+ADJECTIVE et ADVERB.</font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<pre class="western"><code class="western"><font size="2" style="font-size: 10pt">concept: ~morenoun NOUN (fludge flwoa boara)</font></code></pre><p style="margin-bottom: 0cm; line-height: 100%">
+<br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font size="3" style="font-size: 12pt">Un
+concept comme celui-ci, déclaré avant l'utilisation de ces mots,
+les définira dans le dictionnaire local en tant que noms et
+supprimera le message d'avertissement. Vous pouvez également être
+plus précis avec plusieurs indicateurs comme celui-ci:</font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<pre class="western"><font size="3" style="font-size: 12pt"><code class="western">concept: ~myverbs VERB VERB_INFINITIVE (spluat babata)</code></font></pre><p style="margin-bottom: 0cm; line-height: 100%">
+<br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font size="3" style="font-size: 12pt">Vous
+pouvez définir des concepts au niveau 0 et/ou au niveau 1 du&nbsp;<font size="2" style="font-size: 10pt">:build</font>,
+de sorte que vous pouvez définir de nouveaux mots chaque fois que
+vous en avez besoin.</font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font size="3" style="font-size: 12pt">Lorsque
+le <font size="2" style="font-size: 10pt">:build</font> est terminé,
+la converstion reprendra là où elle s'était arrêtée avec
+l'utilisateur (ses fichiers de données sont inchangés). Si vous
+voulez effacer automatiquement l'utilisateur et recommencer, utilisez</font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<pre class="western"><font size="3" style="font-size: 12pt"><code class="western">:build xxx reset</code></font></pre><p style="margin-bottom: 0cm; line-height: 100%">
+<br/>
+
+</p>
+<h2 class="western"><font size="3" style="font-size: 12pt">Commandes
+de débogage les plus utiles</font></h2>
+<h3 class="western"><a name="prepare-this-is-my-sample-input"></a><font size="3" style="font-size: 12pt"><code class="western">:prepare
+ceci est une entrée simple</code></font></h3>
+<p><br/>
+<br/>
+
+</p>
+<p><font size="3" style="font-size: 12pt">Cela vous montre comment le
+système va marquer une phrase et à quels concepts elle correspond.
+C'est ce que le système fait pour se préparer à faire correspondre
+les sujets à vos commentaires. À partir de là, vous pouvez déduire
+quels modèles correspondraient et quels sujets pourraient être
+invoqués.</font></p>
+<p><font size="3" style="font-size: 12pt">Si vous ne donnez pas
+d'arguments à préparer, cela active simplement une trace de
+préparation pour toutes les entrées futures qui désactive
+réellement la réponse. Ça n’est pas ce qu’on veut faire
+habituellement.</font></p>
+<p><font size="3" style="font-size: 12pt">Il y a un premier argument
+facultatif à <font size="2" style="font-size: 10pt">:prepare</font>,
+qui est une variable. Si elle est donné, il indique la valeur
+$cs_token à utiliser pour la préparation. Par exemple</font></p>
+<pre class="western"><font size="3" style="font-size: 12pt"><code class="western">:prepare $mytoken this is a sentence.</code></font></pre><p style="margin-bottom: 0cm; line-height: 100%">
+<br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font size="3" style="font-size: 12pt">La
+variable <font size="2" style="font-size: 10pt">$cs_prepass</font>
+contient un script optionnel qui sera exécuté avant l'exécution du
+script de contrôle principal.</font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font size="3" style="font-size: 12pt">L'avantage
+de <font size="2" style="font-size: 10pt">$cs_prepass</font> est
+qu'il est également exécuté par <font size="2" style="font-size: 10pt">:prepare</font>,
+vous pouvez donc en suivre les traces. Si vous voulez voir la
+préparation avec ou sans ce Topic (préparation brute par le
+moteur), vous pouvez ajouter l'argument optionnel <font size="2" style="font-size: 10pt">NOPREPASS</font>
+ou <font size="2" style="font-size: 10pt">PREPASS</font>. Par
+exemple&nbsp;:</font></p>
+<pre class="western"><font size="3" style="font-size: 12pt"><code class="western">:prepare NOPREPASS This is a sentence</code></font>
+<code class="western">:prepare $newtoken NOPREPASS This is a sentence.</code></pre><p style="margin-bottom: 0cm; line-height: 100%">
+<font size="3" style="font-size: 12pt">L'utilisation du <font size="2" style="font-size: 10pt">PREPASS
+</font>ou <font size="2" style="font-size: 10pt">NOPREPASS</font> est
+mémorisée pendant l'exécution de CS, de sorte que la prochaine
+fois que vous appelez <font size="2" style="font-size: 10pt">:
+prepare</font> vous pouvez l'omettre et le même réglage sera
+utilisé. Si tout ce que vous voulez savoir est dans quel concepts
+tel mot est impliqué, vous utiliserez <font size="2" style="font-size: 10pt">:common</font>.</font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<h3 class="western"><a name="why"></a><font size="3" style="font-size: 12pt"><code class="western">:why</code></font></h3>
+<p style="margin-bottom: 0cm; line-height: 100%"><font size="3" style="font-size: 12pt">Quand
+je teste mes bots (en supposant qu'ils passent la vérification), je
+discute avec eux jusqu'à ce que j'obtienne une réponse que je
+n'aime pas. Je lui demande alors pourquoi il a généré la réponse
+qu'il a faite.</font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font size="3" style="font-size: 12pt">Ceci
+spécifie les règles qui ont généré cette réponse et de quels
+Topic elle provient. La pluspart du temps je peux voir, en regardant
+la règle, pourquoi je ne voudrais pas que cela corresponde et ce que
+je dois faire pour corriger cette règle. Par contre cela ne résout
+pas la raison pour laquelle une règle que je veux voir correspondre
+a échoué, donc pour cela, j'ai besoin de traçage.</font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<h2 class="western"><a name="trace"></a><font size="3" style="font-size: 12pt">Trace</font></h2>
+<h3 class="western"><a name="trace-all-trace-always-trace-none"></a><code class="western">:trace
+all</code> / <code class="western">:trace always</code> / <code class="western">:trace
+none</code></h3>
+<p style="margin-bottom: 0cm; line-height: 100%"><font size="3" style="font-size: 12pt">La
+commande de débogage ultime restitue une trace de tout ce qui se
+passe pendant l'exécution sur l'écran et dans le fichier journal.
+Après l’avoir entré, vous tapez dans votre chat et regardez ce
+qui se passe (qui est également enregistré dans le fichier journal
+en cours). Le problème étant que c'est potentiellement une grande
+trace. Vous voudrez sans doute être plus précis dans votre
+entreprise.</font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font size="3" style="font-size: 12pt">Sinon,</font></p>
+<pre class="western"><font size="3" style="font-size: 12pt"><code class="western">:trace all </code></font></pre><p style="margin-bottom: 0cm; line-height: 100%">
+<font size="3" style="font-size: 12pt">entraine tout le traçage. Il
+peut être supprimé dans les zones de code où vous avez spécifié
+</font><code class="western">^NOTRACE()</code><font size="3" style="font-size: 12pt">.</font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<pre class="western"><font size="3" style="font-size: 12pt"><code class="western">:trace always</code></font></pre><p style="margin-bottom: 0cm; line-height: 100%">
+<font size="3" style="font-size: 12pt">ignore la protection
+<code class="western">^NOTRACE()</code> et trace tout.</font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<pre class="western"><font size="3" style="font-size: 12pt"><code class="western">:trace ignorenotrace</code></font></pre><p style="margin-bottom: 0cm; line-height: 100%">
+<font size="3" style="font-size: 12pt">vous permet d'utiliser les
+traces limitées ci-dessous, tout en ignorant les appels couverts par
+<code class="western">^NOTRACE()</code>.</font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<h3 class="western"><a name="trace-myfunction"></a><font size="3" style="font-size: 12pt"><code class="western">:trace
+^myfunction</code></font></h3>
+<p style="margin-bottom: 0cm; line-height: 100%"><font size="3" style="font-size: 12pt">Permet
+le traçage pour la fonction. Appelez-la à nouveau pour revenir à
+la normale.</font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<h3 class="western"><a name="trace-var"></a><font size="3" style="font-size: 12pt"><code class="western">:trace
+$var</code></font></h3>
+<p style="margin-bottom: 0cm; line-height: 100%"><font size="3" style="font-size: 12pt">cela
+permet le suivi lorsque cette variable change. Les variables locales
+ne montrent qu'une trace pendant la volée en cours. Les variables
+globales montrent une trace à travers les volées successives.</font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<h3 class="western"><a name="trace-education"></a><font size="3" style="font-size: 12pt"><code class="western">:trace
+~education</code></font></h3>
+<p style="margin-bottom: 0cm; line-height: 100%"><font size="3" style="font-size: 12pt">Permet
+le suivi de ce Topic et tous les Topic qu'il appelle. Appelez-le à
+nouveau pour revenir à la normale. C'est probablement ce dont vous
+avez besoin habituellement pour voir ce qui s'est mal passé. Vous
+connaissez le code que vous souhaitez exécuter, surveillez donc le
+sujet dans lequel il se trouve.</font></p>
+<h3 class="western"><a name="trace-education-1"></a><font size="3" style="font-size: 12pt"><code class="western">:trace
+!~education</code></font></h3>
+<p style="margin-bottom: 0cm; line-height: 100%"><font size="3" style="font-size: 12pt">cela
+désactive le suivi actuel pour ce sujet et tous les sujets qu'il
+appelle quand </font><code class="western"><font size="2" style="font-size: 10pt">:trace
+all</font></code><code class="western"> </code><code class="western">est
+exécuté</code><font size="3" style="font-size: 12pt">. Appelez-le à
+nouveau pour revenir à la normale.</font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><font size="3" style="font-size: 12pt">De
+même, vous pouvez faire</font></p>
+<h3 class="western"><a name="trace-education.4.5"></a><font size="3" style="font-size: 12pt"><code class="western">:trace
+~education.4.5</code></font></h3>
+<p style="margin-bottom: 0cm; line-height: 100%"><font size="3" style="font-size: 12pt">qui
+dit de tracer juste la 4ème règle de niveau supérieur dans
+l'éducation, le répondeur numéro 5. Les valeurs par défaut
+ci-dessus tracent tout tant qu’il reste dans la Topic. Vous pouvez
+spécifier ce que vous voulez tracer en nommant des valeurs de trace,
+puis le sujet.</font></p>
+<h3 class="western"><a name="trace-prepare-basic-facts-education"></a>
+<font size="3" style="font-size: 12pt"><code class="western">:trace
+prepare basic facts ~education</code></font></h3>
+<p style="margin-bottom: 0cm; line-height: 100%"><font size="3" style="font-size: 12pt">Ce
+qui précède active un certain nombre de valeurs de trace, puis les
+affecte au sujet, en effaçant les valeurs de trace.</font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0cm; line-height: 100%"><a name="trace-input-trace-prepare-can-generate-a-lot-of-data-about-concept-marking.-if-you-just-want-a-simple-check-on-what-the-adjusted-input-looks-like-you-can-dotrace-input"></a>
+<font size="2" style="font-size: 10pt">: trace input: trace prepare
+</font><font size="3" style="font-size: 12pt">peuvent générer
+beaucoup de données sur les concepts. Si vous voulez juste une
+simple vérification de ce à quoi ressemble l'entrée correcte, vous
+pouvez faire </font><font size="2" style="font-size: 10pt">:trace
+input`</font></p>
+<p style="margin-bottom: 0cm; line-height: 100%"><br/>
+
+</p>
+</body>
+</html>

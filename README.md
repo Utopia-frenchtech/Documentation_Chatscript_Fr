@@ -8,6 +8,8 @@ contient :
 - ManuelCS_plusieurs_bots.html
 - manuel-de-l'utilisateur-bases.html
 - Tutoriel_ChatScript.html
+- ChatScript_manuel_degoguage.html
+- ChatScript_langue_etrangere.html
 
 <b>/DOCUMENTATIONHTML</b>
 contient :
@@ -16,6 +18,8 @@ contient :
 - ManuelCS_plusieurs_bots.pdf
 - manuel-de-l'utilisateur-bases.pdf
 - Tutoriel_ChatScript.pdf
+- ChatScript_langue_etrangere.pdf
+- ChatScript_manuel_degoguage.pdf
 <br>
 Il s'agit de premiers jets, une relecture et des corrections sont indispensables.<br>
 Le document Tutoriel_ChatScript n'est pas traduit intégralement (20% seulement) 

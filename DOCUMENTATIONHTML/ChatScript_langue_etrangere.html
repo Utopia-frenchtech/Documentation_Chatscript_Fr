@@ -1,0 +1,247 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<title></title>
+	<meta name="generator" content="LibreOffice 5.4.5.1 (Linux)"/>
+	<meta name="created" content="2018-03-15T10:34:26.175596221"/>
+	<meta name="changed" content="2018-03-15T10:58:57.702954790"/>
+	<style type="text/css">
+		@page { margin: 2cm }
+		p { margin-bottom: 0.25cm; line-height: 120% }
+		h1 { margin-bottom: 0.21cm }
+		h1.western { font-family: "Liberation Serif", serif }
+		h1.cjk { font-family: "Noto Sans CJK SC Regular"; font-size: 24pt }
+		h1.ctl { font-family: "Lohit Devanagari"; font-size: 24pt }
+		pre.cjk { font-family: "Courier New", monospace }
+		a:link { so-language: zxx }
+		code.cjk { font-family: "Courier New", monospace }
+	</style>
+</head>
+<body lang="fr-FR" dir="ltr">
+<p align="center" style="margin-top: 0.42cm; margin-bottom: 0.21cm; line-height: 100%; page-break-after: avoid">
+<font face="Liberation Sans, sans-serif"><font size="6" style="font-size: 28pt"><b>Support
+des langues étrangères</b></font></font></p>
+<p><br/>
+<br/>
+
+</p>
+<p>© Bruce Wilcox, mailto:gowilcox@gmail.com
+www.brilligunderstanding.com <br/>
+Revision 11/04/2017 cs7.61</p>
+<p>Traduction, Mathieu Rigard pour <a href="https://utopia-french.tech/">https://utopia-french.tech</a>
+15/03/2018</p>
+<p><br/>
+<br/>
+
+</p>
+<h1 class="western">Présentation des langues étrangères</h1>
+<p>ChatScript vient nativement avec un support complet en anglais. Si
+vous voulez utiliser une langue différente, vous avez besoin d'une
+variété de choses. 
+</p>
+<ul>
+	<li/>
+<p>Support pos-tagging (facultatif si vous n'utilisez pas de
+	mots-clés pos)</p>
+	<li/>
+<p>Support de vérification orthographique</p>
+	<li/>
+<p>Concepts dans la langue (que vous utilisez)</p>
+	<li/>
+<p>Substitutions LIVEDATA appropriées à la langue</p>
+	<li/>
+<p>Motifs dans la langue</p>
+	<li/>
+<p>Sortie dans la langue</p>
+	<li/>
+<p>Des Lemmes (avec des pos-taggers étrangers ou disponibles
+	depuis ^pos(canonical))</p>
+</ul>
+<p>ChatScript a un paramètre en ligne de commande <i>language=</i>
+(exemple language=FRENCH) qui indique à CS la langue que vous
+souhaitez utiliser. Il est par défaut en ANGLAIS. Les effets de ce
+paramètre sont les suivants. 
+</p>
+<ul>
+	<li/>
+<p>Si ce n'est pas en ANGLAIS, le pos-tagging interne (autre
+	que le marquage des balises anglaises et des numéros et dates
+	possibles) et l'analyse syntaxique sont désactivés. 
+	</p>
+	<li/>
+<p>Si le treetagger est sous licence et possède cette langue,
+	il posera un tag. 
+	</p>
+	<li/>
+<p>Le système utilisera DICT/langue. 
+	</p>
+	<li/>
+<p>Le système utilisera LIVEDATA/language 
+	</p>
+	<li/>
+<p>Le compilateur de script compilera automatiquement les
+	lignes marquées pour être compilées conditionnellement avec la
+	langue (voir les commentaires sur la langue). 
+	</p>
+	<li/>
+<p>Le système stockera également le fichier de sujet de
+	l'utilisateur avec le suffixe de langue.</p>
+</ul>
+<h1 class="western">ENTRÉES et SORTIES</h1>
+<p>ChatScript prend en charge l’UTF8, ce qui permet la sortie ou
+les modèles dans votre langue. Idem pour LIVEDATA.</p>
+<p><br/>
+<br/>
+
+</p>
+<p>ChatScript prend en charge deux types de commentaires de
+compilation conditionnelle. Les commentaires sur une ligne
+ressemblent à ceci:</p>
+<pre class="western"><code class="western">#ENGLISH cette ligne compilera si la langue est l'anglais mais pas si la langue est GERMAN.</code>
+<code class="western">#</code><code class="western">FRENCH</code><code class="western"> cette ligne ne compilera pas si la langue est l'anglais mais compilera si la langue est </code><code class="western">FRENCH</code><code class="western">.</code></pre><p>
+Comme toujours, ces commentaires vont jusqu'à la fin de la ligne.
+L'autre commentaire est le commentaire de bloc comme ceci:</p>
+<pre class="western"><code class="western">##&lt;&lt;ENGLISH ces lignes seront compilées en anglais</code>
+<code class="western">jusqu'à un commentaire de bloc de fermeture normal ##&gt;&gt;</code></pre><p>
+<br/>
+<br/>
+
+</p>
+<p>À l'aide de la compilation conditionnelle, vous pouvez faire
+cohabiter l'anglais et les autres versions de code si vous le
+souhaitez.</p>
+<h1 class="western">LE DICTIONNAIRE</h1>
+<p>Le fichier de dictionnaire peut être juste une liste de mots de
+la langue, un par ligne. Vous devez lister toutes les conjugaisons
+d'un mot car il n'y a pas de support intégré pour le comprendre.
+Vous pouvez également ajouter des balises POS équivalentes
+anglaises (voir les exemples dans les dictionnaires de langues
+étrangères existants) si vous souhaitez utiliser des mots-clés
+existants liés à des balises pos.</p>
+<p>En plus des mots normaux, il y a un fichier
+LIVEDATA/.../numbers.txt qui indique, pour une langue, il s'agit d'un
+mot numérique et de ce que signifie la signification numérique.</p>
+<p><code class="western">:buildforeign language</code> peut être
+utilisé pour reconstruire un dictionnaire étranger compte tenu des
+données rawwords dans le répertoire TreeTagger (que vous n'avez
+pas).</p>
+<p><br/>
+<br/>
+
+</p>
+<h1 class="western"><a name="pos-tags-and-lemmas"></a>POS-TAGS AND
+LEMMES</h1>
+<p style="background: transparent">Si vous voulez des valeurs de POS
+et des lemmes réels (forme canonique d'un mot), vous aurez besoin
+d'un POS-tagger quel qu’il soit ou utiliser ^pos(canonical) un mot.
+Bien qu'il soit possible de raccorder un tagueur externe via un appel
+Web, il sera nettement plus lent qu'un système intégré.</p>
+<pre class="western"><code class="western"><font face="Liberation Serif, serif"><font size="3" style="font-size: 12pt">ChatScript prend en charge le système TreeTagger intégré, qui prend en charge un certain nombre de langues. Cependant, vous ne pouvez l'utiliser que si vous avez une licence commerciale. Vous pouvez l'essayer en utilisant</font></font></code><code class="western"> ^popen</code>, <font face="Liberation Serif, serif"><font size="3" style="font-size: 12pt">Comme c'est le cas dans le bot allemand, il sera lent car il doit réinitialiser TreeTagger pour chaque phrase. Le système intégré ne fonctionne pas. Une licence (par langue) est d'environ 1000 $ pour une utilisation universelle à vie. Vous pouvez me contacter si vous voulez vous organiser pour l'utiliser</font></font><font face="Liberation Sérif"><font size="3" style="font-size: 12pt">.</font></font></pre><p>
+<br/>
+<br/>
+
+</p>
+<h1 class="western">Exécuter CS dans une langue étrangère</h1>
+<p>Pour s'exécuter dans une autre langue, utilisez le paramètre de
+ligne de commande<i> language=</i>. Pour toute instance CS, vous ne
+pouvez prendre en charge qu'une seule langue à la fois (car CS ne
+peut pas charger plusieurs dictionnaires ou détecter automatiquement
+une langue). Donc, si vous voulez avoir des serveurs pour plusieurs
+langues, vous avez besoin de plusieurs serveurs, chacun étant lancé
+de manière appropriée.</p>
+<p>Le fichier de sujet de l'utilisateur est nommé par
+username-botname-language (où en anglais on omet le composant
+-language). Cela signifie qu'un utilisateur discutant avec un serveur
+CS allemand a une conversation indépendante avec n'importe quelle
+conversation qu'il a eue avec le serveur anglais. Si vous utilisez
+des fichiers LTM pour stocker des données à long terme sur
+l'utilisateur, vous pouvez choisir si ces données sont uniques par
+langue ou partagées, puisque le nom du fichier est écrit dans un
+script.</p>
+<p><br/>
+<br/>
+
+</p>
+<h1 class="western">Traduire des concepts</h1>
+<p>Voici un code intégré pour traduire les concepts à l'aide de
+Google Traduction. Cela nécessite que vous ayez une clé d'api pour
+Google Traduction (mais vous pouvez vous inscrire gratuitement et
+obtenir un crédit de 300 $ valable pendant 3 mois, ce qui est
+suffisant pour faire tout votre travail de traduction probablement).
+Vous dites à CS ceci comme un paramètre de ligne de commande:</p>
+<pre class="western" style="margin-bottom: 0.5cm"><code class="western">apikey=AIzaSyAxxxx</code></pre><p>
+Quand je veux traduire tous les concepts de niveau 0, je fais ce qui
+suit:</p>
+<ol>
+	<li/>
+<p style="margin-bottom: 0cm">effacer le contenu du dossier
+	TOPIC 
+	</p>
+	<li/>
+<p style="margin-bottom: 0cm"><code class="western">:build 0</code>
+		</p>
+	<li/>
+<pre class="western"><a name="tw-target-text"></a><span style="font-variant: normal"><font color="#212121"><font face="inherit"><font size="3" style="font-size: 12pt"><span style="letter-spacing: normal"><span lang="fr-FR"><span style="font-style: normal"><span style="font-weight: normal">exécutez CS en utilisant le paramètre de ligne de commande noboot et votre apikey</span></span></span></span></font></font></font></span></pre>
+	<li/>
+<p style="margin-bottom: 0cm"><code class="western">:sortconcept
+	x</code> 
+	</p>
+	<li/>
+<p><code class="western">:translateconcept german myfilename</code>
+		</p>
+</ol>
+<p>Si vous lancez ^csboot et cela génère de nouvelles données
+conceptuelles, alors vous avez besoin de <code class="western">noboot</code>,
+sinon cela n'a pas d'importance.</p>
+<p><code class="western">:sortconcept x</code> localise tous les
+concepts actuellement définis (donc juste: build 0) et les écrit
+dans un fichier de niveau supérieur nommé <code class="western">concepts.top</code>
+avec un concept par ligne. Ce fichier sera lu à l'étape suivante.</p>
+<p style="background: transparent"><code class="western">:translateconcept</code>
+utilise l'apikey. Il lit chaque ligne de concepts.top (1 ligne par
+concept) et appelle google translate pour la langue que vous avez
+nommée, en enregistrant les résultats dans le chemin / fichier que
+vous avez donné. Actuellement, cela ne reconnaît que les noms de
+langue suivants: allemand, français, italien, espagnol, russe,
+hindi. Je pourrais en ajouter plus si nécessaire.</p>
+<p>The resulting file will automatically prepend each line with
+conditional compile markers for the language you named, so you can
+directly add it to your bot and it will only compile when you are in
+that language mode.</p>
+<p>If you want to translate concepts from your bot, then do the
+following:</p>
+<ol>
+	<li/>
+<p style="margin-bottom: 0cm">erase the contents of TOPIC
+	folder 
+	</p>
+	<li/>
+<p style="margin-bottom: 0cm"><code class="western">:build
+	harry</code> (or whatever your bot is) 
+	</p>
+	<li/>
+<p style="margin-bottom: 0cm">run CS using command line
+	parameter <code class="western">noboot</code> and your apikey 
+	</p>
+	<li/>
+<p style="margin-bottom: 0cm"><code class="western">:sortconcept
+	x</code> 
+	</p>
+	<li/>
+<p><code class="western">:translateconcept french myfilename</code>
+		</p>
+</ol>
+<p>If you just want to translate a single concept/topic then you can
+call</p>
+<pre class="western" style="margin-bottom: 0.5cm"><code class="western">:translateconcept ~myconcept french myfilename</code></pre><p>
+It will, as a byproduct, provide the sorted english form of the
+concept on a single line in <code class="western">cset.txt</code>. If
+you dont give a language and filename, then it will just sort your
+english concept and write it out.</p>
+<p><br/>
+<br/>
+
+</p>
+</body>
+</html>
